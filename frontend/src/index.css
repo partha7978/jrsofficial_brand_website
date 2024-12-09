@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Sacramento&display=swap');
 
 :root {
   --bg-primary: #fbf7ec;
@@ -6,6 +6,7 @@
   --black-color-text-primary: #000000;
   --black-color-text-secondary: #141414;
   --bg-white-color: #ffffff;
+  --gray-color: #6b7688;
 }
 
 *, *::before, *::after {

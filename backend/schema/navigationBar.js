@@ -4,7 +4,15 @@ export default{
     type: 'document',
     fields:[
         {
-            name:'logo',
+            name:'white_logo',
+            title:'',
+            type: 'image',
+            options: {
+              hotspot: true,
+            },
+        },
+        {
+            name:'black_logo',
             title:'',
             type: 'image',
             options: {
