@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { client, urlFor } from "../../../client/client";
+import { urlFor } from "../../../client/client";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
@@ -19,7 +19,7 @@ const Navbar = () => {
         <>
           <div className="app__navbar-logo">
             <img
-              src={data.black_logo && urlFor(data.black_logo).url()}
+              src={data.white_logo && urlFor(data.white_logo).url()}
               alt="The Jrs Show Logo"
             />
             <p className="logo-name">The JRS Show</p>

@@ -5,6 +5,10 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem 4rem;
+  position: fixed;
+  z-index: 2;
+  // backdrop-filter: blur(5px);
+  // -webkit-backdrop-filter: blur(5px);
 
   &-logo {
     display: flex;
@@ -18,7 +22,7 @@
     }
 
     p {
-      color: var(--black-color-text-primary);
+      color: var(--white-color-text-primary);
       //   font-family: Sacramento, cursive;
       font-size: 1.5rem;
       font-weight: 600;
@@ -48,22 +52,21 @@
 
       a {
         text-decoration: none;
-        color: var(--black-color-text-primary);
         font-size: 1rem;
         text-transform: uppercase;
         font-weight: 500;
         margin: 0 1rem;
         cursor: pointer;
-        color: var(--gray-color);
+        color: var(--white-color-text-primary);
         transition: all 0.3s ease-in-out;
       }
 
       &:hover {
         div {
-          background: var(--bg-black-color);
+          background: var(--primary-color-contrast);
         }
         a {
-          color: var(--black-color-text-primary);
+          color: var(--primary-color-contrast);
         }
       }
     }
@@ -75,7 +78,7 @@
 
       button {
         padding: 0.8rem 1.5rem;
-        border: 1px solid var(--black-color-text-primary);
+        border: 1px solid var(--white-color-text-primary);
         display: flex;
         justify-content: center;
         align-items: baseline;
@@ -85,7 +88,7 @@
         transition: all 0.3s ease-in-out;
         font-size: 1rem;
         font-weight: 600;
-        color: var(--black-color-text-secondary);
+        color: var(--white-color-text-primary);
 
         svg {
             height: 14px;
@@ -93,8 +96,9 @@
         }
 
         &:hover {
-          background-color: var(--bg-black-color);
-          color: var(--bg-white-color);
+          background-color: var(--primary-color-contrast);
+          border: 1px solid var(--primary-color-contrast);
+          color: var(--black-color-text-primary);
         }
       }
     }

@@ -7,6 +7,9 @@
   --black-color-text-secondary: #141414;
   --bg-white-color: #ffffff;
   --gray-color: #6b7688;
+  --white-color-text-primary: #ffffff;
+  --white-color-text-secondary: #fbf7ec;
+  --primary-color-contrast: #FFEACE;
 }
 
 *, *::before, *::after {
@@ -28,6 +31,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: var(--bg-primary);
-
-/* background: radial-gradient(100% 100% at 50.000005960464456% 100.00000002049443%,rgba(20,20,20,0) 0%,rgba(20,20,20,1) 68.17823052406311%); */
 }
