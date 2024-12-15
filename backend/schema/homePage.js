@@ -12,9 +12,19 @@ export default {
       },
     },
     {
-      name: 'mainHeading',
-      title: 'Main Heading',
+      name: 'mainHeadingFirstLine',
+      title: 'Main Heading First Line',
       type: 'string',
     },
+    {
+      name: 'mainHeadingSecondLine',
+      title: 'Main Heading Second Line',
+      type: 'string',
+    },
+    {
+      name: 'mainSubheading',
+      title: 'Main Subheading',
+      type: 'string',
+    }
   ],
 }

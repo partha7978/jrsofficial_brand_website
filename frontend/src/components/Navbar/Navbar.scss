@@ -6,7 +6,7 @@
   align-items: center;
   padding: 1rem 4rem;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   // backdrop-filter: blur(5px);
   // -webkit-backdrop-filter: blur(5px);
 
@@ -40,6 +40,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      position: relative;
 
       div.dot {
         width: 5px;
@@ -68,7 +69,78 @@
         a {
           color: var(--primary-color-contrast);
         }
+      
+        .app__navbar-links-item-extra {
+          display: grid;
+          background-color: var(--bg-primary);
+          a {
+            color: var(--black-color-text-primary);
+            background-color: var(--bg-primary);
+          }
+        }
       }
+      
+      &:has(.app__navbar-links-item-extra:hover) {
+        .app__navbar-links-item-extra {
+          display: grid;
+          background-color: var(--bg-primary);
+        }
+      }
+      
+      &-extra {
+        position: absolute;
+        top: 40px;
+        z-index: 5;
+        background-color: var(--bg-primary);
+        padding: 1rem;
+        border-radius: 20px;
+        display: none;
+        gap: 0.5rem;
+        min-width: 460px;
+        width: 520px;
+        /* Fixed number of items per row (3, 4, 5, etc.) */
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        justify-items: center;
+        align-items: center;
+      
+        a.app__navbar-links-item-extra-link {
+          color: var(--black-color-text-primary);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          text-decoration: none;
+          text-transform: none;
+          /* Make items square */
+          width: 100%;
+          height: 0;
+          padding-top: 100%;
+          position: relative;
+          border-radius: 10px;
+          margin: 0;
+      
+          /* Content positioning inside */
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+      
+          &:hover {
+            background-color: var(--bg-black-color-contrast);
+            color: var(--white-color-text-primary);
+          }
+        }
+      }
+      
+      
     }
   }
 
@@ -91,8 +163,8 @@
         color: var(--white-color-text-primary);
 
         svg {
-            height: 14px;
-            width: 14px;
+          height: 14px;
+          width: 14px;
         }
 
         &:hover {

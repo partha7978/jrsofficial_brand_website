@@ -23,6 +23,16 @@ const Home = () => {
           >
             <div className="homepage-main-overlay"></div>
           </div>
+
+          <div className="homepage-main-content">
+            <div className="main-heading">
+              <h1>{data.mainHeadingFirstLine}</h1>
+              <h1>{data.mainHeadingSecondLine}</h1>
+            </div>
+            <div className="main-subheading">
+              <p>{data.mainSubheading}</p>
+            </div>
+          </div>
         </div>
       )}
     </section>

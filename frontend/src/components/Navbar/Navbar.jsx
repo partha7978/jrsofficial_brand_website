@@ -6,6 +6,22 @@ import useFetchData from "../../hooks/useFetchData";
 
 const Navbar = () => {
   // const [navBar, setNavBar] = useState([]);
+  const navbarLinks = [
+    { name: "home", extraLinks: false, link: "/" },
+    { name: "about", extraLinks: false, link: "about" },
+    {
+      name: "episodes",
+      extraLinks: [
+        { name: "Fitness", link: "https://www.fitness.com" },
+        { name: "Health", link: "https://www.health.com" },
+        { name: "Diet", link: "https://www.diet.com" },
+        { name: "Wellness", link: "https://www.wellness.com" },
+      ],
+      link: "/episodes",
+    },
+    { name: "courses", extraLinks: false, link: "courses" },
+    { name: "contact", extraLinks: false, link: "contact" },
+  ];
   const { data, loading, error } = useFetchData("navigationBar");
 
   if (error) {
@@ -22,13 +38,28 @@ const Navbar = () => {
               src={data.white_logo && urlFor(data.white_logo).url()}
               alt="The Jrs Show Logo"
             />
-            <p className="logo-name">The JRS Show</p>
+            <p className="logo-name">Jrsofficial</p>
           </div>
           <div className="app__navbar-links">
-            {["home", "about", "episodes", "courses", "contact"].map((item) => (
-              <div className="app__navbar-links-item" key={item}>
+            {navbarLinks.map((item) => (
+              <div className="app__navbar-links-item" key={item.link}>
                 <div className="dot" />
-                <a href={`#${item.toLowerCase()}`}>{item}</a>
+                <a href={`#${item.link}`}>{item.name}</a>
+                {item.extraLinks && item.extraLinks.length > 0 && (
+                  <div className="app__navbar-links-item-extra">
+                    {item.extraLinks.map((extraLink) => (
+                      <a
+                        href={extraLink.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={extraLink.name}
+                        className="app__navbar-links-item-extra-link"
+                      >
+                        <span>{extraLink.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -3,12 +3,13 @@
 :root {
   --bg-primary: #fbf7ec;
   --bg-black-color: #000000;
+  --bg-black-color-contrast: #141414;
   --black-color-text-primary: #000000;
   --black-color-text-secondary: #141414;
   --bg-white-color: #ffffff;
   --gray-color: #6b7688;
   --white-color-text-primary: #ffffff;
-  --white-color-text-secondary: #fbf7ec;
+  --white-color-text-secondary: #e4e4e4;
   --primary-color-contrast: #FFEACE;
 }
 
