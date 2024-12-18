@@ -7,8 +7,6 @@
   padding: 1rem 4rem;
   position: fixed;
   z-index: 3;
-  // backdrop-filter: blur(5px);
-  // -webkit-backdrop-filter: blur(5px);
 
   &-logo {
     display: flex;
@@ -23,7 +21,6 @@
 
     p {
       color: var(--white-color-text-primary);
-      //   font-family: Sacramento, cursive;
       font-size: 1.5rem;
       font-weight: 600;
     }
@@ -60,7 +57,7 @@
         margin: 0 1rem;
         cursor: pointer;
         color: var(--white-color-text-primary);
-        transition: all 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
       }
 
       &:hover {
@@ -108,14 +105,11 @@
         gap: 0.5rem;
         min-width: 460px;
         width: 520px;
-        /* Fixed number of items per row (3, 4, 5, etc.) */
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         justify-items: center;
         align-items: center;
 
         a.app__navbar-links-item-extra-link {
-          // max-width: 60px;
-          // max-height: 60px;
           color: var(--black-color-text-primary);
           display: flex;
           justify-content: center;
@@ -123,15 +117,13 @@
           text-align: center;
           text-decoration: none;
           text-transform: none;
-          /* Make items square */
           width: 100%;
           height: 0;
           padding-top: 100%;
           position: relative;
           border-radius: 10px;
           margin: 0;
-      
-          /* Content positioning inside */
+
           span {
             position: absolute;
             top: 0;
@@ -151,7 +143,6 @@
           }
         }
       }
-      
     }
   }
 

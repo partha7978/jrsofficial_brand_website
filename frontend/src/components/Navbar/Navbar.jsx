@@ -3,6 +3,7 @@ import { urlFor } from "../../../client/client";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   // const [navBar, setNavBar] = useState([]);
@@ -33,32 +34,46 @@ const Navbar = () => {
       {loading && <p>Loading...</p>}
       {data && (
         <>
-          <div className="app__navbar-logo">
+          <motion.div
+            whileInView={{ y: [+100, 0], opacity: [0, 1] }}
+            transition={{ duration: 0.5, type: "ease-in" }}
+            className="app__navbar-logo"
+          >
             <img
               src={data.white_logo && urlFor(data.white_logo).url()}
               alt="The Jrs Show Logo"
             />
             <p className="logo-name">Jrsofficial</p>
-          </div>
+          </motion.div>
           <div className="app__navbar-links">
             {navbarLinks.map((item) => (
               <div className="app__navbar-links-item" key={item.link}>
                 <div className="dot" />
                 <a href={`#${item.link}`}>{item.name}</a>
                 {item.extraLinks && item.extraLinks.length > 0 && (
-                  <div className="app__navbar-links-item-extra">
+                  <motion.div
+                    className="app__navbar-links-item-extra"
+                    whileInView={{ y: [+100, 0],  opacity: [0, 1] }}
+                    transition={{ duration: 0.5, type: "ease-in-out" }}
+                  >
                     {item.extraLinks.map((extraLink) => (
-                      <a
+                      <motion.a
                         href={extraLink.link}
                         target="_blank"
                         rel="noreferrer"
                         key={extraLink.name}
                         className="app__navbar-links-item-extra-link"
+                        whileInView={{
+                          // y: [-100, 0],
+                          opacity: [0, 1],
+                          transition: { duration: 0.5, ease: "backInOut", delay: 0.1 },
+
+                        }}
                       >
                         <span>{extraLink.name}</span>
-                      </a>
+                      </motion.a>
                     ))}
-                  </div>
+                  </motion.div>
                 )}
               </div>
             ))}
