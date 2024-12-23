@@ -126,6 +126,7 @@
 
           span {
             position: absolute;
+            z-index: 2;
             top: 0;
             left: 0;
             width: 100%;
@@ -137,9 +138,40 @@
             align-items: center;
           }
 
+          img.extra-link-hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: none;
+          }
+
+          .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            z-index: 1;
+            display: none;
+          }
+
           &:hover {
             background-color: var(--bg-black-color-contrast);
             color: var(--white-color-text-primary);
+
+            img.extra-link-hover-img {
+              display: block !important;
+            }
+
+            .gradient-overlay {
+              display: block;
+            }
           }
         }
       }

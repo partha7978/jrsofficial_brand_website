@@ -7,13 +7,18 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   // const [navBar, setNavBar] = useState([]);
-  const navbarLinks = [
+  const navbarLinksSchema = [
     { name: "home", extraLinks: false, link: "/" },
     { name: "about", extraLinks: false, link: "about" },
     {
       name: "episodes",
       extraLinks: [
-        { name: "Fitness", link: "https://www.fitness.com" },
+        {
+          name: "Fitness",
+          link: "https://www.fitness.com",
+          imgUrl:
+            "https://plus.unsplash.com/premium_photo-1667762241847-37471e8c8bc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVhbHRofGVufDB8fDB8fHww",
+        },
         { name: "Health", link: "https://www.health.com" },
         { name: "Diet", link: "https://www.diet.com" },
         { name: "Wellness", link: "https://www.wellness.com" },
@@ -46,14 +51,14 @@ const Navbar = () => {
             <p className="logo-name">Jrsofficial</p>
           </motion.div>
           <div className="app__navbar-links">
-            {navbarLinks.map((item) => (
+            {navbarLinksSchema.map((item) => (
               <div className="app__navbar-links-item" key={item.link}>
                 <div className="dot" />
                 <a href={`#${item.link}`}>{item.name}</a>
                 {item.extraLinks && item.extraLinks.length > 0 && (
                   <motion.div
                     className="app__navbar-links-item-extra"
-                    whileInView={{ y: [+100, 0],  opacity: [0, 1] }}
+                    whileInView={{ y: [+100, 0], opacity: [0, 1] }}
                     transition={{ duration: 0.5, type: "ease-in-out" }}
                   >
                     {item.extraLinks.map((extraLink) => (
@@ -66,11 +71,24 @@ const Navbar = () => {
                         whileInView={{
                           // y: [-100, 0],
                           opacity: [0, 1],
-                          transition: { duration: 0.5, ease: "backInOut", delay: 0.1 },
-
+                          transition: {
+                            duration: 0.5,
+                            ease: "backInOut",
+                            delay: 0.1,
+                          },
                         }}
                       >
                         <span>{extraLink.name}</span>
+                        {extraLink.imgUrl && (
+                          <>
+                            <img
+                              className="extra-link-hover-img"
+                              src={extraLink.imgUrl}
+                              alt={extraLink.name}
+                            />
+                            <div className="gradient-overlay"></div>
+                          </>
+                        )}
                       </motion.a>
                     ))}
                   </motion.div>
