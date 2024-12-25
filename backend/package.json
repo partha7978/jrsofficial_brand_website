@@ -21,7 +21,7 @@
     "sanity": "^3.65.1",
     "sanity-plugin-dashboard-widget-netlify": "^2.0.1",
     "sanity-plugin-vercel-deploy": "^3.3.4",
-    "styled-components": "^6.1.8"
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^4.0.0",
