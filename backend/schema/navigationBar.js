@@ -3,22 +3,22 @@ export default{
     title:'NavigationBar',
     type: 'document',
     fields:[
-        {
-            name:'white_logo',
-            title:'',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-        },
-        {
-            name:'black_logo',
-            title:'',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-        },
+        // {
+        //     name:'white_logo',
+        //     title:'',
+        //     type: 'image',
+        //     options: {
+        //       hotspot: true,
+        //     },
+        // },
+        // {
+        //     name:'black_logo',
+        //     title:'',
+        //     type: 'image',
+        //     options: {
+        //       hotspot: true,
+        //     },
+        // },
         {
             name: 'redirectButtonName',
             title: 'Redirect Button Name',
