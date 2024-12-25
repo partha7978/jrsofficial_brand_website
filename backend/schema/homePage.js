@@ -25,6 +25,38 @@ export default {
       name: 'mainSubheading',
       title: 'Main Subheading',
       type: 'string',
-    }
+    },
+    {
+      name: 'mainLink',
+      title: 'Main Links',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'linkItem',
+          title: 'Link Item',
+          fields: [
+            {
+              name: 'icon',
+              title: 'Log Icon',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+            },
+            {
+              name: 'link',
+              title: 'Link',
+              type: 'string',
+            },
+            {
+              name: 'name',
+              title: 'Logo Name',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    },
   ],
 }
