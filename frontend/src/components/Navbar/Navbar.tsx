@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { urlFor } from "../../../client/client";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import useFetchData from "../../hooks/useFetchData";
+import useFetchData from '../../hooks/useFetchData';
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -28,7 +27,7 @@ const Navbar = () => {
     { name: "courses", extraLinks: false, link: "courses" },
     { name: "contact", extraLinks: false, link: "contact" },
   ];
-  const { data, loading, error } = useFetchData("navigationBar");
+  const { data, loading, error } : any = useFetchData("navigationBar");
 
   if (error) {
     console.log(error);

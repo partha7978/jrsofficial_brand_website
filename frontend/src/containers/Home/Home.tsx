@@ -1,6 +1,5 @@
 import "./Home.scss";
-import { useState, useEffect } from "react";
-import useFetchData from "../../hooks/useFetchData.js";
+import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
 
 const Home = () => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { client } from "../../client/client";
 
-const useFetchData = (url) => {
+const useFetchData = (url: string) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ const useFetchData = (url) => {
         const fetchedData = await client.fetch(query); 
         console.log(fetchedData, "ddd111");
         setData(fetchedData[0]);
-      } catch (err) {
+      } catch (err: any) {
         console.error(err);
         setError(err);
       } finally {
