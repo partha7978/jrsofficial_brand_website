@@ -14,15 +14,13 @@
     align-items: center;
     gap: 0.5rem;
 
-    img {
-      width: 3.2rem;
-      height: auto;
-    }
-
     p {
       color: var(--white-color-text-primary);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      font-family: "Dancing Script", serif;
+      //  font-family: "Sacramento", serif;
       font-weight: 600;
+      font-style: normal;
     }
   }
 
@@ -183,18 +181,22 @@
       text-decoration: none;
 
       button {
-        padding: 0.8rem 1.5rem;
+        padding: 0.6rem 1.2rem;
         border: 1px solid var(--white-color-text-primary);
         display: flex;
         justify-content: center;
         align-items: baseline;
         gap: 0.5rem;
-        background-color: transparent;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 600;
         color: var(--white-color-text-primary);
+
+        div {
+          box-shadow: none !important;
+          // display: none !important;
+        }
 
         svg {
           height: 14px;
@@ -202,9 +204,13 @@
         }
 
         &:hover {
-          background-color: var(--primary-color-contrast);
-          border: 1px solid var(--primary-color-contrast);
-          color: var(--black-color-text-primary);
+          .group {
+            box-shadow: none !important;
+
+            div {
+              box-shadow: none !important;
+            }
+          }
         }
       }
     }

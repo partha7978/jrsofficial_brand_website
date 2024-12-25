@@ -2,8 +2,14 @@ import "./Home.scss";
 import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
 
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+
+import Particles from "../../components/ui/particles";
+
 const Home = () => {
   const { data, loading, error } = useFetchData("homepage");
+  const [color, setColor] = useState("#ffffff");
 
   if (error) {
     console.log(error);
@@ -14,15 +20,6 @@ const Home = () => {
       {loading && <p>Loading...</p>}
       {data && (
         <div className="homepage-main">
-          <div
-            className="homepage-main-img"
-            style={{
-              backgroundImage: `url(${urlFor(data.mainBackgroundImage).url()})`,
-            }}
-          >
-            <div className="homepage-main-overlay"></div>
-          </div>
-
           <div className="homepage-main-content">
             <div className="main-heading">
               <h1>{data.mainHeadingFirstLine}</h1>
@@ -34,6 +31,13 @@ const Home = () => {
           </div>
         </div>
       )}
+      <Particles
+        className="absolute inset-0"
+        quantity={100}
+        ease={80}
+        color={color}
+        refresh
+      />
     </section>
   );
 };

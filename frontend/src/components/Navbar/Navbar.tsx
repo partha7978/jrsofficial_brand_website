@@ -1,8 +1,9 @@
 import { urlFor } from "../../../client/client";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import useFetchData from '../../hooks/useFetchData';
+import useFetchData from "../../hooks/useFetchData";
 import { motion } from "framer-motion";
+import ShimmerButton from "../ui/shimmer-button";
 
 const Navbar = () => {
   // const [navBar, setNavBar] = useState([]);
@@ -27,7 +28,7 @@ const Navbar = () => {
     { name: "courses", extraLinks: false, link: "courses" },
     { name: "contact", extraLinks: false, link: "contact" },
   ];
-  const { data, loading, error } : any = useFetchData("navigationBar");
+  const { data, loading, error }: any = useFetchData("navigationBar");
 
   if (error) {
     console.log(error);
@@ -43,11 +44,7 @@ const Navbar = () => {
             transition={{ duration: 0.5, type: "ease-in" }}
             className="app__navbar-logo"
           >
-            <img
-              src={data.white_logo && urlFor(data.white_logo).url()}
-              alt="The Jrs Show Logo"
-            />
-            <p className="logo-name">Jrsofficial</p>
+            <p className="logo-name">TheJrsShow</p>
           </motion.div>
           <div className="app__navbar-links">
             {navbarLinksSchema.map((item) => (
@@ -97,10 +94,10 @@ const Navbar = () => {
           </div>
           <div className="app__navbar-redirect">
             <a href={data.redirectLink} target="_blank" rel="noreferrer">
-              <button>
-                {data.redirectButtonName}
+              <ShimmerButton className="shadow-2xl" shimmerSize="0.09rem" background="rgba(0,0,0,1)">
+                <span>{data.redirectButtonName}</span>
                 <FaExternalLinkAlt />
-              </button>
+              </ShimmerButton>
             </a>
           </div>
         </>
