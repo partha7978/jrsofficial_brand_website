@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { client } from "../../client/client";
+import { useDispatch } from "react-redux";
+import { setLoadingValue } from "../store/loaderSlice";
 
 const useFetchData = (url: string) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,10 +13,13 @@ const useFetchData = (url: string) => {
     (async function fetchData() {
       const query = `*[_type == "${url}"]`;
       try {
+        dispatch(setLoadingValue(40));
         setLoading(true);
         const fetchedData = await client.fetch(query); 
-        console.log(fetchedData, "ddd111");
+        dispatch(setLoadingValue(70));
+        console.log(fetchedData, url);
         setData(fetchedData[0]);
+        dispatch(setLoadingValue(99));
       } catch (err: any) {
         console.error(err);
         setError(err);

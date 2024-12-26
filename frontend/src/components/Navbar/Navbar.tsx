@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import ShimmerButton from "../ui/shimmer-button";
 
 const Navbar = () => {
-  // const [navBar, setNavBar] = useState([]);
   const navbarLinksSchema = [
     { name: "home", extraLinks: false, link: "/" },
     { name: "about", extraLinks: false, link: "about" },
