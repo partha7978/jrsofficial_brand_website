@@ -61,10 +61,10 @@ const Home = () => {
                         src={urlFor(link.icon).url()}
                         alt={link.name}
                         loading="lazy"
-                        height={20}
-                        width={20}
+                        height={80}
+                        width={80}
                       />
-                      <p>{link.name}</p>
+                      {/* <p>{link.name}</p> */}
                     </div>
                   </a>
                 ))}
