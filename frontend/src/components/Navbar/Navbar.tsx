@@ -1,4 +1,5 @@
 import { urlFor } from "../../../client/client";
+import { useState } from "react";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
@@ -29,10 +30,19 @@ const Navbar = () => {
     { name: "contact", extraLinks: false, link: "contact" },
   ];
   const { data, loading, error }: any = useFetchData("navigationBar");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   if (error) {
     console.log(error);
   }
+
+  const handleMenuOpen = () => {
+    setMenuOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <section className="app__navbar">
@@ -95,14 +105,33 @@ const Navbar = () => {
           </div>
           <div className="app__navbar-redirect">
             <a href={data.redirectLink} target="_blank" rel="noreferrer">
-              <ShimmerButton className="shadow-2xl" shimmerSize="0.09rem" background="rgba(0,0,0,1)">
+              <ShimmerButton
+                className="shadow-2xl"
+                shimmerSize="0.09rem"
+                background="rgba(0,0,0,1)"
+              >
                 <span>{data.redirectButtonName}</span>
                 <FaExternalLinkAlt />
               </ShimmerButton>
             </a>
           </div>
           <div className="app__navbar-hamburgerMenu">
-            <RiMenu3Fill />
+            <RiMenu3Fill onClick={handleMenuOpen} />
+            {/* overlay */}
+            <div
+              className={`app__navbar-hamburgerMenu-overlay ${menuOpen ? "active" : ""}`}
+              onClick={handleMenuClose}
+            ></div>
+            {/* sliding menu content */}
+            <div
+              className={`app__navbar-hamburgerMenu-mainSection ${
+                menuOpen ? "active" : ""
+              }`}
+            >
+              <div className="menu-item__container">
+                <h1>TheJrsShow</h1>
+              </div>
+            </div>
           </div>
         </>
       )}
