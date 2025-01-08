@@ -30,6 +30,10 @@
       //  font-family: "Sacramento", serif;
       font-weight: 600;
       font-style: normal;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -245,6 +249,16 @@
 
     @media screen and (max-width: 768px) {
       display: none;
+    }
+  }
+
+  &-hamburgerMenu {
+    display: none;
+    font-size: 1.2rem;
+    color: var(--white-color-text-primary);
+
+    @media screen and (max-width: 768px) {
+      display: block;
     }
   }
 }

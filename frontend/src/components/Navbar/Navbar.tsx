@@ -4,6 +4,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
 import { motion } from "framer-motion";
 import ShimmerButton from "../ui/shimmer-button";
+import { RiMenu3Fill } from "react-icons/ri";
 
 const Navbar = () => {
   const navbarLinksSchema = [
@@ -53,6 +54,7 @@ const Navbar = () => {
                 {item.extraLinks && item.extraLinks.length > 0 && (
                   <motion.div
                     className="app__navbar-links-item-extra"
+                    initial={{ y: -100, opacity: 0 }}
                     whileInView={{ y: [+100, 0], opacity: [0, 1] }}
                     transition={{ duration: 0.5, type: "ease-in-out" }}
                   >
@@ -98,6 +100,9 @@ const Navbar = () => {
                 <FaExternalLinkAlt />
               </ShimmerButton>
             </a>
+          </div>
+          <div className="app__navbar-hamburgerMenu">
+            <RiMenu3Fill />
           </div>
         </>
       )}
