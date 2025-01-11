@@ -60,3 +60,8 @@ body {
 .main__loader span {
   color: var(--primary-color-contrast);
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+}

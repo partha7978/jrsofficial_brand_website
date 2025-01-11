@@ -6,13 +6,16 @@ import useFetchData from "../../hooks/useFetchData";
 import { motion } from "framer-motion";
 import ShimmerButton from "../ui/shimmer-button";
 import { RiMenu3Fill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
+import { MdArrowForward } from "react-icons/md";
+
 
 const Navbar = () => {
   const navbarLinksSchema = [
-    { name: "home", extraLinks: false, link: "/" },
-    { name: "about", extraLinks: false, link: "about" },
+    { name: "Home", extraLinks: false, link: "/" },
+    { name: "About", extraLinks: false, link: "about" },
     {
-      name: "episodes",
+      name: "Episodes",
       extraLinks: [
         {
           name: "Fitness",
@@ -26,8 +29,8 @@ const Navbar = () => {
       ],
       link: "/episodes",
     },
-    { name: "courses", extraLinks: false, link: "courses" },
-    { name: "contact", extraLinks: false, link: "contact" },
+    { name: "Courses", extraLinks: false, link: "courses" },
+    { name: "Contact", extraLinks: false, link: "contact" },
   ];
   const { data, loading, error }: any = useFetchData("navigationBar");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -119,7 +122,9 @@ const Navbar = () => {
             <RiMenu3Fill onClick={handleMenuOpen} />
             {/* overlay */}
             <div
-              className={`app__navbar-hamburgerMenu-overlay ${menuOpen ? "active" : ""}`}
+              className={`app__navbar-hamburgerMenu-overlay ${
+                menuOpen ? "active" : ""
+              }`}
               onClick={handleMenuClose}
             ></div>
             {/* sliding menu content */}
@@ -129,7 +134,38 @@ const Navbar = () => {
               }`}
             >
               <div className="menu-item__container">
-                <h1>TheJrsShow</h1>
+                <IoClose
+                  className="menu-close-icon"
+                  onClick={handleMenuClose}
+                />
+                <h1 className="menu-item__container-title">THEJRSSHOW</h1>
+                <div className="menu-item__container-links">
+                  {navbarLinksSchema.map((item) => (
+                    <div className="menu-item__container-link" key={item.link}>
+                      <a href={`#${item.link}`}>{item.name}</a>
+                      <MdArrowForward />
+                    </div>
+                  ))}
+                </div>
+                <div className="menu-item__container-redirect">
+                  <a href={data.redirectLink} target="_blank" rel="noreferrer">
+                    <button>
+                      {data.redirectButtonName}
+                      <FaExternalLinkAlt />
+                    </button>
+                  </a>
+                </div>
+                {data.extraLinks &&
+                  data.extraLinks.map((extraLink: any) => (
+                    <div
+                      className="menu-item__container-link"
+                      key={extraLink.name}
+                    >
+                      <a href={extraLink.link} target="_blank" rel="noreferrer">
+                        <span>{extraLink.name}</span>
+                      </a>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

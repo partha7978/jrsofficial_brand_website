@@ -15,6 +15,13 @@
   @media screen and (max-width: 768px) {
     padding: 1rem;
     justify-content: space-between;
+    width: 90%;
+    backdrop-filter: blur(42px);
+    background-color: rgb(101 101 101 / 20%);
+    border-radius: 10px;
+    opacity: 1;
+    top: 1rem;
+    align-self: center;
   }
 
   &-logo {
@@ -252,6 +259,7 @@
     }
   }
 
+  //! Hamburger menu section
   &-hamburgerMenu {
     display: none;
     font-size: 1.2rem;
@@ -263,35 +271,42 @@
 
     &-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgb(169 169 169 / 50%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 0;
+      transform-origin: top center;
+      // background-color: rgb(169 169 169 / 50%);
+      background-color: var(--primary-color-contrast);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 1000;
+      transition: opacity 0.4s ease, visibility 0.4s ease, height 0.3s ease-out, width 0.3s ease-out;
+      z-index: 3;
     }
     &-overlay.active {
       opacity: 1;
+      height: 200vh;
+      width: 100vw;
       visibility: visible;
+      transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease-out;
     }
 
     &-mainSection {
       position: fixed;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
+      top: 0;
+      left: 0;
+      // transform: translate(-50%, -50%);
       width: 0;
-      height: 100vh;
-      background-color: var(--bg-black-color-contrast);
+      height: auto;
+      background-color: var(--bg-dark-primary);
       border-radius: 0px;
-      transform-origin: center right;
-      transition: width 0.6s ease-out, border-radius 0.8s ease-out;
+      transform-origin: top;
+      transition: opacity 1s ease, border-radius 0.5s ease-out;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-      z-index: 1001;
+      z-index: 4;
       overflow: hidden;
+      color: var(--white-color-text-primary);
 
       .menu-item__container {
         width: 100%;
@@ -300,16 +315,52 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         gap: 1rem;
-        padding: 2rem 1rem;
+        padding: 2rem;
+        position: relative;
+
+        .menu-close-icon {
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          height: 24px;
+          width: 24px;
+          cursor: pointer;
+        }
+
+        &-title {
+          font-size: 1.2rem;
+          font-weight: 700;
+          letter-spacing: 2px;
+        }
+
+        &-links {
+          width: 100%;
+        }
+
+        &-link {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          color: var(--white-color-text-primary);
+          padding: 0.5rem 0;
+          border-bottom: 1px solid rgb(16, 16, 16);
+          font-size: 1rem;
+          font-weight: 200;
+        }
       }
     }
 
     &-mainSection.active {
-      width: 40%;
-      height: 100vh;
-      border-radius: 20px 0 0 20px;
+      opacity: 1;
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      // top: calc(100%);
     }
   }
 }
