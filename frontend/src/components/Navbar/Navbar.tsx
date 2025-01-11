@@ -9,7 +9,6 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { MdArrowForward } from "react-icons/md";
 
-
 const Navbar = () => {
   const navbarLinksSchema = [
     { name: "Home", extraLinks: false, link: "/" },
@@ -141,10 +140,12 @@ const Navbar = () => {
                 <h1 className="menu-item__container-title">THEJRSSHOW</h1>
                 <div className="menu-item__container-links">
                   {navbarLinksSchema.map((item) => (
-                    <div className="menu-item__container-link" key={item.link}>
-                      <a href={`#${item.link}`}>{item.name}</a>
-                      <MdArrowForward />
-                    </div>
+                    <a href={`#${item.link}`} key={item.link}>
+                      <div className="menu-item__container-link">
+                        {item.name}
+                        <MdArrowForward />
+                      </div>
+                    </a>
                   ))}
                 </div>
                 <div className="menu-item__container-redirect">

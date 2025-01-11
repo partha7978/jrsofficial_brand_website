@@ -281,28 +281,28 @@
       background-color: var(--primary-color-contrast);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease, height 0.3s ease-out, width 0.3s ease-out;
+      transition: opacity 0.4s ease, visibility 0.4s ease,
+        width 0.3s ease-out, height 0.3s ease;
       z-index: 3;
     }
     &-overlay.active {
-      opacity: 1;
+      opacity: 0.2;
       height: 200vh;
       width: 100vw;
       visibility: visible;
-      transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease-out;
+      transition: opacity 0.3s ease, visibility 0.3s ease, width 0.3s ease-out, height 0.3s ease;
     }
 
     &-mainSection {
       position: fixed;
       top: 0;
       left: 0;
-      // transform: translate(-50%, -50%);
       width: 0;
-      height: auto;
+      height: 0;
       background-color: var(--bg-dark-primary);
       border-radius: 0px;
       transform-origin: top;
-      transition: opacity 1s ease, border-radius 0.5s ease-out;
+      transition: opacity 1s ease, border-radius 0.5s ease-out, height 0.3s ease;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
       z-index: 4;
       overflow: hidden;
@@ -317,7 +317,7 @@
         justify-content: center;
         align-items: start;
         gap: 1rem;
-        padding: 2rem;
+        padding: 2rem 2rem 1.5rem 2rem;
         position: relative;
 
         .menu-close-icon {
@@ -352,6 +352,24 @@
           font-size: 1rem;
           font-weight: 200;
         }
+
+        &-redirect {
+          width: 100%;
+          button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--black-color-text-primary);
+            padding: 1em 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #ffeace;
+            border-radius: 10px;
+          }
+        }
       }
     }
 
@@ -360,7 +378,7 @@
       width: 100%;
       height: auto;
       border-radius: 15px;
-      // top: calc(100%);
+      transition: opacity 1s ease, border-radius 0.5s ease-out, height 0.3s ease;
     }
   }
 }
