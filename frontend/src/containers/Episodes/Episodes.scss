@@ -1,0 +1,23 @@
+.episodes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 4rem;
+    width: 80%;
+    align-self: center;
+
+    &-title-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        h2 {
+            margin: 0;
+            font-size: 4rem;
+            line-height: 110%;
+            font-weight: 700;
+        }
+    }
+}

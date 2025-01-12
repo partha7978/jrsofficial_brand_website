@@ -32,19 +32,29 @@ const Home = () => {
       {data && (
         <div className="homepage-main">
           <section className="homepage-main-content">
-            <div className="main-heading">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, y: [30, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.5 }}
+              className="main-heading"
+            >
               <h1>{data.mainHeadingFirstLine}</h1>
               <h1>{data.mainHeadingSecondLine}</h1>
-            </div>
-            <div className="main-subheading">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, y: [30, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.7 }}
+              className="main-subheading"
+            >
               <p>{data.mainSubheading}</p>
-            </div>
+            </motion.div>
           </section>
           <motion.section
             className="homepage-main-link-section"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2, ease: "backInOut", delay: 0.7 }}
+              whileInView={{ opacity: 1, y: [30, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.9 }}
           >
             <p className="main-link-title">Now Streaming on</p>
             <div className="main-link">
