@@ -1,5 +1,5 @@
 import { urlFor } from "../../../client/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
@@ -33,6 +33,24 @@ const Navbar = () => {
   ];
   const { data, loading, error }: any = useFetchData("navigationBar");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
   if (error) {
     console.log(error);
@@ -47,7 +65,7 @@ const Navbar = () => {
   };
 
   return (
-    <section className="app__navbar">
+    <section className={`app__navbar ${isScrolled ? "scrolled__navbar" : ""}`}>
       {loading && <p>Loading...</p>}
       {data && (
         <>

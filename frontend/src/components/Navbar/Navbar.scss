@@ -7,7 +7,19 @@
   align-items: center;
   padding: 1rem 4rem;
   position: fixed;
+  transition: all 0.3s ease-in-out;
   z-index: 3;
+
+  &.scrolled__navbar {
+    backdrop-filter: blur(42px);
+    // background-color: rgb(101 101 101 / 20%);
+    background-color: rgb(20 20 20 / 20%);
+    border-radius: 10px;
+    top: 1rem;
+    width: 90%;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+  }
 
   @media screen and (max-width: 1050px) {
     width: 100%;

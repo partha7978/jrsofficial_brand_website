@@ -19,5 +19,16 @@
             line-height: 110%;
             font-weight: 700;
         }
+
+        &-action-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-white-color);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            background-color: var(--bg-black-color-contrast);
+            cursor: pointer;
+        }
     }
 }
