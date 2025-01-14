@@ -18,8 +18,6 @@ const Home = () => {
     if (data?.mainLink) {
       setMainLinkSchema(data.mainLink);
     }
-
-    console.log(mainLinkSchema, "mainLinkSchema");
   }, [data]);
 
   if (error) {
@@ -35,7 +33,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.5 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
               className="main-heading"
             >
               <h1>{data.mainHeadingFirstLine}</h1>
@@ -44,7 +42,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.7 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
               className="main-subheading"
             >
               <p>{data.mainSubheading}</p>
@@ -54,7 +52,7 @@ const Home = () => {
             className="homepage-main-link-section"
             initial={{ opacity: 0 }}
               whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.9 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
           >
             <p className="main-link-title">Now Streaming on</p>
             <div className="main-link">
