@@ -59,6 +59,11 @@ export default {
       type: 'file',
     },
     {
+      name: 'shortDescription',
+      title: 'Short Description For Showing On Card',
+      type: 'string',
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Content',

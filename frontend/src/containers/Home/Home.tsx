@@ -48,11 +48,14 @@ const Home = () => {
               <p>{data.mainSubheading}</p>
             </motion.div>
           </section>
+          <motion.section className="homepage-main-image">
+            <img src={urlFor(data.mainBackgroundImage).url()} alt="" />
+          </motion.section>
           <motion.section
             className="homepage-main-link-section"
             initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
+            whileInView={{ opacity: 1, y: [30, 0] }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
           >
             <p className="main-link-title">Now Streaming on</p>
             <div className="main-link">

@@ -7,6 +7,7 @@
   width: 80%;
   align-self: center;
   gap: 4rem;
+  margin-top: 24rem;
 
   @media screen and (max-width: 1600px) {
     width: 90%;
@@ -42,17 +43,71 @@
   }
 
   &-main__container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
     width: 100%;
+  }
+}
 
-    @media screen and (max-width: 1300px) {
-      grid-template-columns: repeat(2, 1fr);
+.simple-slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .slider-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
     }
 
-    @media screen and (max-width: 768px) {
-      grid-template-columns: 1fr;
+    .slider-item {
+      flex: 0 0 calc(40% - 10px); /* Show 3 items at a time, adjust width for gaps */
+      border-radius: 25px;
+      min-height: 600px;
+      max-width: 400px;
+
+      @media (max-width: 768px) {
+        flex: 0 0 calc(50% - 20px); /* Show 2 items at a time for smaller screens */
+      }
+
+      @media (max-width: 480px) {
+        flex: 0 0 calc(100% - 20px); /* Show 1 item at a time for very small screens */
+      }
+    }
+  }
+}
+
+.slider-action-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+  margin: 1rem 2rem 0 0;
+
+  .slider-btn {
+    background: var(--bg-dark-primary);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color-text-primary);
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      height: 24px;
+      width: 24px;
     }
   }
 }

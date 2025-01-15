@@ -1,33 +1,37 @@
-import { useEffect, useState } from "react";
-import { EpisodeCard } from "../../components";
+import { useEffect, useRef, useState } from "react";
+import { EpisodeCard, SliderEpisodeCard } from "../../components";
 import "./Episodes.scss";
 import useFetchData from "../../hooks/useFetchData";
 import Loader from "../../components/Loader/Loader";
-
-interface EpisodesArraySchema {
-  title: string;
-  speakerName: string;
-  episodeImage: any;
-  episodeDate: string;
-  category: string;
-}
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 
 const Episodes = () => {
-  // const query = `*[_type == "episodes"]{title,speakerName, episodedImage}`;
-  const { data, loading } : { data: EpisodesArraySchema[] | null; loading: boolean } = useFetchData(
+  const {
+    data,
+    loading,
+  }: { data: EpisodesArraySchemaForSlider[] | null; loading: boolean } = useFetchData(
     "episodes",
-    "title, speakerName, episodeImage, episodeDate, category"
+    "title, speakerName, episodeImage, episodeDate, category, shortDescription"
   );
   const [showLatestResult, setShowLatestResult] = useState(null);
+  const sliderRef = useRef(null);
+
+  const handleScroll = (direction: "next" | "prev") => {
+    if (sliderRef.current) {
+      const scrollAmount = sliderRef.current.clientWidth / 3; // Adjust this based on how much to slide
+      sliderRef.current.scrollBy({
+        left: direction === "next" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+    console.log(sliderRef.current);
+  };
 
   useEffect(() => {
     if (data && data.length > 0) {
       setShowLatestResult(
-        data.length > 3
-          ? data
-              .sort((a, b) => new Date(b.episodeDate) - new Date(a.episodeDate))
-              .slice(0, 3)
-          : data
+        data.sort((a, b) => new Date(b.episodeDate) - new Date(a.episodeDate))
       );
     }
     console.log(showLatestResult);
@@ -48,20 +52,30 @@ const Episodes = () => {
             </div>
           </div>
           <div className="episodes-main__container">
-            {showLatestResult &&
-              showLatestResult.map(
-                (episode: EpisodesArraySchema, index: number) => (
-                  <EpisodeCard
-                    key={episode.title + index}
-                    title={episode.title}
-                    speakerName={episode.speakerName}
-                    episodeImage={episode.episodeImage}
-                    episodeDate={episode.episodeDate}
-                    category={episode.category}
-                    cardSize="small"
-                  />
-                )
-              )}
+            <div className="simple-slider">
+              <div className="slider-container" ref={sliderRef}>
+                {showLatestResult &&
+                  showLatestResult.map((episode, index) => (
+                    <div key={episode.title + index} className="slider-item">
+                      <SliderEpisodeCard {...episode} />
+                    </div>
+                  ))}
+              </div>
+            </div>
+            <div className="slider-action-btn">
+              <button
+                className="slider-btn prev-btn"
+                onClick={() => handleScroll("prev")}
+              >
+                <IoIosArrowRoundBack />
+              </button>
+              <button
+                className="slider-btn next-btn"
+                onClick={() => handleScroll("next")}
+              >
+                <IoIosArrowRoundForward />
+              </button>
+            </div>
           </div>
         </div>
       )}
