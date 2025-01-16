@@ -50,21 +50,24 @@ const Home = () => {
           </section>
           {data.mainBackgroundImages && (
             <motion.section
-              initial={{ opacity: 0  }}
+              initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.8 }}
-            className="homepage-main-image">
+              className="homepage-main-image"
+            >
               {data.mainBackgroundImages.map((image: any) => (
-                <img
-                  src={urlFor(image).url()}
-                  alt=""
-                  key={image._key}
-                  loading="lazy"
-                />
+                <div>
+                  <img
+                    src={urlFor(image).url()}
+                    alt=""
+                    key={image._key}
+                    loading="lazy"
+                  />
+                </div>
               ))}
             </motion.section>
           )}
-          <motion.section
+          {/* <motion.section
             className="homepage-main-link-section"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, y: [30, 0] }}
@@ -88,12 +91,11 @@ const Home = () => {
                         height={80}
                         width={80}
                       />
-                      {/* <p>{link.name}</p> */}
                     </div>
                   </a>
                 ))}
             </div>
-          </motion.section>
+          </motion.section> */}
         </div>
       )}
       <Particles

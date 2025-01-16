@@ -7,7 +7,7 @@
   width: 80%;
   align-self: center;
   gap: 4rem;
-  margin-top: 12rem;
+  margin-top: 16rem;
 
   @media screen and (max-width: 1600px) {
     width: 90%;
@@ -20,8 +20,13 @@
   @media screen and (max-width: 768px) {
     padding: 6rem 0;
     width: 90%;
+    margin-top: 8rem;
   }
 
+  @media screen and (max-width: 650px) {
+    margin-top: 16rem;
+  }
+  
   &-title-section {
     display: flex;
     justify-content: space-between;
