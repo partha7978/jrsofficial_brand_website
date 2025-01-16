@@ -3,6 +3,7 @@ import "./SliderEpisodeCard.scss";
 import { episodeCardProps } from "../../interfaces/interface";
 import { urlFor } from "../../../client/client";
 import { motion } from "framer-motion";
+import { sliderImgPlaceholder } from "../../assets";
 
 const SliderEpisodeCard = ({
   title,
@@ -25,7 +26,7 @@ const SliderEpisodeCard = ({
             ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), url(${urlFor(
                 episodeImage
               ).url()})`
-            : `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1607743882420-4412ee605bac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJsYWNrfGVufDB8fDB8fHww)`
+            : `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), url(${sliderImgPlaceholder})`
         }`,
       }}
     >

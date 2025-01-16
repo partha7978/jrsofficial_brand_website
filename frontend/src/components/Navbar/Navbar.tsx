@@ -112,6 +112,7 @@ const Navbar = () => {
                               className="extra-link-hover-img"
                               src={extraLink.imgUrl}
                               alt={extraLink.name}
+                              loading="lazy"
                             />
                             <div className="gradient-overlay"></div>
                           </>
