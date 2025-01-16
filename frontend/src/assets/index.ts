@@ -1,2 +1,2 @@
-export { reactLogo } from "./react.svg";
-export { sliderImgPlaceholder } from "./images/sliderImgPlaceholder.webp";
+export { default as reactLogo } from "./react.svg";
+export { default as sliderImgPlaceholder } from "./images/sliderImgPlaceholder.webp";
