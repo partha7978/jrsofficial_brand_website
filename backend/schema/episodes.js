@@ -1,4 +1,4 @@
-import { getExtension } from '@sanity/asset-utils'
+import {getExtension} from '@sanity/asset-utils'
 
 export default {
   name: 'episodes',
@@ -46,11 +46,9 @@ export default {
       },
       validation: (Rule) =>
         Rule.custom((image) => {
-          if (!image || !image.asset) return true;
+          if (!image || !image.asset) return true
           const extension = getExtension(image.asset._ref)
-          return extension === 'webp'
-            ? true
-            : 'Only .webp format images are allowed.';
+          return extension === 'webp' ? true : 'Only .webp format images are allowed.'
         }),
     },
     {

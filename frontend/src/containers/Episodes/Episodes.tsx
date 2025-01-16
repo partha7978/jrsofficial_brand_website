@@ -5,21 +5,26 @@ import useFetchData from "../../hooks/useFetchData";
 import Loader from "../../components/Loader/Loader";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
+import { motion } from "framer-motion";
 
 const Episodes = () => {
   const {
     data,
     loading,
-  }: { data: EpisodesArraySchemaForSlider[] | null; loading: boolean } = useFetchData(
-    "episodes",
-    "title, speakerName, episodeImage, episodeDate, category, shortDescription"
-  );
+  }: { data: EpisodesArraySchemaForSlider[] | null; loading: boolean } =
+    useFetchData(
+      "episodes",
+      "title, speakerName, episodeImage, episodeDate, category, shortDescription"
+    );
   const [showLatestResult, setShowLatestResult] = useState(null);
   const sliderRef = useRef(null);
 
   const handleScroll = (direction: "next" | "prev") => {
     if (sliderRef.current) {
-      const scrollAmount = sliderRef.current.clientWidth / 3; // Adjust this based on how much to slide
+      const scrollAmount =
+        window.innerWidth < 768
+          ? sliderRef.current.clientWidth / 1
+          : sliderRef.current.clientWidth / 3; // Adjust this based on how much to slide
       sliderRef.current.scrollBy({
         left: direction === "next" ? scrollAmount : -scrollAmount,
         behavior: "smooth",
@@ -44,15 +49,28 @@ const Episodes = () => {
       ) : (
         <div className="episodes">
           <div className="episodes-title-section">
-            <h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+            >
               Our Most Recent <br /> Episodes
-            </h2>
-            <div className="episodes-title-section-action-btn">
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              className="episodes-title-section-action-btn"
+            >
               <button>View All</button>
-            </div>
+            </motion.div>
           </div>
           <div className="episodes-main__container">
-            <div className="simple-slider">
+            <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+            className="simple-slider">
               <div className="slider-container" ref={sliderRef}>
                 {showLatestResult &&
                   showLatestResult.map((episode, index) => (
@@ -61,20 +79,28 @@ const Episodes = () => {
                     </div>
                   ))}
               </div>
-            </div>
+            </motion.div>
             <div className="slider-action-btn">
-              <button
+              <motion.button
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn prev-btn"
                 onClick={() => handleScroll("prev")}
+                aria-label="previous"
               >
                 <IoIosArrowRoundBack />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn next-btn"
                 onClick={() => handleScroll("next")}
+                aria-label="next"
               >
                 <IoIosArrowRoundForward />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

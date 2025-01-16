@@ -2,6 +2,7 @@ import React from "react";
 import "./SliderEpisodeCard.scss";
 import { episodeCardProps } from "../../interfaces/interface";
 import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 
 const SliderEpisodeCard = ({
   title,
@@ -13,7 +14,10 @@ const SliderEpisodeCard = ({
   episodeDate,
 }: episodeCardProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
       className="slider-card"
       style={{
         backgroundImage: `${
@@ -25,7 +29,12 @@ const SliderEpisodeCard = ({
         }`,
       }}
     >
-      <div className="top-section">
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut", delay: 0.4 }}
+        className="top-section"
+      >
         <div className="slider-card-category">
           <p>{category}</p>
         </div>
@@ -35,8 +44,13 @@ const SliderEpisodeCard = ({
         <div className="slider-card-speakerName">
           <p>- {speakerName}</p>
         </div>
-      </div>
-      <div className="bottom-section">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
+        className="bottom-section"
+      >
         <div className="bottom-section-text">
           <div className="slider-card-desc">
             <span>{shortDescription}</span>
@@ -48,8 +62,8 @@ const SliderEpisodeCard = ({
         <div className="bottom-section-audio">
           {/* <audio controls src={episodeAudio} /> */}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

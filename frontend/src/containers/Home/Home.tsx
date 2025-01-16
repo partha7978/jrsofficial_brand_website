@@ -48,9 +48,22 @@ const Home = () => {
               <p>{data.mainSubheading}</p>
             </motion.div>
           </section>
-          <motion.section className="homepage-main-image">
-            <img src={urlFor(data.mainBackgroundImage).url()} alt="" />
-          </motion.section>
+          {data.mainBackgroundImages && (
+            <motion.section
+              initial={{ opacity: 0  }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.8 }}
+            className="homepage-main-image">
+              {data.mainBackgroundImages.map((image: any) => (
+                <img
+                  src={urlFor(image).url()}
+                  alt=""
+                  key={image._key}
+                  loading="lazy"
+                />
+              ))}
+            </motion.section>
+          )}
           <motion.section
             className="homepage-main-link-section"
             initial={{ opacity: 0 }}
