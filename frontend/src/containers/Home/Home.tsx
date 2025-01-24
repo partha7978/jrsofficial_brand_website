@@ -4,11 +4,9 @@ import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
 import AnimatedCircularProgressBar from "../../components/ui/animated-circular-progress-bar";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import Loader from "../../components/Loader/Loader";
 
 import Particles from "../../components/ui/particles";
-import { main } from "motion/react-client";
 
 const Home = () => {
   const { data, loading, error } = useFetchData("homepage");
@@ -67,35 +65,6 @@ const Home = () => {
               ))}
             </motion.section>
           )}
-          {/* <motion.section
-            className="homepage-main-link-section"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, y: [30, 0] }}
-            transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
-          >
-            <p className="main-link-title">Now Streaming on</p>
-            <div className="main-link">
-              {mainLinkSchema &&
-                mainLinkSchema.map((link: any) => (
-                  <a
-                    href={link.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    key={link.name}
-                  >
-                    <div className="main-link-item">
-                      <img
-                        src={urlFor(link.icon).url()}
-                        alt={link.name}
-                        loading="lazy"
-                        height={80}
-                        width={80}
-                      />
-                    </div>
-                  </a>
-                ))}
-            </div>
-          </motion.section> */}
         </div>
       )}
       <Particles
