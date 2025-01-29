@@ -5,6 +5,7 @@ import { urlFor } from "../../../client/client";
 import AnimatedCircularProgressBar from "../../components/ui/animated-circular-progress-bar";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
+import Marquee from "react-fast-marquee";
 
 import Particles from "../../components/ui/particles";
 
@@ -53,16 +54,35 @@ const Home = () => {
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.8 }}
               className="homepage-main-image"
             >
-              {data.mainBackgroundImages.map((image: any) => (
-                <div>
-                  <img
-                    src={urlFor(image).url()}
-                    alt=""
-                    key={image._key}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+              <Marquee direction="left">
+                {data.mainBackgroundImages &&
+                  data.mainBackgroundImages.map((image, index) => (
+                    <img
+                      height={500}
+                      width={500}
+                      loading="lazy"
+                      key={image._key + index}
+                      src={urlFor(image).url()}
+                      alt="main background image"
+                      className="homepage-main-image-item"
+                    />
+                  ))}
+              </Marquee>
+              <Marquee direction="right">
+                {data.mainBackgroundImages &&
+                  data.mainBackgroundImages.map((image, index) => (
+                    <div className="homepage-main-image-item-container"  key={image._key + index}>
+                      <img
+                        height={500}
+                        width={500}
+                        loading="lazy"
+                        src={urlFor(image).url()}
+                        alt="main background image"
+                        className="homepage-main-image-item"
+                      />
+                    </div>
+                  ))}
+              </Marquee>
             </motion.section>
           )}
         </div>
