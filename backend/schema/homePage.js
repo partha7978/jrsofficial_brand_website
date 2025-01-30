@@ -23,7 +23,7 @@ export default {
             }),
         },
       ],
-      validation: (Rule) => Rule.max(3).error('You can only add up to 3 images.'),
+      // validation: (Rule) => Rule.max(3).error('You can only add up to 3 images.'),
     },
     {
       name: 'mainHeadingFirstLine',

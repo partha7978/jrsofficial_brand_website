@@ -84,32 +84,6 @@
       }
     }
 
-    &-image {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      padding: 0;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      z-index: 1;
-
-      &-item {
-        width: auto;
-        height: 200px;
-        border-radius: 20px;
-      }
-
-      .rfm-initial-child-container,
-      .rfm-marquee,
-      .rfm-marquee-container {
-        gap: 12px;
-      }
-    }
+   
   }
 }
