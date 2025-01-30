@@ -37,7 +37,7 @@ const MainMarquee = () => {
                     height={500}
                     width={500}
                     loading="lazy"
-                    src={urlFor(image).url()}
+                    src={urlFor(image).width(800).url()}
                     alt="main background image"
                     className="homepage-main-image-item"
                   />
@@ -55,7 +55,7 @@ const MainMarquee = () => {
                     height={500}
                     width={500}
                     loading="lazy"
-                    src={urlFor(image).url()}
+                    src={urlFor(image).width(800).url()}
                     alt="main background image"
                     className="homepage-main-image-item"
                   />
