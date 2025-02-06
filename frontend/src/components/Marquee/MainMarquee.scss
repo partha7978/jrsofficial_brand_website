@@ -14,7 +14,8 @@
   z-index: 1;
 
   &-item-container {
-    padding: 24px;
+    padding: 12px;
+    border-radius: 5px;
     background-color: var(--bg-white-color);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   }
@@ -44,5 +45,9 @@
       height: 100px;
       border-radius: 8px;
     }
+  }
+
+  @media screen and (max-height: 800px) and (min-width: 768px) {
+    top: 112%;
   }
 }
