@@ -8,7 +8,7 @@ import ShimmerButton from "../ui/shimmer-button";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { MdArrowForward } from "react-icons/md";
-import useCalculateScroll from "../../hooks/useCalculateScroll";
+import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
 
 const Navbar = () => {
   const navbarLinksSchema = [
@@ -35,7 +35,7 @@ const Navbar = () => {
   const { data, loading, error }: any = useFetchData("navigationBar");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollYNumber }: any = useCalculateScroll();
+  const { scrollYNumber }: any = useCalculateScrollAndWidth();
 
   useEffect(() => {
     if (scrollYNumber > 50) {

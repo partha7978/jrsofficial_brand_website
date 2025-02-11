@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
-const useCalculateScroll = () => {
+
+const useCalculateScrollAndWidth = () => {
   const [scrollYNumber, setScrollYNumber] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollYNumber(window.scrollY);
+      requestAnimationFrame(() => setScrollYNumber(window.scrollY));
     };
-    window.addEventListener("scroll", handleScroll);
+
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize);
 
     return () => {
-        window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-  return { scrollYNumber };
+
+  return { scrollYNumber, innerWidth };
 };
 
-export default useCalculateScroll;
+export default useCalculateScrollAndWidth;

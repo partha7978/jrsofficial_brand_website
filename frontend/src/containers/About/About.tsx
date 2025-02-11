@@ -3,9 +3,23 @@ import { BsArrowRightCircle } from "react-icons/bs";
 import useFetchData from "../../hooks/useFetchData";
 import Loader from "../../components/Loader/Loader";
 import { urlFor } from "../../../client/client";
+import { useMemo } from "react";
+import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
 
 const About = () => {
-  const { data, loading, error } = useFetchData("about");
+  const { innerWidth } = useCalculateScrollAndWidth();
+
+  // Dynamically set API parameters based on screen width
+  const fetchDataArgs = useMemo(() => {
+    return innerWidth > 768
+      ? ["about", "title, description, featuredImage, featuredList"]
+      : ["about", "title, description, featuredImageForMobile, featuredList"];
+  }, [innerWidth]);
+
+  const { data, loading, error } = useFetchData(
+    fetchDataArgs[0],
+    fetchDataArgs[1]
+  );
 
   return (
     <div className="about">
@@ -15,7 +29,9 @@ const About = () => {
         <div className="about-card">
           <div className="about-card-img">
             <img
-              src={urlFor(data.featuredImage).url()}
+              src={urlFor(data.featuredImage || data.featuredImageForMobile)
+                .width(innerWidth > 1400 ? 1400 : innerWidth > 768 ? 800 : 400)
+                .url()}
               alt="Profile Image"
               height={400}
               width={200}
@@ -32,7 +48,10 @@ const About = () => {
               {data.featuredList && (
                 <ul>
                   {data.featuredList?.map((item, index) => (
-                    <li key={item + index}><BsArrowRightCircle/>{item}</li>
+                    <li key={item + index}>
+                      <BsArrowRightCircle />
+                      {item}
+                    </li>
                   ))}
                 </ul>
               )}
