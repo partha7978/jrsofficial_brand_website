@@ -29,9 +29,9 @@ const About = () => {
         <div className="about-card">
           <div className="about-card-img">
             <img
-              src={urlFor(data.featuredImage || data.featuredImageForMobile)
-                .width(innerWidth > 1400 ? 1400 : innerWidth > 768 ? 800 : 400)
-                .url()}
+              src={urlFor(
+                data.featuredImage || data.featuredImageForMobile
+              ).url()}
               alt="Profile Image"
               height={400}
               width={200}
