@@ -5,6 +5,8 @@ import Loader from "../../components/Loader/Loader";
 import { urlFor } from "../../../client/client";
 import { useMemo } from "react";
 import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
+import { motion } from "framer-motion";
+import { Button } from "../../components";
 
 const About = () => {
   const { innerWidth } = useCalculateScrollAndWidth();
@@ -26,7 +28,13 @@ const About = () => {
       {error && <h1>Something went wrong</h1>}
       {loading && <Loader />}
       {data && !loading && (
-        <div className="about-card">
+        <motion.div
+          className="about-card"
+          initial={{ opacity: 0 }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, y: [30, 0] }}
+          transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+        >
           <div className="about-card-img">
             <img
               src={urlFor(
@@ -57,12 +65,10 @@ const About = () => {
               )}
             </div>
             <div className="about-card-content-action-btn">
-              <a href="/">
-                <button>Know More</button>
-              </a>
+              <Button name="Know More" link="/about" />
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

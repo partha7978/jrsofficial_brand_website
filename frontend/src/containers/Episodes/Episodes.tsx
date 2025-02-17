@@ -6,6 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 import { motion } from "framer-motion";
+import { Button } from "../../components";
 
 const Episodes = () => {
   const {
@@ -53,6 +54,7 @@ const Episodes = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
             >
               Our Most Recent <br /> Episodes
             </motion.h2>
@@ -60,17 +62,27 @@ const Episodes = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
               className="episodes-title-section-action-btn"
             >
-              <button>View All</button>
+              <Button
+                name="View All"
+                link="/episodes"
+                backgroundColor="#141414"
+                color="#ffffff"
+                hoverBackgroundColor="#FFCA85"
+                hoverColor="#000000"
+              />
             </motion.div>
           </div>
           <div className="episodes-main__container">
             <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
-            className="simple-slider">
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+              className="simple-slider"
+            >
               <div className="slider-container" ref={sliderRef}>
                 {showLatestResult &&
                   showLatestResult.map((episode, index) => (
@@ -86,6 +98,7 @@ const Episodes = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn prev-btn"
+                viewport={{ once: true }}
                 onClick={() => handleScroll("prev")}
                 aria-label="previous"
               >
@@ -93,6 +106,7 @@ const Episodes = () => {
               </motion.button>
               <motion.button
                 initial={{ opacity: 0, x: 50 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn next-btn"

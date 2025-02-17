@@ -40,17 +40,6 @@
       }
     }
 
-    &-action-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--bg-white-color);
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      background-color: var(--bg-black-color-contrast);
-      cursor: pointer;
-    }
-
     @media screen and (max-width: 900px) {
       flex-direction: column;
       gap: 2.5rem;

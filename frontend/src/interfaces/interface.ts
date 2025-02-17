@@ -16,3 +16,14 @@ export interface EpisodesArraySchemaForSlider {
   category: string;
   shortDescription: string;
 }
+
+export interface MainButton {
+  name: string;
+  link: string;
+  backgroundColor?: string;
+  color?: string;
+  hoverBackgroundColor?: string;
+  hoverColor?: string;
+  width?: number;
+  height?: number;
+}

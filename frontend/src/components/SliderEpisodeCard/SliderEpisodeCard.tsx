@@ -16,6 +16,7 @@ const SliderEpisodeCard = ({
 }: episodeCardProps) => {
   return (
     <motion.div
+      viewport={{ once: true }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
@@ -31,6 +32,7 @@ const SliderEpisodeCard = ({
       }}
     >
       <motion.div
+        viewport={{ once: true }}
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: "easeInOut", delay: 0.3 }}
@@ -47,6 +49,7 @@ const SliderEpisodeCard = ({
         </div>
       </motion.div>
       <motion.div
+        viewport={{ once: true }}
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: "easeInOut", delay: 0.5 }}

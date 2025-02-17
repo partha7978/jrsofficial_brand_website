@@ -33,6 +33,7 @@ const Home = () => {
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
               className="main-heading"
               layoutId="main-heading"
+              viewport={{ once: true }}
             >
               <h1>{data.mainHeadingFirstLine}</h1>
               <h1>{data.mainHeadingSecondLine}</h1>
@@ -43,6 +44,7 @@ const Home = () => {
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
               className="main-subheading"
               layoutId="main-subheading"
+              viewport={{ once: true }}
             >
               <p>{data.mainSubheading}</p>
             </motion.div>
