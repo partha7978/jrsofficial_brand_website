@@ -24,18 +24,24 @@ const About = () => {
   );
 
   return (
-    <div className="about">
+    <section className="about">
       {error && <h1>Something went wrong</h1>}
       {loading && <Loader />}
       {data && !loading && (
         <motion.div
           className="about-card"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 50 }}
           viewport={{ once: true }}
-          whileInView={{ opacity: 1, y: [30, 0] }}
+          whileInView={{ opacity: 1, y: [50, 0] }}
           transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
         >
-          <div className="about-card-img">
+          <motion.div
+            className="about-card-img"
+            viewport={{ once: true }}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ opacity: 1, y: [100, 0] }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
+          >
             <img
               src={urlFor(
                 data.featuredImage || data.featuredImageForMobile
@@ -44,33 +50,63 @@ const About = () => {
               height={400}
               width={200}
             />
-          </div>
+          </motion.div>
           <div className="about-card-content">
             <div className="about-card-content-title">
-              <h2>{data.title}</h2>
+              <motion.h2
+                viewport={{ once: true }}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ opacity: 1, y: [100, 0] }}
+                transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
+              >
+                {data.title}
+              </motion.h2>
             </div>
             <div className="about-card-content-subText">
-              <span>{data.description}</span>
+              <motion.span
+                viewport={{ once: true }}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ opacity: 1, y: [100, 0] }}
+                transition={{ duration: 0.8, ease: "easeInOut", delay: 0.5 }}
+              >
+                {data.description}
+              </motion.span>
             </div>
             <div className="about-card-content-list">
               {data.featuredList && (
                 <ul>
                   {data.featuredList?.map((item, index) => (
-                    <li key={item + index}>
+                    <motion.li
+                      viewport={{ once: true }}
+                      initial={{ y: 30, opacity: 0 }}
+                      whileInView={{ opacity: 1, y: [30, 0] }}
+                      transition={{
+                        duration: index / 3 + 0.2,
+                        ease: "backInOut",
+                        delay: 0.3,
+                      }}
+                      key={item + index}
+                    >
                       <BsArrowRightCircle />
                       {item}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               )}
             </div>
-            <div className="about-card-content-action-btn">
+            <motion.div
+              viewport={{ once: true }}
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ opacity: 1, y: [100, 0] }}
+              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
+              className="about-card-content-action-btn"
+            >
               <Button name="Know More" link="/about" />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
-    </div>
+    </section>
   );
 };
 

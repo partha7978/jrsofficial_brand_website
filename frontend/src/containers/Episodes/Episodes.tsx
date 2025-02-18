@@ -48,7 +48,7 @@ const Episodes = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="episodes">
+        <section className="episodes">
           <div className="episodes-title-section">
             <motion.h2
               initial={{ opacity: 0, y: 50 }}
@@ -117,7 +117,7 @@ const Episodes = () => {
               </motion.button>
             </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );

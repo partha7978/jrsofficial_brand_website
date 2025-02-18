@@ -17,16 +17,17 @@ a {
     gap: 8px;
 
     svg {
-        height: auto;
-        width: 20px;
-        background-color: transparent;
-        transition: all 0.3s ease;
+      height: auto;
+      width: 20px;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      margin-right: -6px;
     }
 
     &:hover {
-        svg {
-            transform: rotate(-35deg);
-        }
+      svg {
+        transform: rotate(-35deg);
+      }
     }
 
     @media screen and (max-width: 500px) {
