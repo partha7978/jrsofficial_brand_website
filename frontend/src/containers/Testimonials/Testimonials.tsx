@@ -1,6 +1,6 @@
 import useFetchData from "../../hooks/useFetchData";
 import Loader from "../../components/Loader/Loader";
-import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import "./Testimonials.scss";
 import { Testimonial } from "../../components";
@@ -36,9 +36,15 @@ const Testimonials = () => {
       {loading && <Loader />}
       {data && !loading && (
         <>
-          <h2 className="testimonial-title">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: [30, 0] }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+            viewport={{ once: true }}
+            className="testimonial-title"
+          >
             Audiocast Creating Audio Adventure
-          </h2>
+          </motion.h2>
           <div className="testimonial-carousel">
             <div
               className="testimonial-carousel-content"
@@ -53,7 +59,11 @@ const Testimonials = () => {
                 ))}
             </div>
             <div className="testimonial-carousel-action">
-              <button
+              <motion.button
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: [-50, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
                 className={`prev ${disableButton === 0 ? "disabled" : ""}`}
                 onClick={() => {
                   handleTestimonial("prev");
@@ -61,8 +71,12 @@ const Testimonials = () => {
                 aria-label="prev"
               >
                 <IoIosArrowBack />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, x: +50 }}
+                whileInView={{ opacity: 1, x: [+50, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
                 className={`next ${
                   disableButton === data.length - 1 ? "disabled" : ""
                 }`}
@@ -72,7 +86,7 @@ const Testimonials = () => {
                 }}
               >
                 <IoIosArrowForward />
-              </button>
+              </motion.button>
             </div>
           </div>
         </>
