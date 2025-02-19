@@ -36,6 +36,8 @@
 
     @media screen and (max-width: 768px) {
       font-size: 3.2rem;
+      text-align: left;
+      font-size: 3rem;
     }
   }
 
@@ -91,6 +93,21 @@
           pointer-events: none;
           opacity: 0.5;
           cursor: not-allowed;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        align-self: flex-end;
+        gap: 1rem;
+        
+        button {
+          padding: 0.5rem;
+          height: 40px;
+          font-size: 1.1rem;
+          width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
