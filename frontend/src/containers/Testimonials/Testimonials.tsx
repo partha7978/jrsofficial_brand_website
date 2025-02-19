@@ -1,0 +1,84 @@
+import useFetchData from "../../hooks/useFetchData";
+import Loader from "../../components/Loader/Loader";
+import { urlFor } from "../../../client/client";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import "./Testimonials.scss";
+import { Testimonial } from "../../components";
+import { TestimonialSchema } from "../../interfaces/interface";
+import { useRef, useState } from "react";
+
+const Testimonials = () => {
+  const { data, loading, error }: any = useFetchData("testimonial");
+  const testimonialSliderRef = useRef<HTMLDivElement>(null);
+  const [disableButton, setDisableButton] = useState(0);
+
+  const handleTestimonial = (direction: string) => {
+    // const container = document.querySelector('.testimonial-carousel-content');
+    if (testimonialSliderRef.current) {
+      const scrollAmount = testimonialSliderRef.current.scrollWidth;
+      console.log(scrollAmount, "scrollAmount");
+      testimonialSliderRef.current.scrollBy({
+        left:
+          scrollAmount && direction === "next"
+            ? scrollAmount / data.length
+            : -scrollAmount / data.length,
+        behavior: "smooth",
+      });
+      setDisableButton(
+        direction === "next" ? disableButton + 1 : disableButton - 1
+      );
+    }
+  };
+
+  return (
+    <section className="testimonial">
+      {error && <h1>Something went wrong</h1>}
+      {loading && <Loader />}
+      {data && !loading && (
+        <>
+          <h2 className="testimonial-title">
+            Audiocast Creating Audio Adventure
+          </h2>
+          <div className="testimonial-carousel">
+            <div
+              className="testimonial-carousel-content"
+              ref={testimonialSliderRef}
+            >
+              {data &&
+                data.map((testimonial: TestimonialSchema, idx) => (
+                  <Testimonial
+                    key={testimonial._id}
+                    testimonial={testimonial}
+                  />
+                ))}
+            </div>
+            <div className="testimonial-carousel-action">
+              <button
+                className={`prev ${disableButton === 0 ? "disabled" : ""}`}
+                onClick={() => {
+                  handleTestimonial("prev");
+                }}
+                aria-label="prev"
+              >
+                <IoIosArrowBack />
+              </button>
+              <button
+                className={`next ${
+                  disableButton === data.length - 1 ? "disabled" : ""
+                }`}
+                aria-label="next"
+                onClick={() => {
+                  handleTestimonial("next");
+                }}
+              >
+                <IoIosArrowForward />
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </section>
+  );
+};
+
+export default Testimonials;

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, Episodes, About } from "./containers";
+import { Home, Episodes, About, Testimonials } from "./containers";
 import { Navbar } from "./components";
 import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
@@ -12,6 +12,7 @@ function App() {
         <Home />
         <Episodes />
         <About />
+        <Testimonials />
       </Provider>
     </>
   );

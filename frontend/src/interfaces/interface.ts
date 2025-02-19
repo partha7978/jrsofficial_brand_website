@@ -27,3 +27,12 @@ export interface MainButton {
   width?: number;
   height?: number;
 }
+
+export interface TestimonialSchema {
+  _id: string;
+  title: string;
+  description: string;
+  name: string;
+  occupation: string;
+  image: string;
+}
