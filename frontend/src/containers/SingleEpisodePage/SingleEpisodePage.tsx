@@ -9,7 +9,7 @@ import "./SingleEpisodePage.scss";
 import "./TextFormatting.scss";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
-import { Meteors } from "../../components/magicui/meteors";
+import { FaTags } from "react-icons/fa";
 
 const components = {
   block: {
@@ -74,8 +74,7 @@ const SingleEpisodePage = () => {
       {loading && <Loader />}
       {data && (
         <>
-          <div className="singleEpisode-background">
-          </div>
+          <div className="singleEpisode-background"></div>
           <div className="singleEpisode">
             <div className="singleEpisode-title">
               <h1>{data.title}</h1>
@@ -102,19 +101,21 @@ const SingleEpisodePage = () => {
               <div className="singleEpisode-chip">
                 {data.relatedTags.map((tag: Array<string>) => (
                   <div key={tag} className="singleEpisode-chip-item">
-                    {tag}
+                    <FaTags />
+                    <span>{tag}</span>
                   </div>
                 ))}
               </div>
             )}
             <div className="singleEpisode-thumbnail-img">
               <img
-                src={urlFor(data?.episodeImage).url()}
+                src={urlFor(data?.episodeMainImage).url()}
                 alt={data?.speakerName}
                 loading="lazy"
               />
             </div>
             <div className="singleEpisode-desc">
+              <h2 className="singleEpisode-desc-title">Episode Overview</h2>
               <PortableText value={data?.content} components={components} />
             </div>
           </div>
