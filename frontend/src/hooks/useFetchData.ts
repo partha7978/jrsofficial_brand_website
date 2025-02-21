@@ -3,7 +3,11 @@ import { client } from "../../client/client";
 import { useDispatch } from "react-redux";
 import { setLoadingValue } from "../store/loaderSlice";
 
-const useFetchData = (url: string, parameter?: string) => {
+const useFetchData = (
+  url: string,
+  parameter?: string,
+  singleItemFetchQuery?: string
+) => {
   const dispatch = useDispatch();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,17 +15,24 @@ const useFetchData = (url: string, parameter?: string) => {
 
   useEffect(() => {
     (async function fetchData() {
-      const query = parameter ? `*[_type == "${url}"]{${parameter}}` : `*[_type == "${url}"]`;
+      const query = parameter
+        ? `*[_type == "${url}"${
+            singleItemFetchQuery ? ` && ${singleItemFetchQuery}` : ""
+          }]{${parameter}}`
+        : `*[_type == "${url}"${
+            singleItemFetchQuery ? ` && ${singleItemFetchQuery}` : ""
+          }]`;
+
       try {
         dispatch(setLoadingValue(40));
         setLoading(true);
-        const fetchedData = await client.fetch(query); 
+        const fetchedData = await client.fetch(query);
         dispatch(setLoadingValue(70));
-        // console.log(fetchedData, url);
+        // console.log(fetchedData, url, "---------------");
         setData(fetchedData.length > 1 ? fetchedData : fetchedData[0]);
         dispatch(setLoadingValue(99));
       } catch (err: any) {
-        console.error(err);
+        console.error("Error : ", err);
         setError(err);
       } finally {
         setLoading(false);

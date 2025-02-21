@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { EpisodeCard, SliderEpisodeCard } from "../../components";
+import { SliderEpisodeCard } from "../../components";
 import "./Episodes.scss";
 import useFetchData from "../../hooks/useFetchData";
 import Loader from "../../components/Loader/Loader";
@@ -7,6 +7,7 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 import { motion } from "framer-motion";
 import { Button } from "../../components";
+import { Link } from "react-router";
 
 const Episodes = () => {
   const {
@@ -17,7 +18,7 @@ const Episodes = () => {
       "episodes",
       "title, speakerName, episodeImage, episodeDate, category, shortDescription"
     );
-  const [showLatestResult, setShowLatestResult] = useState(null);
+  const [showLatestResult, setShowLatestResult] = useState<any[]>([]);
   const sliderRef = useRef(null);
 
   const handleScroll = (direction: "next" | "prev") => {
@@ -40,7 +41,6 @@ const Episodes = () => {
         data.sort((a, b) => new Date(b.episodeDate) - new Date(a.episodeDate))
       );
     }
-    console.log(showLatestResult);
   }, [data]);
 
   return (
@@ -85,9 +85,17 @@ const Episodes = () => {
             >
               <div className="slider-container" ref={sliderRef}>
                 {showLatestResult &&
+                  showLatestResult.length > 0 &&
                   showLatestResult.map((episode, index) => (
-                    <div key={episode.title + index} className="slider-item">
-                      <SliderEpisodeCard {...episode} />
+                    <div className="slider-item" key={episode.title + index}>
+                      <Link
+                        to={`/episode/${episode.title
+                          .split(" ")
+                          .join("_")
+                      }`}
+                      >
+                        <SliderEpisodeCard {...episode} />
+                      </Link>
                     </div>
                   ))}
               </div>

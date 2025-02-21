@@ -1,0 +1,66 @@
+.singleEpisode {
+  &-desc {
+    color: var(--black-color-text-secondary);
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--black-color-text-primary);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--black-color-text-primary);
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--black-color-text-primary);
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--black-color-text-primary);
+    }
+
+    h5 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    li {
+      font-size: 1rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    a.link {
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient(
+        101deg,
+        rgb(160, 123, 0) -10%,
+        rgb(0, 0, 0) 170%,
+        rgb(1, 5, 16) 0%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+  }
+}
