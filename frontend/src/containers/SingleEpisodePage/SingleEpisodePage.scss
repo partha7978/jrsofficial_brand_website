@@ -36,11 +36,16 @@
     top: 0;
     left: 0;
     z-index: -1;
-    // background-color: #772f1a;
-    // background-image: linear-gradient(315deg, #772f1a 0%, #f2a65a 74%);
-
     background-color: #3f0d12;
     background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+
+    @media screen and (max-height: 1000px) and (max-width: 768px) {
+      height: 90vh;
+    }
+
+    @media screen and (max-height: 700px) and (max-width: 330px) {
+      height: 95vh;
+    }
   }
 
   &-title {
@@ -70,12 +75,23 @@
   &-author-section {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    column-gap: 2rem;
+    row-gap: 0.4rem;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+
+    .date-and-time-section {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
 
     &-name,
-    &-date {
+    &-date,
+    &-time {
       font-size: 1.2rem;
       font-weight: 500;
       color: var(--white-color-text-secondary);
@@ -123,7 +139,7 @@
     background-color: var(--bg-white-color);
 
     @media screen and (max-width: 500px) {
-      margin-top: 4rem;
+      margin-top: 2rem;
       padding: 0.5rem;
     }
 
@@ -155,12 +171,6 @@
       font-weight: 600;
       color: var(--white-color-text-primary);
       margin: 0;
-    //   background: linear-gradient(
-    //     76deg,
-    //     rgb(160, 123, 0) -10%,
-    //     rgb(0, 0, 0) 125%,
-    //     rgb(1, 5, 16) 110%
-    //   );
       background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -169,6 +179,14 @@
       background-clip: text;
       text-fill-color: transparent;
       margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 550px) {
+      margin-top: 1rem;
+
+      h2.singleEpisode-desc-title {
+        font-size: 2rem;
+      }
     }
   }
 }

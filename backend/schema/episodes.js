@@ -39,7 +39,21 @@ export default {
     },
     {
       name: 'episodeImage',
-      title: 'Episode Image',
+      title: 'Episode Image For Main Page Thumbnail (Instagram Format)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) =>
+        Rule.custom((image) => {
+          if (!image || !image.asset) return true
+          const extension = getExtension(image.asset._ref)
+          return extension === 'webp' ? true : 'Only .webp format images are allowed.'
+        }),
+    },
+    {
+      name: 'episodeMainImage',
+      title: 'Episode Main Image (Youtube Format)',
       type: 'image',
       options: {
         hotspot: true,

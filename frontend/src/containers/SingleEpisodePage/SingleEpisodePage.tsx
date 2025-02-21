@@ -10,6 +10,7 @@ import "./TextFormatting.scss";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FaTags } from "react-icons/fa";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 const components = {
   block: {
@@ -85,16 +86,22 @@ const SingleEpisodePage = () => {
                 <span>{data?.speakerName}</span>
               </div>
 
-              <div className="singleEpisode-author-section-date">
-                <MdOutlineDateRange />
-                <span>
-                  {new Date(data?.episodeDate)
-                    .toLocaleDateString("en-US", {
-                      month: "2-digit",
-                      year: "numeric",
-                    })
-                    .replace("/", "/")}
-                </span>
+              <div className="date-and-time-section">
+                <div className="singleEpisode-author-section-date">
+                  <MdOutlineDateRange />
+                  <span>
+                    {new Date(data?.episodeDate)
+                      .toLocaleDateString("en-US", {
+                        month: "2-digit",
+                        year: "numeric",
+                      })
+                      .replace("/", "/")}
+                  </span>
+                </div>
+                <div className="singleEpisode-author-section-time">
+                  <MdOutlineAccessTime />
+                  <span>09:23</span>
+                </div>
               </div>
             </div>
             {data.relatedTags && (
