@@ -29,7 +29,7 @@
     margin-top: 0;
   }
 
-  &-background {
+  &-background { 
     width: 100%;
     height: 70vh;
     position: absolute;
@@ -39,17 +39,19 @@
     background-color: #3f0d12;
     background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
 
+
     @media screen and (max-height: 1100px) and (max-width:1200px) {
       height: 80vh;
     }
 
     @media screen and (max-height: 1000px) and (max-width: 768px) {
-      height: 90vh;
+      height: 70vh;
     }
 
-    @media screen and (max-height: 700px) and (max-width: 330px) {
+    @media screen and (max-height: 700px) and (max-width: 530px) {
       height: 95vh;
     }
+
   }
 
   &-title {
@@ -63,6 +65,10 @@
     @media screen and (max-width: 900px) {
       margin: 2rem 0;
     }
+
+    @media screen and (max-width: 500px) {
+        margin: 0;
+      }
 
     h1 {
       font-size: 6rem;
@@ -82,8 +88,8 @@
         font-size: 4rem;
       }
 
-      @media screen and (max-width: 500px) {
-        font-size: 3.5rem;
+      @media screen and (max-width: 760px) {
+        font-size: 2.5rem;
       }
     }
   }
@@ -115,6 +121,10 @@
       flex-direction: row;
       gap: 0.5rem;
       align-items: center;
+
+      @media screen and (max-width: 760px) {
+        font-size: 1rem;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ import "./SingleEpisodePage.scss";
 import "./TextFormatting.scss";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
-import { FaTags } from "react-icons/fa";
+import { ImPriceTags } from "react-icons/im";
 import { MdOutlineAccessTime } from "react-icons/md";
 
 const components = {
@@ -108,7 +108,7 @@ const SingleEpisodePage = () => {
               <div className="singleEpisode-chip">
                 {data.relatedTags.map((tag: Array<string>) => (
                   <div key={tag} className="singleEpisode-chip-item">
-                    <FaTags />
+                    <ImPriceTags />
                     <span>{tag}</span>
                   </div>
                 ))}
