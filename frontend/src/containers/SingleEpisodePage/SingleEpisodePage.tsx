@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import useFetchData from "../../hooks/useFetchData";
-import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 import Loader from "../../components/Loader/Loader";
 import { urlFor } from "../../../client/client";
 import { PortableText } from "@portabletext/react";
@@ -115,11 +114,13 @@ const SingleEpisodePage = () => {
               </div>
             )}
             <div className="singleEpisode-thumbnail-img">
-              <img
-                src={urlFor(data?.episodeMainImage).url()}
-                alt={data?.speakerName}
-                loading="lazy"
-              />
+              {data?.episodeMainImage && (
+                <img
+                  src={urlFor(data?.episodeMainImage).url()}
+                  alt={data?.speakerName}
+                  loading="lazy"
+                />
+              )}
             </div>
             <div className="singleEpisode-desc">
               <h2 className="singleEpisode-desc-title">Episode Overview</h2>

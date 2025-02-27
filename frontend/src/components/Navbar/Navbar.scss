@@ -217,6 +217,26 @@
       }
     }
 
+    .route-link {
+      &.active {
+        div.dot {
+          background: var(--primary-color-contrast);
+        }
+        a {
+          color: var(--primary-color-contrast);
+        }
+
+        .app__navbar-links-item-extra {
+          display: grid;
+          background-color: var(--bg-primary);
+          a {
+            color: var(--black-color-text-primary);
+            background-color: var(--bg-primary);
+          }
+        }
+      }
+    }
+
     @media screen and (max-width: 768px) {
       display: none;
     }
@@ -256,6 +276,12 @@
             div {
               box-shadow: none !important;
             }
+          }
+        }
+
+        &:hover {
+          svg {
+            transform: rotate(0deg);
           }
         }
 

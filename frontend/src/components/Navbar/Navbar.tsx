@@ -9,6 +9,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { MdArrowForward } from "react-icons/md";
 import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   const navbarLinksSchema = [
@@ -71,50 +72,52 @@ const Navbar = () => {
           </motion.div>
           <div className="app__navbar-links">
             {navbarLinksSchema.map((item) => (
-              <div className="app__navbar-links-item" key={item.link}>
-                <div className="dot" />
-                <a href={`#${item.link}`}>{item.name}</a>
-                {item.extraLinks && item.extraLinks.length > 0 && (
-                  <motion.div
-                    className="app__navbar-links-item-extra"
-                    initial={{ y: -100, opacity: 0 }}
-                    whileInView={{ y: [+100, 0], opacity: [0, 1] }}
-                    transition={{ duration: 0.5, type: "ease-in-out" }}
-                  >
-                    {item.extraLinks.map((extraLink) => (
-                      <motion.a
-                        href={extraLink.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={extraLink.name}
-                        className="app__navbar-links-item-extra-link"
-                        whileInView={{
-                          // y: [-100, 0],
-                          opacity: [0, 1],
-                          transition: {
-                            duration: 0.5,
-                            ease: "backInOut",
-                            delay: 0.1,
-                          },
-                        }}
-                      >
-                        <span>{extraLink.name}</span>
-                        {extraLink.imgUrl && (
-                          <>
-                            <img
-                              className="extra-link-hover-img"
-                              src={extraLink.imgUrl}
-                              alt={extraLink.name}
-                              loading="lazy"
-                            />
-                            <div className="gradient-overlay"></div>
-                          </>
-                        )}
-                      </motion.a>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
+              <NavLink to={item.link} key={item.link} className="route-link">
+                <div className="app__navbar-links-item">
+                  <div className="dot" />
+                  <a href={`#${item.link}`}>{item.name}</a>
+                  {item.extraLinks && item.extraLinks.length > 0 && (
+                    <motion.div
+                      className="app__navbar-links-item-extra"
+                      initial={{ y: -100, opacity: 0 }}
+                      whileInView={{ y: [+100, 0], opacity: [0, 1] }}
+                      transition={{ duration: 0.5, type: "ease-in-out" }}
+                    >
+                      {item.extraLinks.map((extraLink) => (
+                        <motion.a
+                          href={extraLink.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={extraLink.name}
+                          className="app__navbar-links-item-extra-link"
+                          whileInView={{
+                            // y: [-100, 0],
+                            opacity: [0, 1],
+                            transition: {
+                              duration: 0.5,
+                              ease: "backInOut",
+                              delay: 0.1,
+                            },
+                          }}
+                        >
+                          <span>{extraLink.name}</span>
+                          {extraLink.imgUrl && (
+                            <>
+                              <img
+                                className="extra-link-hover-img"
+                                src={extraLink.imgUrl}
+                                alt={extraLink.name}
+                                loading="lazy"
+                              />
+                              <div className="gradient-overlay"></div>
+                            </>
+                          )}
+                        </motion.a>
+                      ))}
+                    </motion.div>
+                  )}
+                </div>
+              </NavLink>
             ))}
           </div>
           <div className="app__navbar-redirect">
