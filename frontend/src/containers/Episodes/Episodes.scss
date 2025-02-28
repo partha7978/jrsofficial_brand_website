@@ -69,6 +69,8 @@
       }
 
       @media screen and (max-width: 768px) {
+        margin-top: 10rem;
+
         h1 {
           font-size: 4rem;
         }
@@ -116,6 +118,11 @@
         border-radius: 8px;
         min-height: 400px;
         height: 400px;
+
+        @media screen and (max-width: 768px) {
+          min-height: 250px;
+          height: 250px;
+        }
       }
 
       .episode-card-category {
@@ -169,7 +176,7 @@
 
       @media screen and (max-width: 768px) {
         min-height: auto;
-        
+
         h3 {
           font-size: 2rem;
         }
