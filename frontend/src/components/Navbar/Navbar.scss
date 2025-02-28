@@ -388,6 +388,13 @@
           font-weight: 200;
         }
 
+        .hamburger-link.active {
+          .menu-item__container-link {
+            color: var(--primary-color-text-contrast-2);
+            font-weight: 600;
+          }
+        }
+
         &-redirect {
           width: 100%;
           button {

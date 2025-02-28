@@ -147,6 +147,7 @@
   --black-color-text-secondary: #141414;
   --black-color-text-tertiary: #313337;
   --black-color-text-quaternary: #3e3e3e;
+  --primary-color-text-contrast-2: #FFCA85;
 
   --gradient-black-bg: linear-gradient(
     90deg,

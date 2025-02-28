@@ -155,12 +155,19 @@ const Navbar = () => {
                 <h1 className="menu-item__container-title">THEJRSSHOW</h1>
                 <div className="menu-item__container-links">
                   {navbarLinksSchema.map((item) => (
-                    <a href={`#${item.link}`} key={item.link}>
-                      <div className="menu-item__container-link">
+                    <NavLink
+                      to={item.link}
+                      key={item.link}
+                      className="hamburger-link"
+                    >
+                      <div
+                        className="menu-item__container-link"
+                        onClick={() => handleMenuClose()}
+                      >
                         {item.name}
                         <MdArrowForward />
                       </div>
-                    </a>
+                    </NavLink>
                   ))}
                 </div>
                 <div className="menu-item__container-redirect">
