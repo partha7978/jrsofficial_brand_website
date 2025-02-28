@@ -65,7 +65,7 @@ const SingleEpisodePage = () => {
   const { data, loading, error } = useFetchData(
     "episodes",
     undefined, // Explicitly skip `parameter`
-    `title == "${epId.split("_").join(" ")}"` // Use as `singleItemFetchQuery`
+    `title == "${epId?.split("_").join(" ")}"` // Use as `singleItemFetchQuery`
   );
 
   return (
@@ -75,11 +75,11 @@ const SingleEpisodePage = () => {
       {data && (
         <>
           <div className="singleEpisode-background"></div>
-          <div className="singleEpisode">
+          <section className="singleEpisode">
             <div className="singleEpisode-title">
               <h1>{data.title}</h1>
             </div>
-            <div className="singleEpisode-author-section">
+            <section className="singleEpisode-author-section">
               <div className="singleEpisode-author-section-name">
                 <FaRegUserCircle />
                 <span>{data?.speakerName}</span>
@@ -102,7 +102,7 @@ const SingleEpisodePage = () => {
                   <span>09:23</span>
                 </div>
               </div>
-            </div>
+            </section>
             {data.relatedTags && (
               <div className="singleEpisode-chip">
                 {data.relatedTags.map((tag: Array<string>) => (
@@ -122,11 +122,11 @@ const SingleEpisodePage = () => {
                 />
               )}
             </div>
-            <div className="singleEpisode-desc">
+            <section className="singleEpisode-desc">
               <h2 className="singleEpisode-desc-title">Episode Overview</h2>
               <PortableText value={data?.content} components={components} />
-            </div>
-          </div>
+            </section>
+          </section>
         </>
       )}
     </>

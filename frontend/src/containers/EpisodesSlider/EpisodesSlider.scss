@@ -1,0 +1,119 @@
+.episodes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem;
+  width: 80%;
+  align-self: center;
+  gap: 4rem;
+  margin-top: 16rem;
+
+  @media screen and (max-width: 1600px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 6rem 0;
+    width: 90%;
+    margin-top: 0;
+  }
+  
+  &-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    h2 {
+      margin: 0;
+      font-size: 4rem;
+      line-height: 110%;
+      font-weight: 700;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+  }
+
+  &-main__container {
+    width: 100%;
+  }
+}
+
+.simple-slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 25px;
+
+  .slider-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider-item {
+      flex: 0 0 calc(40% - 10px); 
+      border-radius: 25px;
+      min-height: 600px;
+      max-width: 400px;
+
+      @media (max-width: 768px) {
+        flex: 0 0 calc(50% - 20px); 
+      }
+
+      @media (max-width: 600px) {
+        flex: 0 0 calc(100% - 20px);
+      }
+    }
+  }
+}
+
+.slider-action-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+  margin: 1rem 2rem 0 0;
+
+  .slider-btn {
+    background: var(--bg-dark-primary);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color-text-primary);
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}

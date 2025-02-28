@@ -1,131 +1,96 @@
-import { useEffect, useRef, useState } from "react";
-import { SliderEpisodeCard } from "../../components";
 import "./Episodes.scss";
+import { CgProfile } from "react-icons/cg";
+import { MdAccessTime } from "react-icons/md";
 import useFetchData from "../../hooks/useFetchData";
-import Loader from "../../components/Loader/Loader";
-import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import { useState, useEffect } from "react";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
-import { motion } from "framer-motion";
-import { Button } from "../../components";
-import { Link } from "react-router";
+import { urlFor } from "../../../client/client";
+import Loader from "../../components/Loader/Loader";
 
 const Episodes = () => {
   const {
     data,
+    error,
     loading,
   }: { data: EpisodesArraySchemaForSlider[] | null; loading: boolean } =
     useFetchData(
       "episodes",
-      "title, speakerName, episodeImage, episodeDate, category, shortDescription"
+      "title, speakerName, episodeMainImage, episodeDate, category, shortDescription",
+      undefined,
+      "episodeDate desc"
     );
-  const [showLatestResult, setShowLatestResult] = useState<any[]>([]);
-  const sliderRef = useRef(null);
-
-  const handleScroll = (direction: "next" | "prev") => {
-    if (sliderRef.current) {
-      const scrollAmount =
-        window.innerWidth < 768
-          ? sliderRef.current.clientWidth / 1
-          : sliderRef.current.clientWidth / 3; // Adjust this based on how much to slide
-      sliderRef.current.scrollBy({
-        left: direction === "next" ? scrollAmount : -scrollAmount,
-        behavior: "smooth",
-      });
-    }
-    console.log(sliderRef.current);
-  };
+  const [episodeCards, setEpisodeCards] = useState<any[]>([]);
+  const [topEpisodeCards, setTopEpisodeCards] = useState<any[]>([]);
 
   useEffect(() => {
-    if (data && data.length > 0) {
-      setShowLatestResult(
-        data.sort((a, b) => new Date(b.episodeDate) - new Date(a.episodeDate))
-      );
+    if (data) {
+      setTopEpisodeCards(data.slice(0, 2));
+      setEpisodeCards(data);
     }
   }, [data]);
 
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <section className="episodes">
-          <div className="episodes-title-section">
-            <motion.h2
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Our Most Recent <br /> Episodes
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
-              className="episodes-title-section-action-btn"
-            >
-              <Button
-                name="View All"
-                link="/episodes"
-                backgroundColor="#141414"
-                color="#ffffff"
-                hoverBackgroundColor="#FFCA85"
-                hoverColor="#000000"
-              />
-            </motion.div>
-          </div>
-          <div className="episodes-main__container">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
-              viewport={{ once: true }}
-              className="simple-slider"
-            >
-              <div className="slider-container" ref={sliderRef}>
-                {showLatestResult &&
-                  showLatestResult.length > 0 &&
-                  showLatestResult.map((episode, index) => (
-                    <div className="slider-item" key={episode.title + index}>
-                      <Link
-                        to={`/episode/${episode.title
-                          .split(" ")
-                          .join("_")
-                      }`}
-                      >
-                        <SliderEpisodeCard {...episode} />
-                      </Link>
-                    </div>
-                  ))}
-              </div>
-            </motion.div>
-            <div className="slider-action-btn">
-              <motion.button
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
-                className="slider-btn prev-btn"
-                viewport={{ once: true }}
-                onClick={() => handleScroll("prev")}
-                aria-label="previous"
-              >
-                <IoIosArrowRoundBack />
-              </motion.button>
-              <motion.button
-                initial={{ opacity: 0, x: 50 }}
-                viewport={{ once: true }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
-                className="slider-btn next-btn"
-                onClick={() => handleScroll("next")}
-                aria-label="next"
-              >
-                <IoIosArrowRoundForward />
-              </motion.button>
+      {error && <h1>Something went wrong</h1>}
+      {loading && <Loader />}
+      {data && (
+        <div className="episodesPage">
+          <section className="episodesPage-top">
+            <div className="episodesPage-top-title">
+              <h1>Listen Featured Episodes</h1>
+              <span>
+                Explore vibrant soundscapes where stories of every kind come
+                alive, taking you on an immersive journey and through
+                captivating narratives.
+              </span>
             </div>
-          </div>
-        </section>
+            <div className="episodesPage-featureCards">
+              {topEpisodeCards &&
+                topEpisodeCards.map((card, index) => (
+                  <div className="episodePage-card" key={card._id + card.title}>
+                    <div className="episodePage-card-image">
+                      {card.episodeMainImage && (
+                        <img
+                          loading="lazy"
+                          src={urlFor(card.episodeMainImage).url()}
+                          alt="Episode Image"
+                        />
+                      )}
+                      <div className="episode-card-category">
+                        {card.category}
+                      </div>
+                    </div>
+                    <div className="episodePage-card-details">
+                      <div>
+                        <CgProfile />
+                        <span>{card.speakerName}</span>
+                      </div>
+                      <div>
+                        <MdAccessTime />
+                        <span>
+                          {new Date(card.episodeDate)
+                            .toLocaleDateString("en-US", {
+                              month: "2-digit",
+                              year: "numeric",
+                            })
+                            .replace("/", "/")}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="episodePage-card-title">
+                      <h3>{card.title}</h3>
+                    </div>
+                    {/* <div className="episodePage-card-description">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+                  quidem, fugiat autem natus quod quia.
+                </p>
+              </div> */}
+                  </div>
+                ))}
+            </div>
+          </section>
+        </div>
       )}
     </>
   );

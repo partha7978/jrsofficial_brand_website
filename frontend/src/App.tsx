@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, Episodes, About, Testimonials } from "./containers";
+import { Home, About, Testimonials, EpisodesSlider, Episodes } from "./containers";
 import { Navbar } from "./components";
 import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
@@ -14,7 +14,7 @@ const HomeComponent = () => {
   return (
     <>
       <Home />
-      <Episodes />
+      <EpisodesSlider />
       <About />
       <Testimonials />
     </>
@@ -33,6 +33,14 @@ function App() {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <SingleEpisodePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/episodes"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Episodes />
               </Suspense>
             }
           />

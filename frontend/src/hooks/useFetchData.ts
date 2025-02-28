@@ -6,7 +6,8 @@ import { setLoadingValue } from "../store/loaderSlice";
 const useFetchData = (
   url: string,
   parameter?: string,
-  singleItemFetchQuery?: string
+  singleItemFetchQuery?: string,
+  order?: string
 ) => {
   const dispatch = useDispatch();
   const [data, setData] = useState(null);
@@ -18,17 +19,17 @@ const useFetchData = (
       const query = parameter
         ? `*[_type == "${url}"${
             singleItemFetchQuery ? ` && ${singleItemFetchQuery}` : ""
-          }]{${parameter}}`
+          }]${order ? `| order(${order})` : ""}{${parameter}}`
         : `*[_type == "${url}"${
             singleItemFetchQuery ? ` && ${singleItemFetchQuery}` : ""
-          }]`;
+          }] ${order ? `| order(${order})` : ""}`;
 
       try {
         dispatch(setLoadingValue(40));
         setLoading(true);
         const fetchedData = await client.fetch(query);
         dispatch(setLoadingValue(70));
-        // console.log(fetchedData, url, "---------------");
+        console.log(fetchedData, url, "---------------");
         setData(fetchedData.length > 1 ? fetchedData : fetchedData[0]);
         dispatch(setLoadingValue(99));
       } catch (err: any) {
