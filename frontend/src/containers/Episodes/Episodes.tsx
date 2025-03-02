@@ -2,32 +2,128 @@ import "./Episodes.scss";
 import { CgProfile } from "react-icons/cg";
 import { MdAccessTime } from "react-icons/md";
 import useFetchData from "../../hooks/useFetchData";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 import { urlFor } from "../../../client/client";
 import Loader from "../../components/Loader/Loader";
+import { sliderImgPlaceholder } from "../../assets";
+import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 const Episodes = () => {
   const {
     data,
     error,
     loading,
-  }: { data: EpisodesArraySchemaForSlider[] | null; loading: boolean } =
-    useFetchData(
-      "episodes",
-      "title, speakerName, episodeMainImage, episodeDate, category, shortDescription",
-      undefined,
-      "episodeDate desc"
-    );
+  }: {
+    data: EpisodesArraySchemaForSlider[] | null;
+    loading: boolean;
+    error: any;
+  } = useFetchData(
+    "episodes",
+    "title, speakerName, episodeMainImage, episodeDate, category, shortDescription",
+    undefined,
+    "episodeDate desc"
+  );
   const [episodeCards, setEpisodeCards] = useState<any[]>([]);
   const [topEpisodeCards, setTopEpisodeCards] = useState<any[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   useEffect(() => {
     if (data) {
       setTopEpisodeCards(data.slice(0, 2));
       setEpisodeCards(data);
+      setCategories(removeDuplicate(data.map((card) => card.category)));
     }
   }, [data]);
+
+  const handleFilterSearch = (e: any) => {
+    //using event delegation in order to prevent eventlistener from being added multiple times in childs
+    const target = e.target;
+    setAnimateCard({ y: 100, opacity: 0 });
+    if (target.classList.contains("filter-item")) {
+      document
+        .querySelectorAll(".filter-item")
+        .forEach((item) => item.classList.remove("selected"));
+
+      target.classList.add("selected");
+
+      const category = target.textContent;
+
+      if (category === "All") {
+        setEpisodeCards(data);
+      } else {
+        setEpisodeCards(
+          data.filter(
+            (card) => card.category?.toLowerCase() === category.toLowerCase()
+          )
+        );
+      }
+
+      setAnimateCard({ y: 0, opacity: 1 });
+    }
+  };
+
+  function removeDuplicate(arr: string[]) {
+    return arr.filter((item, index) => arr.indexOf(item) === index);
+  }
+
+  const EpisodeCardComponent = ({ card }: any) => {
+    return (
+      <Link to={`/episode/${card.title.split(" ").join("_")}`}>
+        <motion.div
+          className="episodePage-card"
+          animate={animateCard}
+          initial={{ opacity: 0, y: 100 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="episodePage-card-image">
+            <img
+              loading="lazy"
+              src={
+                card.episodeMainImage
+                  ? urlFor(card.episodeMainImage).url()
+                  : sliderImgPlaceholder
+              }
+              alt="Episode Image"
+            />
+            <div className="episode-card-category">{card.category}</div>
+          </div>
+          <div className="episodePage-card-details">
+            <div>
+              <CgProfile />
+              <span>{card.speakerName}</span>
+            </div>
+            <div>
+              <MdAccessTime />
+              <span>
+                {new Date(card.episodeDate)
+                  .toLocaleDateString("en-US", {
+                    month: "2-digit",
+                    year: "numeric",
+                  })
+                  .replace("/", "/")}
+              </span>
+            </div>
+          </div>
+          <div className="episodePage-card-title">
+            <h3>{card.title}</h3>
+          </div>
+        </motion.div>
+      </Link>
+    );
+  };
+
+  const memoizedFeatureCards = React.useMemo(
+    () =>
+      topEpisodeCards.map((card) => (
+        <React.Fragment key={card._id + card.title}>
+          <EpisodeCardComponent card={card} viewOnce={true} />
+        </React.Fragment>
+      )),
+    [topEpisodeCards]
+  );
 
   return (
     <>
@@ -45,48 +141,37 @@ const Episodes = () => {
               </span>
             </div>
             <div className="episodesPage-featureCards">
-              {topEpisodeCards &&
-                topEpisodeCards.map((card, index) => (
-                  <div className="episodePage-card" key={card._id + card.title}>
-                    <div className="episodePage-card-image">
-                      {card.episodeMainImage && (
-                        <img
-                          loading="lazy"
-                          src={urlFor(card.episodeMainImage).url()}
-                          alt="Episode Image"
-                        />
-                      )}
-                      <div className="episode-card-category">
-                        {card.category}
-                      </div>
-                    </div>
-                    <div className="episodePage-card-details">
-                      <div>
-                        <CgProfile />
-                        <span>{card.speakerName}</span>
-                      </div>
-                      <div>
-                        <MdAccessTime />
-                        <span>
-                          {new Date(card.episodeDate)
-                            .toLocaleDateString("en-US", {
-                              month: "2-digit",
-                              year: "numeric",
-                            })
-                            .replace("/", "/")}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="episodePage-card-title">
-                      <h3>{card.title}</h3>
-                    </div>
-                    {/* <div className="episodePage-card-description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                  quidem, fugiat autem natus quod quia.
-                </p>
-              </div> */}
-                  </div>
+              {
+                topEpisodeCards && memoizedFeatureCards
+                // topEpisodeCards.map((card) => (
+                //   <React.Fragment key={card._id + card.title}>
+                //     <EpisodeCardComponent card={card} />
+                //   </React.Fragment>
+                // ))
+              }
+            </div>
+          </section>
+          <section className="episodesPage-episodes">
+            <div className="episodesPage-episodes-title">
+              <h2>Our All Episodes</h2>
+            </div>
+            <div
+              className="episodesPage-episodes-filter"
+              onClick={handleFilterSearch}
+            >
+              <div className="filter-item selected">All</div>
+              {categories.map((category, index) => (
+                <div className="filter-item" key={category + index}>
+                  {category}
+                </div>
+              ))}
+            </div>
+            <div className="episodesPage-episodes-cards__container">
+              {episodeCards &&
+                episodeCards.map((card) => (
+                  <React.Fragment key={card._id + card.title}>
+                    <EpisodeCardComponent card={card} viewOnce={false} />
+                  </React.Fragment>
                 ))}
             </div>
           </section>
