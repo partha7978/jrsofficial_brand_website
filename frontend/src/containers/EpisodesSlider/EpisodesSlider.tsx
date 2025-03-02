@@ -91,7 +91,7 @@ const EpisodesSlider = () => {
                   showLatestResult.map((episode, index) => (
                     <div className="slider-item" key={episode.title + index}>
                       <Link
-                        to={`/episode/${episode.title.split(" ").join("_")}`}
+                        to={`/episodes/${episode.title.split(" ").join("_")}`}
                       >
                         <SliderEpisodeCard {...episode} />
                       </Link>

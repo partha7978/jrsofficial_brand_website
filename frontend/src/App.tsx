@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route index element={<HomeComponent />} />
           <Route
-            path="/episode/:epId"
+            path="/episodes/:epId"
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <SingleEpisodePage />

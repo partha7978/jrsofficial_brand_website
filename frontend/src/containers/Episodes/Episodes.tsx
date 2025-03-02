@@ -71,7 +71,7 @@ const Episodes = () => {
 
   const EpisodeCardComponent = ({ card }: any) => {
     return (
-      <Link to={`/episode/${card.title.split(" ").join("_")}`}>
+      <Link to={`/episodes/${card.title.split(" ").join("_")}`}>
         <motion.div
           className="episodePage-card"
           animate={animateCard}
