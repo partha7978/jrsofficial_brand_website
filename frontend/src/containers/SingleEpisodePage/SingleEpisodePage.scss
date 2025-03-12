@@ -29,7 +29,7 @@
     margin-top: 0;
   }
 
-  &-background { 
+  &-background {
     width: 100%;
     height: 70vh;
     position: absolute;
@@ -39,9 +39,12 @@
     background-color: #3f0d12;
     background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
 
-
-    @media screen and (max-height: 1100px) and (max-width:1200px) {
+    @media screen and (max-height: 1100px) and (max-width: 1200px) {
       height: 80vh;
+    }
+
+    @media screen and ( max-height: 800px) and (max-width: 1300px){
+      height: 90vh;
     }
 
     @media screen and (max-height: 1000px) and (max-width: 768px) {
@@ -51,7 +54,6 @@
     @media screen and (max-height: 700px) and (max-width: 530px) {
       height: 85vh;
     }
-
   }
 
   &-title {
@@ -67,8 +69,8 @@
     }
 
     @media screen and (max-width: 500px) {
-        margin: 0;
-      }
+      margin: 0;
+    }
 
     h1 {
       font-size: 6rem;
