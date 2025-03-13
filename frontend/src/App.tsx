@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, About, Testimonials, EpisodesSlider, Episodes } from "./containers";
+import { Home, About, Testimonials, EpisodesSlider } from "./containers";
 import { Navbar } from "./components";
 import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
@@ -9,6 +9,9 @@ import { lazy, Suspense } from "react";
 const SingleEpisodePage = lazy(
   () => import("./containers/SingleEpisodePage/SingleEpisodePage")
 );
+
+const EpisodesPage = lazy(() => import("./containers/Episodes/Episodes"));
+const Contact = lazy(() => import("./containers/Contact/Contact"));
 
 const HomeComponent = () => {
   return (
@@ -40,7 +43,15 @@ function App() {
             path="/episodes"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Episodes />
+                <EpisodesPage />
+              </Suspense>
+            }
+          />
+           <Route
+            path="/contact"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Contact />
               </Suspense>
             }
           />
