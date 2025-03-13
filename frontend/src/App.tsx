@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
 import { Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
+import Loader from "./components/Loader/Loader";
 
 const SingleEpisodePage = lazy(
   () => import("./containers/SingleEpisodePage/SingleEpisodePage")
@@ -34,7 +35,7 @@ function App() {
           <Route
             path="/episodes/:epId"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <SingleEpisodePage />
               </Suspense>
             }
@@ -42,15 +43,15 @@ function App() {
           <Route
             path="/episodes"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <EpisodesPage />
               </Suspense>
             }
           />
-           <Route
+          <Route
             path="/contact"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <Contact />
               </Suspense>
             }
