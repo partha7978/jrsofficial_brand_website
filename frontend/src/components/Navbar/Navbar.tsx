@@ -1,4 +1,3 @@
-import { urlFor } from "../../../client/client";
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -28,7 +27,7 @@ const Navbar = () => {
         { name: "Diet", link: "https://www.diet.com" },
         { name: "Wellness", link: "https://www.wellness.com" },
       ],
-      link: "/episodes",
+      link: "episodes",
     },
     { name: "Courses", extraLinks: false, link: "courses" },
     { name: "Contact", extraLinks: false, link: "contact" },

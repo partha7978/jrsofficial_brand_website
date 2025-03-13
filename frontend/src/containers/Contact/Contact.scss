@@ -1,0 +1,205 @@
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column-center-noJustify {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  @include flex-column-center;
+  width: 100%;
+  background-color: var(--bg-black-color);
+}
+
+.contact {
+  @include flex-column-center-noJustify;
+  height: 100vh;
+  padding: 10rem 4rem 4rem 4rem;
+  width: 80%;
+  align-self: center;
+  gap: 2rem;
+  position: relative;
+  background-color: var(--bg-black-color);
+
+  @media screen and (max-width: 1600px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding-top: 10rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem 0;
+    padding-top: 10rem;
+    width: 90%;
+    margin-top: 0;
+  }
+
+  &-data {
+    @include flex-column-center;
+    gap: 2rem;
+
+    &-title {
+      h1 {
+        margin: 6rem 0 0 0;
+        font-size: 6rem;
+        font-weight: 600;
+        line-height: 120%;
+
+        background: linear-gradient(to top, black, rgba(194, 194, 194, 0.8));
+        -webkit-background-clip: text;
+        color: transparent;
+        text-align: center;
+
+        @media screen and (max-height: 1100px) {
+          font-size: 5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 4rem;
+        }
+      }
+    }
+
+    &-subtext {
+      span {
+        font-size: 1.3rem;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--gray-color-text-dark);
+        width: 70%;
+        text-align: center;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          font-size: 1.1rem;
+          text-align: center;
+          display: flex;
+        }
+      }
+    }
+    &-form {
+      @include flex-column-center;
+      margin-top: 3rem;
+      width: 100%;
+      color: var(--gray-color-text-dark);
+
+      form {
+        @include flex-row-center;
+        width: 100%;
+
+        .contact-data-form-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          min-width: 400px;
+
+          label {
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+            pointer-events: none;
+          }
+
+          input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px 0;
+            background: transparent;
+          }
+
+          button {
+            padding: 0.2rem;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            color: var(--gray-color-text-dark);
+
+            svg {
+              height: 1.5rem;
+              width: 1.5rem;
+            }
+
+            &.bubble-animation {
+              color: #ffca85;
+              animation: bubbleMove 0.8s ease-in-out;
+            }
+
+            @keyframes bubbleMove {
+              0% {
+                transform: translate(0, 0) scale(1);
+              }
+              30% {
+                transform: translate(5px, -5px) scale(1.05);
+              }
+              60% {
+                transform: translate(-2px, 2px) scale(0.98);
+              }
+              100% {
+                transform: translate(0, 0) scale(1);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-link {
+      position: absolute;
+      bottom: 3rem;
+      @include flex-row-center;
+      gap: 1rem;
+      width: 100%;
+      justify-content: center;
+      color: var(--gray-color-text-dark);
+      font-size: 1rem;
+      font-weight: 500;
+
+      &-item {
+        @include flex-row-center;
+        cursor: pointer;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        border: 1px solid var(--gray-color-text-dark);
+        transition: all 0.3s ease-in-out;
+
+        svg {
+          transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover {
+          background-color: var(--bg-primary);
+          gap: 0.7rem;
+          color: var(--bg-black-color);
+          border-color: var(--bg-primary);
+
+          svg {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}
