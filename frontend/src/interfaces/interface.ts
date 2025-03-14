@@ -36,3 +36,11 @@ export interface TestimonialSchema {
   occupation: string;
   image: string;
 }
+
+export interface ContactSchema {
+  title: string;
+  description: string;
+  phone: string;
+  email: string;
+  address: string;
+}
