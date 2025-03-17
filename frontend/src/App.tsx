@@ -1,5 +1,11 @@
 import "./App.css";
-import { Home, About, Testimonials, EpisodesSlider } from "./containers";
+import {
+  Home,
+  About,
+  Testimonials,
+  EpisodesSlider,
+  Footer,
+} from "./containers";
 import { Navbar } from "./components";
 import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
@@ -25,13 +31,15 @@ const HomeComponent = () => {
   );
 };
 
+const HomeWithFooter = Footer(HomeComponent);
+
 function App() {
   return (
     <>
       <Provider store={dataStore}>
         <Navbar />
         <Routes>
-          <Route index element={<HomeComponent />} />
+          <Route index element={<HomeWithFooter />} />
           <Route
             path="/episodes/:epId"
             element={
