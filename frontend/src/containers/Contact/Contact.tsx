@@ -6,6 +6,7 @@ import { TiLocationArrowOutline } from "react-icons/ti";
 import useFetchData from "../../hooks/useFetchData";
 import { ContactSchema } from "../../interfaces/interface";
 import Loader from "../../components/Loader/Loader";
+import Footer from "../Footer/Footer";
 
 const Contact = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -103,5 +104,6 @@ const Contact = () => {
     </>
   );
 };
+const ContactWithFooter = Footer(Contact, 'contact-footer');
 
-export default Contact;
+export default ContactWithFooter;

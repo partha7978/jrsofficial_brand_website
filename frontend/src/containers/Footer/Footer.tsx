@@ -4,12 +4,12 @@ import { MdOutlineFacebook } from "react-icons/md";
 import { PiYoutubeLogoFill } from "react-icons/pi";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 
-const Footer = (Component?: React.FC) => {
+const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
     return (
       <>
         {Component && <Component {...props} />}
-        <footer className="footer">
+        <footer className={`footer ${className}`}>
           <div className="footer-subscribe"></div>
           <div className="footer-section">
             <div className="footer-section-social">

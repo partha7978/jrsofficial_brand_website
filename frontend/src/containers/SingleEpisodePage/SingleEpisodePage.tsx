@@ -10,6 +10,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { ImPriceTags } from "react-icons/im";
 import { MdOutlineAccessTime } from "react-icons/md";
+import Footer from "../Footer/Footer";
 
 const components = {
   block: {
@@ -132,5 +133,6 @@ const SingleEpisodePage = () => {
     </>
   );
 };
+const SingleEpisodeWithFooter = Footer(SingleEpisodePage);
 
-export default SingleEpisodePage;
+export default SingleEpisodeWithFooter;

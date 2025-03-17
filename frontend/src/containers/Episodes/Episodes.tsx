@@ -9,6 +9,7 @@ import Loader from "../../components/Loader/Loader";
 import { sliderImgPlaceholder } from "../../assets";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import Footer from "../Footer/Footer";
 
 const Episodes = () => {
   const {
@@ -181,4 +182,6 @@ const Episodes = () => {
   );
 };
 
-export default Episodes;
+const EpisodesWithFooter = Footer(Episodes);
+
+export default EpisodesWithFooter;
