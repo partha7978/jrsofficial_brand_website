@@ -3,6 +3,8 @@ import "./Footer.scss";
 import { MdOutlineFacebook } from "react-icons/md";
 import { PiYoutubeLogoFill } from "react-icons/pi";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
+import { SubscribeSectionImg } from "../../assets";
+import { Button } from "../../components";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -10,7 +12,31 @@ const Footer = (Component?: React.FC, className?: string) => {
       <>
         {Component && <Component {...props} />}
         <footer className={`footer ${className}`}>
-          <div className="footer-subscribe"></div>
+          <div className="footer-subscribe">
+            <div className="footer-subscribe-input-section">
+              <h2>Easy access to your favorite podcasts and hosts</h2>
+              <div className="action-section">
+                <div className="footerInput">
+                  <input type="text" placeholder="Enter your email" />
+                  <Button
+                    name="Subscribe Now"
+                    link="/episodes"
+                    backgroundColor="#141414"
+                    color="#ffffff"
+                    hoverBackgroundColor="#ffffff"
+                    hoverColor="#000000"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="footer-subscribe-img-section">
+              <img
+                src={SubscribeSectionImg}
+                alt="Subscribe Section Background"
+                loading="lazy"
+              />
+            </div>
+          </div>
           <div className="footer-section">
             <div className="footer-section-social">
               <h2 className="logo">TheJrsShow</h2>
@@ -73,7 +99,13 @@ const Footer = (Component?: React.FC, className?: string) => {
           </div>
           <div className="footer-credits">
             <span>
-              Crafted with ❤️ by <a href="https://github.com/iamjrs">Parth</a>{" "}
+              Crafted with ❤️ by
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/partha-sarathi-muduli/"
+              >
+                Parth
+              </a>
               in India
             </span>
           </div>
