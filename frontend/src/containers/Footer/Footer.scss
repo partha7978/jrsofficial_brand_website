@@ -237,6 +237,10 @@
     margin-top: 0.2rem;
     transition: color 0.3s ease-in-out;
 
+    a {
+      margin: 0 4px;
+    }
+
     &:hover {
       a {
         color: var(--primary-color-text-contrast-2);
