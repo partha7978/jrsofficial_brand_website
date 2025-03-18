@@ -5,6 +5,7 @@ import { PiYoutubeLogoFill } from "react-icons/pi";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { SubscribeSectionImg } from "../../assets";
 import { Button } from "../../components";
+import { IoMdArrowRoundUp } from "react-icons/io";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -104,7 +105,8 @@ const Footer = (Component?: React.FC, className?: string) => {
                 target="_blank"
                 href="https://www.linkedin.com/in/partha-sarathi-muduli/"
               >
-                Parth
+                Partha
+                <IoMdArrowRoundUp />
               </a>
               in India
             </span>

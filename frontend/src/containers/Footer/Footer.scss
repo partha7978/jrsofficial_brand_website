@@ -239,6 +239,26 @@
 
     a {
       margin: 0 4px;
+      position: relative;
+      display: inline-flex;
+      transition: color 0.3s ease-in-out;
+
+      svg {
+        transform: rotate(40deg);
+        height: 16px;
+        width: 16px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+        height: 1px;
+        width: 100%;
+        background-color: var(--primary-color-text-contrast-2);
+        transition: width 0.3s ease-in-out;
+      }
     }
 
     &:hover {
