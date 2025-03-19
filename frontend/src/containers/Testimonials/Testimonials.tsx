@@ -43,7 +43,7 @@ const Testimonials = () => {
             viewport={{ once: true }}
             className="testimonial-title"
           >
-            Audiocast Creating Audio Adventure
+            What Our Clients Say About Us
           </motion.h2>
           <div className="testimonial-carousel">
             <div
