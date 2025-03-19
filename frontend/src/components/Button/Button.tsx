@@ -9,25 +9,31 @@ function Button({
   hoverColor,
   backgroundColor,
   hoverBackgroundColor,
+  borderColor,
+  hoverBorderColor,
+  icon,
   height,
   width,
 }: MainButton) {
   const buttonStyle = {
     backgroundColor: backgroundColor || "#FFCA85",
     color: color || "#000000",
+    border: borderColor ? `1px solid ${borderColor || ""}` : 'none',
   };
 
-  const hoverAction = (e, bg, textColor, type) => {
+  const hoverAction = (e, type: "add" | "remove") => {
     const button = e.currentTarget;
     const icon = button.querySelector(".button-arrow-icon");
 
     if (type === "add") {
-      button.style.backgroundColor = bg || "#000000";
-      button.style.color = textColor || "#ffffff";
-      if (icon) icon.style.color = textColor || "#ffffff";
+      button.style.backgroundColor = hoverBackgroundColor || "#000000";
+      button.style.color = hoverColor || "#ffffff";
+      button.style.border = hoverBorderColor ? `1px solid ${hoverBorderColor || ""}` : 'none';
+      if (icon) icon.style.color = hoverColor || "#ffffff";
     } else {
       button.style.backgroundColor = backgroundColor || "#FFCA85";
       button.style.color = color || "#000000";
+      button.style.border = borderColor ? `1px solid ${borderColor || ""}` : 'none';
       if (icon) icon.style.color = color || "#000000";
     }
   };
@@ -36,11 +42,10 @@ function Button({
     <a href={link}>
       <button
         style={buttonStyle}
-        onMouseOver={(e) =>
-          hoverAction(e, hoverBackgroundColor, hoverColor, "add")
-        }
-        onMouseOut={(e) => hoverAction(e, backgroundColor, color, "remove")}
+        onMouseOver={(e) => hoverAction(e, "add")}
+        onMouseOut={(e) => hoverAction(e, "remove")}
       >
+        {icon && <div className="icon">{icon}</div>}
         {name}
         <HiArrowSmRight className="button-arrow-icon" />
       </button>

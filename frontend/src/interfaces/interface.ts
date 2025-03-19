@@ -24,8 +24,11 @@ export interface MainButton {
   color?: string;
   hoverBackgroundColor?: string;
   hoverColor?: string;
+  borderColor?: string;
+  hoverBorderColor?: string;
   width?: number;
   height?: number;
+  icon?: any;
 }
 
 export interface TestimonialSchema {

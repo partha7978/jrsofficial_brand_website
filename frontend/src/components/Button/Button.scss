@@ -16,6 +16,14 @@ a {
     align-items: center;
     gap: 8px;
 
+    .icon {
+      margin-right: 8px;
+      
+      svg {
+        transition: none;
+      }
+    }
+
     svg {
       height: auto;
       width: 20px;
@@ -27,6 +35,12 @@ a {
     &:hover {
       svg {
         transform: rotate(-35deg);
+      }
+
+      .icon {
+        svg {
+          transform: none;
+        }
       }
     }
 

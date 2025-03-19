@@ -1,4 +1,8 @@
+import { Button } from "../../components";
+import Footer from "../Footer/Footer";
 import "./AboutPage.scss";
+import { BsYoutube } from "react-icons/bs";
+import { BsSpotify } from "react-icons/bs";
 
 const AboutPage = () => {
   return (
@@ -51,9 +55,34 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+      <section className="aboutPage-cta">
+        <p>Together, We Create Impact — Your Support Fuels Our Journey!</p>
+        <div className="aboutPage-cta-action">
+          <Button
+            name="Subscribe Now"
+            link="/episodes"
+            color="#FFCA85"
+            hoverColor="#000000"
+            backgroundColor="#000000"
+            hoverBackgroundColor="#FFCA85"
+            icon={<BsYoutube />}
+          ></Button>
+          <Button
+            name="Listen Now"
+            link="/episodes"
+            color="#FFCA85"
+            hoverColor="#000000"
+            backgroundColor="#000000"
+            hoverBackgroundColor="#FFCA85"
+            icon={<BsSpotify />}
+          ></Button>
+        </div>
+      </section>
       <section className="aboutPage-highlights"></section>
     </main>
   );
 };
 
-export default AboutPage;
+const AboutWithFooter = Footer(AboutPage);
+
+export default AboutWithFooter;

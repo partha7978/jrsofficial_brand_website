@@ -12,7 +12,7 @@ const Footer = (Component?: React.FC, className?: string) => {
     return (
       <>
         {Component && <Component {...props} />}
-        <footer className={`footer ${className}`}>
+        <footer className={`footer ${className || ""}`}>
           <div className="footer-subscribe">
             <div className="footer-subscribe-input-section">
               <h2>Easy access to your favorite podcasts and hosts</h2>
