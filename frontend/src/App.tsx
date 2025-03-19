@@ -19,6 +19,7 @@ const SingleEpisodePage = lazy(
 
 const EpisodesPage = lazy(() => import("./containers/Episodes/Episodes"));
 const Contact = lazy(() => import("./containers/Contact/Contact"));
+const AboutPage = lazy(() => import("./containers/AboutPage/AboutPage"));
 
 const HomeComponent = () => {
   return (
@@ -45,6 +46,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <SingleEpisodePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Suspense fallback={<Loader />}>
+                <AboutPage />
               </Suspense>
             }
           />

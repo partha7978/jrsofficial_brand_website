@@ -6,3 +6,4 @@ export { default as SingleEpisodePage } from "./SingleEpisodePage/SingleEpisodeP
 export { default as Episodes } from "./Episodes/Episodes";
 export { default as Contact } from "./Contact/Contact";
 export { default as Footer } from "./Footer/Footer";
+export { default as AboutPage } from "./AboutPage/AboutPage";
