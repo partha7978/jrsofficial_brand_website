@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.contact-section-wrapper {
+  @include flex-column-center;
+}
+
 .contact-container {
   @include flex-column-center;
   width: 100%;
@@ -245,4 +249,9 @@
       }
     }
   }
+}
+
+// For Testimonial Component
+.contact-section-wrapper .testimonial {
+  margin-bottom: 28rem;
 }
