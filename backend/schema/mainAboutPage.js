@@ -1,0 +1,92 @@
+import {getExtension} from '@sanity/asset-utils'
+import {validation} from 'sanity'
+
+export default {
+  name: 'mainAboutPage',
+  title: 'Main About Page',
+  type: 'document',
+  fields: [
+    {
+      name: 'title',
+      title: 'About Page Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'description',
+      title: 'About Description',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required().max(280).error('Description should be less than 280 characters.'),
+    },
+    {
+      name: 'logoName',
+      title: 'Logo Name',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'logoDesc',
+      title: 'Logo Description - this will appear in the card section top',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required().max(280).error('Description should be less than 280 characters.'),
+    },
+    {
+      name: 'featuredImage',
+      title: 'Featured Image For About Page',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) =>
+        Rule.required().custom((image) => {
+          if (!image || !image.asset) return true
+          const extension = getExtension(image.asset._ref)
+          return extension === 'webp' ? true : 'Only .webp format images are allowed.'
+        }),
+    },
+    {
+      name: 'subscribeText',
+      title: 'Subscribe Text',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'views',
+      title: 'Views Count',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'impressions',
+      title: 'Impression Count',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'clients',
+      title: 'Number of Clients',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'hosts',
+      title: 'Number of Hosts',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'youtubeLink',
+      title: 'Youtube Link',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'spotifyLink',
+      title: 'Spotify Link',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+  ],
+}

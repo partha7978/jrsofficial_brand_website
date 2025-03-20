@@ -19,7 +19,7 @@ export interface EpisodesArraySchemaForSlider {
 
 export interface MainButton {
   name: string;
-  link: string;
+  link?: string;
   backgroundColor?: string;
   color?: string;
   hoverBackgroundColor?: string;
@@ -46,4 +46,18 @@ export interface ContactSchema {
   phone: string;
   email: string;
   address: string;
+}
+
+export interface MainAboutPageSchema {
+  title: string;
+  description: string;
+  subscribeText: string;
+  views: string;
+  impressions: string;
+  clients: string;
+  hosts: string;
+  youtubeLink: string;
+  featuredImage: string;
+  logoName: string;
+  logoDesc: string;
 }

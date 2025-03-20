@@ -9,11 +9,13 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'category',
       title: 'Category',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'relatedTags',
@@ -26,16 +28,19 @@ export default {
           type: 'string',
         },
       ],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'speakerName',
       title: 'Speaker Name',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'episodeDate',
       title: 'Episode Date',
       type: 'datetime',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'episodeImage',
@@ -45,7 +50,7 @@ export default {
         hotspot: true,
       },
       validation: (Rule) =>
-        Rule.custom((image) => {
+        Rule.required().custom((image) => {
           if (!image || !image.asset) return true
           const extension = getExtension(image.asset._ref)
           return extension === 'webp' ? true : 'Only .webp format images are allowed.'
@@ -59,7 +64,7 @@ export default {
         hotspot: true,
       },
       validation: (Rule) =>
-        Rule.custom((image) => {
+        Rule.required().custom((image) => {
           if (!image || !image.asset) return true
           const extension = getExtension(image.asset._ref)
           return extension === 'webp' ? true : 'Only .webp format images are allowed.'
@@ -69,11 +74,13 @@ export default {
       name: 'episodeAudio',
       title: 'Episode Audio',
       type: 'file',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'shortDescription',
       title: 'Short Description For Showing On Card',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'content',
@@ -84,6 +91,7 @@ export default {
           type: 'block',
         },
       ],
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

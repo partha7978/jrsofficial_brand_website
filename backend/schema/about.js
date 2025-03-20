@@ -10,12 +10,13 @@ export default {
       name: 'title',
       title: 'About Page Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'description',
       title: 'About Description',
       type: 'string',
-      validation: (Rule) => Rule.max(280).error('Description should be less than 200 characters.'),
+      validation: (Rule) => Rule.required().max(280).error('Description should be less than 200 characters.'),
     },
     {
       name: 'featuredImage',
@@ -25,7 +26,7 @@ export default {
         hotspot: true,
       },
       validation: (Rule) =>
-        Rule.custom((image) => {
+        Rule.required().custom((image) => {
           if (!image || !image.asset) return true
           const extension = getExtension(image.asset._ref)
           return extension === 'webp' ? true : 'Only .webp format images are allowed.'
@@ -39,7 +40,7 @@ export default {
         hotspot: true,
       },
       validation: (Rule) =>
-        Rule.custom((image) => {
+        Rule.required().custom((image) => {
           if (!image || !image.asset) return true
           const extension = getExtension(image.asset._ref)
           return extension === 'webp' ? true : 'Only .webp format images are allowed.'
