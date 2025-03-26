@@ -10,6 +10,7 @@ import { sliderImgPlaceholder } from "../../assets";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import Footer from "../Footer/Footer";
+import { useParams } from "react-router";
 
 const Episodes = () => {
   const {
@@ -26,6 +27,7 @@ const Episodes = () => {
     undefined,
     "episodeDate desc"
   );
+  const { urlCategory } = useParams();
   const [episodeCards, setEpisodeCards] = useState<any[]>([]);
   const [topEpisodeCards, setTopEpisodeCards] = useState<any[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
@@ -72,7 +74,12 @@ const Episodes = () => {
 
   const EpisodeCardComponent = ({ card }: any) => {
     return (
-      <Link to={`/episodes/${card.title.split(" ").join("_")}`}>
+      <Link
+        to={`/episodes/${card.category.toLowerCase()}/${card.title
+          .split(" ")
+          .join("_")}`}
+        onClick={() => window.scrollTo(0, 0)}
+      >
         <motion.div
           className="episodePage-card"
           animate={animateCard}

@@ -9,6 +9,7 @@ import { IoClose } from "react-icons/io5";
 import { MdArrowForward } from "react-icons/md";
 import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
 import { NavLink } from "react-router";
+import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
 
 const Navbar = () => {
   const navbarLinksSchema = [
@@ -16,18 +17,8 @@ const Navbar = () => {
     { name: "About", extraLinks: false, link: "about" },
     {
       name: "Episodes",
-      extraLinks: [
-        {
-          name: "Fitness",
-          link: "https://www.fitness.com",
-          imgUrl:
-            "https://plus.unsplash.com/premium_photo-1667762241847-37471e8c8bc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVhbHRofGVufDB8fDB8fHww",
-        },
-        { name: "Health", link: "https://www.health.com" },
-        { name: "Diet", link: "https://www.diet.com" },
-        { name: "Wellness", link: "https://www.wellness.com" },
-      ],
-      link: "episodes",
+      extraLinks: [] as string[],
+      link: "episodes/all",
     },
     { name: "Courses", extraLinks: false, link: "courses" },
     { name: "Contact", extraLinks: false, link: "contact" },
@@ -36,6 +27,31 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollYNumber }: any = useCalculateScrollAndWidth();
+  const [navbarLinks, setNavbarLinks] = useState(navbarLinksSchema);
+
+  // for episodes navbar items starts
+  const {
+    data: episodesData,
+    error: episodesError,
+  }: {
+    data: EpisodesArraySchemaForSlider[] | null;
+    error: any;
+  } = useFetchData("episodes", " category", undefined, "episodeDate desc");
+
+  function removeDuplicate(arr: string[]) {
+    return arr.filter((item, index) => arr.indexOf(item) === index);
+  }
+
+  useEffect(() => {
+    if (episodesData) {
+      const updatedNavbarLinks = [...navbarLinksSchema];
+      updatedNavbarLinks[2].extraLinks = removeDuplicate(
+        episodesData.map((card) => card.category)
+      );
+      setNavbarLinks(updatedNavbarLinks);
+    }
+  }, [episodesData]);
+  // for episodes navbar items ends
 
   useEffect(() => {
     if (scrollYNumber > 50) {
@@ -70,7 +86,7 @@ const Navbar = () => {
             <p className="logo-name">TheJrsShow</p>
           </motion.div>
           <div className="app__navbar-links">
-            {navbarLinksSchema.map((item) => (
+            {navbarLinks?.map((item) => (
               <NavLink to={item.link} key={item.link} className="route-link">
                 <div className="app__navbar-links-item">
                   <div className="dot" />
@@ -82,36 +98,26 @@ const Navbar = () => {
                       whileInView={{ y: [+100, 0], opacity: [0, 1] }}
                       transition={{ duration: 0.5, type: "ease-in-out" }}
                     >
-                      {item.extraLinks.map((extraLink) => (
-                        <motion.a
-                          href={extraLink.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={extraLink.name}
+                      {item.extraLinks?.map((extraLink) => (
+                        <NavLink
+                          to={`episodes/${extraLink.toLowerCase()}`}
+                          key={extraLink}
                           className="app__navbar-links-item-extra-link"
-                          whileInView={{
-                            // y: [-100, 0],
-                            opacity: [0, 1],
-                            transition: {
-                              duration: 0.5,
-                              ease: "backInOut",
-                              delay: 0.1,
-                            },
-                          }}
                         >
-                          <span>{extraLink.name}</span>
-                          {extraLink.imgUrl && (
-                            <>
-                              <img
-                                className="extra-link-hover-img"
-                                src={extraLink.imgUrl}
-                                alt={extraLink.name}
-                                loading="lazy"
-                              />
-                              <div className="gradient-overlay"></div>
-                            </>
-                          )}
-                        </motion.a>
+                          <motion.span
+                            key={extraLink.name}
+                            whileInView={{
+                              opacity: [0, 1],
+                              transition: {
+                                duration: 0.5,
+                                ease: "backInOut",
+                                delay: 0.1,
+                              },
+                            }}
+                          >
+                            <span>{extraLink}</span>
+                          </motion.span>
+                        </NavLink>
                       ))}
                     </motion.div>
                   )}
@@ -153,7 +159,7 @@ const Navbar = () => {
                 />
                 <h1 className="menu-item__container-title">THEJRSSHOW</h1>
                 <div className="menu-item__container-links">
-                  {navbarLinksSchema.map((item) => (
+                  {navbarLinks.map((item) => (
                     <NavLink
                       to={item.link}
                       key={item.link}
@@ -177,7 +183,7 @@ const Navbar = () => {
                     </button>
                   </a>
                 </div>
-                {data.extraLinks &&
+                {/* {data.extraLinks &&
                   data.extraLinks.map((extraLink: any) => (
                     <div
                       className="menu-item__container-link"
@@ -187,7 +193,7 @@ const Navbar = () => {
                         <span>{extraLink.name}</span>
                       </a>
                     </div>
-                  ))}
+                  ))} */}
               </div>
             </div>
           </div>

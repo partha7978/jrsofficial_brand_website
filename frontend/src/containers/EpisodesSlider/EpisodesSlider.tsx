@@ -65,10 +65,10 @@ const EpisodesSlider = () => {
               viewport={{ once: true }}
               className="episodes-title-section-action-btn"
             >
-              <Link to="/episodes">
+              <Link to="/episodes/all">
                 <Button
                   name="View All"
-                  link="/episodes"
+                  link="/episodes/all"
                   backgroundColor="#141414"
                   color="#ffffff"
                   hoverBackgroundColor="#FFCA85"
@@ -91,7 +91,10 @@ const EpisodesSlider = () => {
                   showLatestResult.map((episode, index) => (
                     <div className="slider-item" key={episode.title + index}>
                       <Link
-                        to={`/episodes/${episode.title.split(" ").join("_")}`}
+                        to={`/episodes/${episode.category.toLowerCase()}/${episode.title
+                          .split(" ")
+                          .join("_")}`}
+                        onClick={() => window.scrollTo(0, 0)}
                       >
                         <SliderEpisodeCard {...episode} />
                       </Link>

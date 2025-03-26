@@ -42,7 +42,7 @@ function App() {
         <Routes>
           <Route index element={<HomeWithFooter />} />
           <Route
-            path="/episodes/:epId"
+            path="/episodes/:epCategory/:epId"
             element={
               <Suspense fallback={<Loader />}>
                 <SingleEpisodePage />
@@ -58,7 +58,7 @@ function App() {
             }
           />
           <Route
-            path="/episodes"
+            path="/episodes/:epCategory"
             element={
               <Suspense fallback={<Loader />}>
                 <EpisodesPage />

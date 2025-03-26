@@ -149,14 +149,13 @@
         justify-items: center;
         align-items: center;
 
-        a.app__navbar-links-item-extra-link {
+        .app__navbar-links-item-extra-link {
           color: var(--black-color-text-primary);
           display: flex;
           justify-content: center;
           align-items: center;
           text-align: center;
-          text-decoration: none;
-          text-transform: none;
+          text-transform: capitalize;
           width: 100%;
           height: 0;
           padding-top: 100%;
@@ -175,7 +174,10 @@
             font-weight: 500;
             display: flex;
             justify-content: center;
+            color: var(--black-color-text-primary);
             align-items: center;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
           }
 
           img.extra-link-hover-img {
@@ -201,9 +203,12 @@
             display: none;
           }
 
-          &:hover {
-            background-color: var(--bg-black-color-contrast);
-            color: var(--white-color-text-primary);
+          &:hover, &.active {
+            span {
+              background-color: var(--bg-black-color-contrast);
+              color: var(--white-color-text-primary);
+              color: var(--primary-color-contrast)
+            }
 
             img.extra-link-hover-img {
               display: block !important;
