@@ -88,7 +88,8 @@
     }
   }
 
-  &-main {
+  &-main,
+  &-highlights {
     @include flex-column-center;
     gap: 1rem;
     border-radius: 20px;
@@ -101,7 +102,9 @@
     @media screen and (max-width: 340px) {
       padding: 1rem;
     }
+  }
 
+  &-main {
     &-top {
       @include flex-column-center;
       gap: 2rem;
@@ -252,12 +255,16 @@
 
         a {
           width: 100%;
-          
+
           button {
             width: 100%;
           }
         }
       }
     }
+  }
+
+  &-highlights  {
+    background-color: var(--bg-white-color);
   }
 }

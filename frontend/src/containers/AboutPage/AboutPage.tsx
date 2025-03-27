@@ -1,4 +1,4 @@
-import { Button } from "../../components";
+import { Button, BentoGrid } from "../../components";
 import Footer from "../Footer/Footer";
 import "./AboutPage.scss";
 import { BsYoutube } from "react-icons/bs";
@@ -112,7 +112,9 @@ const AboutPage = () => {
               </a>
             </div>
           </section>
-          <section className="aboutPage-highlights"></section>
+          <section className="aboutPage-highlights">
+            <BentoGrid />
+          </section>
         </>
       )}
     </main>
