@@ -34,6 +34,8 @@
       var(--primary-color-light)
     );
     // background: linear-gradient(145deg, #f5d5cb, #fae1dc);
+    // background: linear-gradient(145deg, var(--primary-color-light), var(--primary-color-contrast-2));
+
 
     // justify-content: space-around;
     border-radius: 16px;
@@ -66,7 +68,7 @@
     }
 
     span {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 400;
       margin: 0;
       color: var(--black-color-text-tertiary);

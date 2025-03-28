@@ -1,4 +1,3 @@
-import { FaSquareInstagram } from "react-icons/fa6";
 import "./Footer.scss";
 import { MdOutlineFacebook } from "react-icons/md";
 import { PiYoutubeLogoFill } from "react-icons/pi";
@@ -6,6 +5,7 @@ import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { SubscribeSectionImg } from "../../assets";
 import { Button } from "../../components";
 import { IoMdArrowRoundUp } from "react-icons/io";
+import { FaInstagram } from "react-icons/fa6";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -47,7 +47,7 @@ const Footer = (Component?: React.FC, className?: string) => {
               </div>
               <div className="social-links">
                 <a href="#" className="social-link">
-                  <FaSquareInstagram />
+                  <FaInstagram />
                 </a>
                 <a href="#" className="social-link">
                   <MdOutlineFacebook />
