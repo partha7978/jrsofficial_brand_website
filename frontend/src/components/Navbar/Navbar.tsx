@@ -20,7 +20,11 @@ const Navbar = () => {
       extraLinks: [] as string[],
       link: "episodes/all",
     },
-    { name: "Courses", extraLinks: false, link: "courses" },
+    {
+      name: "Work With Me",
+      extraLinks: ['courses', 'production'],
+      link: "work",
+    },
     { name: "Contact", extraLinks: false, link: "contact" },
   ];
   const { data, loading, error }: any = useFetchData("navigationBar");
@@ -49,6 +53,7 @@ const Navbar = () => {
         episodesData.map((card) => card.category)
       );
       setNavbarLinks(updatedNavbarLinks);
+      console.log(updatedNavbarLinks, 'eeeeeeeeeee');
     }
   }, [episodesData]);
   // for episodes navbar items ends
@@ -100,7 +105,7 @@ const Navbar = () => {
                     >
                       {item.extraLinks?.map((extraLink) => (
                         <NavLink
-                          to={`episodes/${extraLink.toLowerCase()}`}
+                          to={`/${item.link}/${extraLink.toLowerCase()}`}
                           key={extraLink}
                           className="app__navbar-links-item-extra-link"
                         >

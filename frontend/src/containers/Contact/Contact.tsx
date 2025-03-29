@@ -32,7 +32,11 @@ const Contact = () => {
   return (
     <>
       {error && <h1>Something went wrong</h1>}
-      {loading && <Loader />}
+      {loading && (
+        <div style={{ marginBottom: "20rem" }}>
+           <Loader />
+        </div>
+      )}
       {contactData && (
         <div className="contact-section-wrapper">
           <div className="contact-container">

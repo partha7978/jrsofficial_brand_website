@@ -20,6 +20,8 @@ const SingleEpisodePage = lazy(
 const EpisodesPage = lazy(() => import("./containers/Episodes/Episodes"));
 const Contact = lazy(() => import("./containers/Contact/Contact"));
 const AboutPage = lazy(() => import("./containers/AboutPage/AboutPage"));
+const Course = lazy(() => import("./containers/Course/Course"));
+const Production = lazy(() => import("./containers/Production/Production"));
 
 const HomeComponent = () => {
   return (
@@ -70,6 +72,22 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/work/courses"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Course />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/work/production"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Production />
               </Suspense>
             }
           />
