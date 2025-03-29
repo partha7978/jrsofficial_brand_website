@@ -75,6 +75,14 @@ function App() {
               </Suspense>
             }
           />
+           <Route
+            path="/work"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Course />
+              </Suspense>
+            }
+          />
           <Route
             path="/work/courses"
             element={
