@@ -78,7 +78,6 @@ const Episodes = () => {
         to={`/episodes/${card.category.toLowerCase()}/${card.title
           .split(" ")
           .join("_")}`}
-        onClick={() => window.scrollTo(0, 0)}
       >
         <motion.div
           className="episodePage-card"

@@ -94,7 +94,6 @@ const EpisodesSlider = () => {
                         to={`/episodes/${episode.category.toLowerCase()}/${episode.title
                           .split(" ")
                           .join("_")}`}
-                        onClick={() => window.scrollTo(0, 0)}
                       >
                         <SliderEpisodeCard {...episode} />
                       </Link>

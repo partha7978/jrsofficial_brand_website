@@ -6,7 +6,7 @@ import {
   EpisodesSlider,
   Footer,
 } from "./containers";
-import { Navbar } from "./components";
+import { Navbar, ScrollTo } from "./components";
 import { Provider } from "react-redux";
 import dataStore from "./store/dataStore";
 import { Routes, Route } from "react-router";
@@ -41,6 +41,7 @@ function App() {
     <>
       <Provider store={dataStore}>
         <Navbar />
+        <ScrollTo />
         <Routes>
           <Route index element={<HomeWithFooter />} />
           <Route
