@@ -60,6 +60,14 @@ function App() {
             }
           />
           <Route
+            path="/episodes"
+            element={
+              <Suspense fallback={<Loader />}>
+                <EpisodesPage />
+              </Suspense>
+            }
+          />
+          <Route
             path="/episodes/:epCategory"
             element={
               <Suspense fallback={<Loader />}>
@@ -75,7 +83,7 @@ function App() {
               </Suspense>
             }
           />
-           <Route
+          <Route
             path="/work"
             element={
               <Suspense fallback={<Loader />}>

@@ -18,7 +18,7 @@ const Navbar = () => {
     {
       name: "Episodes",
       extraLinks: [] as string[],
-      link: "episodes/all",
+      link: "episodes",
     },
     {
       name: "Work With Me",
