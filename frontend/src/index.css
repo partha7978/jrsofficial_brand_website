@@ -150,6 +150,8 @@
   --gray-color-text-dark: rgba(194, 194, 194, 0.5);
   --primary-color-text-contrast-2: #FFCA85;
 
+  --bg-course-page-yellow: rgb(255, 151, 0);
+
   --gradient-black-bg: linear-gradient(
     90deg,
     rgba(1, 5, 16, 1) -10%,
