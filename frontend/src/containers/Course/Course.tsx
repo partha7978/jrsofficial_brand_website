@@ -3,6 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Button } from "../../components";
 import { FaVideo } from "react-icons/fa6";
 import { coursePage_img } from "../../assets";
+import { FaPlay } from "react-icons/fa6";
 
 const Course = () => {
   return (
@@ -102,6 +103,16 @@ const Course = () => {
               playsInline
             ></video>
             <div className="video-overlay"></div>
+            <div className="video-play-btn">
+              <Button
+                name="Watch"
+                backgroundColor="rgb(0, 0, 0, 0.1)"
+                color="#ffffff"
+                hoverBackgroundColor="rgb(0, 0, 0, 0.1)"
+                hoverColor="#ffffff"
+                icon={<FaPlay />}
+              />
+            </div>
           </div>
         </div>
       </section>

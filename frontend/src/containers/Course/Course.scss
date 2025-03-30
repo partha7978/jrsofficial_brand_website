@@ -18,7 +18,7 @@
   background-color: var(--bg-black-color);
 
   &-video {
-    min-height: 96vh;
+    min-height: 1000px;
     height: 96vh;
     width: 100%;
     position: relative;
@@ -112,7 +112,9 @@
       transform: translate(-50%, -50%);
       z-index: 2;
 
-      button {
+     @media screen and (max-width: 500px) {
+        width: 250px;
+        top: 78%;
       }
     }
 
@@ -420,6 +422,18 @@
             var(--bg-course-page-yellow) 90%
           );
           z-index: 1;
+        }
+
+        .video-play-btn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+
+          button {
+            backdrop-filter: blur(42px);
+          }
         }
 
         @media (max-width: 768px) {
