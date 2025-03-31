@@ -272,9 +272,6 @@ const Course = () => {
         </div>
         <div className="course-membership-cards">
           <div className="card">
-            <div className="card-chip">
-              <span>Great to start</span>
-            </div>
             <div className="card-title">
               <h3>Basic</h3>
             </div>
@@ -282,6 +279,9 @@ const Course = () => {
               <h3>
                 <span>₹</span>19.99
               </h3>
+            </div>
+            <div className="card-chip">
+              <span>Great to start</span>
             </div>
             <div className="card-description">
               {Array(10)
@@ -306,9 +306,6 @@ const Course = () => {
             </div>
           </div>
           <div className="card bestSeller">
-            <div className="card-chip">
-              <span>Best Seller</span>
-            </div>
             <div className="card-title">
               <h3>Pro</h3>
             </div>
@@ -316,6 +313,9 @@ const Course = () => {
               <h3>
                 <span>₹</span>19.99
               </h3>
+            </div>
+            <div className="card-chip">
+              <span>Best Seller</span>
             </div>
             <div className="card-description">
               {Array(10)
@@ -340,9 +340,6 @@ const Course = () => {
             </div>
           </div>
           <div className="card">
-            <div className="card-chip">
-              <span>Ultimate value</span>
-            </div>
             <div className="card-title">
               <h3>Pro Plus</h3>
             </div>
@@ -350,6 +347,9 @@ const Course = () => {
               <h3>
                 <span>₹</span>19.99
               </h3>
+            </div>
+            <div className="card-chip">
+              <span>Ultimate value</span>
             </div>
             <div className="card-description">
               {Array(10)
