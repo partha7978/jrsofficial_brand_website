@@ -833,6 +833,11 @@
         opacity: 0.6;
         z-index: 1;
         border-radius: 20px;
+
+        @media screen and (max-width: 768px) {
+          width: 200%;
+          height: 200%;
+        }
       }
 
       .card {
@@ -864,7 +869,7 @@
           left: 0;
           transform: translate(-50%, -50%);
           width: 200%;
-          height: 150%;
+          height: 200%;
           background: radial-gradient(
             circle,
             rgba(255, 143, 0, 0.3) 10%,
@@ -941,6 +946,7 @@
 
         &-action {
           width: 100%;
+          z-index: 2;
         }
       }
     }
