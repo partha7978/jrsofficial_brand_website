@@ -5,3 +5,4 @@ export { default as Button } from "./Button/Button";
 export { default as Testimonial } from "./Testimonial/Testimonial";
 export { default as BentoGrid } from "./BentoGrid/BentoGrid";
 export { default as ScrollTo } from "./ScrollTo/ScrollTo";
+export { default as Input } from "./Input/Input";

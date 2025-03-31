@@ -26,9 +26,25 @@ export interface MainButton {
   hoverColor?: string;
   borderColor?: string;
   hoverBorderColor?: string;
-  width?: number;
+  width?: string;
   height?: number;
-  icon?: any;
+  icon?: React.ReactElement;
+  backgroundBlur?: number;
+}
+
+export interface InputProps {
+  value?: string;
+  type: string;
+  placeholder: string;
+  name: string;
+  required?: boolean;
+  disabled?: boolean;
+  background?: string;
+  color?: string;
+  border?: string;
+  className?: string;
+  width?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface TestimonialSchema {
