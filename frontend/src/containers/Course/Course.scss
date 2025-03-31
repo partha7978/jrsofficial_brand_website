@@ -326,6 +326,13 @@
         object-fit: cover;
         border-radius: 25px;
       }
+
+      @media screen and (max-width: 768px) {
+        img {
+          min-height: 800px;
+          height: 80vh;
+        }
+      }
     }
 
     &-overlay {
