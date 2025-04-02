@@ -16,17 +16,20 @@ const accordionDummyData: AccordionDataProps[] = [
   {
     title: "Accordion 1",
     icon: <GiPublicSpeaker />,
-    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+    accordionContent:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
   },
   {
     title: "Accordion 2",
     icon: <TbCameraSpark />,
-    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+    accordionContent:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
   },
   {
     title: "Accordion 3",
     icon: <IoIosArrowDown />,
-    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+    accordionContent:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
   },
 ];
 
@@ -425,6 +428,23 @@ const Course = () => {
           </div>
         </div>
       </section>
+      <section className="course-why-different-section">
+        <div className="course-why-different-section-title">
+          <h2>Why Parivartan is different</h2>
+        </div>
+        <div className="course-why-different-section-desc">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum,
+            necessitatibus aut quae consequatur eligendi eius nam repellendus
+            nihil fugit quisquam modi est facilis non in alias. Ut odit,
+            expedita ipsam doloribus esse incidunt cupiditate aliquid ipsum
+            commodi, illum est, sed voluptas voluptatem officiis! Ipsa, eius
+            asperiores. Beatae facere distinctio asperiores aspernatur ullam
+            optio sapiente veniam? Adipisci voluptates officiis ex illum impedit
+            fugit unde iure dolores ducimus facere quasi, temporibus optio.
+          </span>
+        </div>
+      </section>
       <section className="course-accordion">
         <div className="course-accordion-title">
           <h2>Quick Answers to Your Questions</h2>
@@ -433,7 +453,52 @@ const Course = () => {
           <Accordion accordionData={accordionDummyData} />
         </div>
       </section>
-      x
+      <div className="section-still-have-question-section">
+        <img
+          src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D"
+          alt="Register for masterclass background"
+          loading="lazy"
+          height={200}
+          width={200}
+        />
+        <div className="question-section">
+          <h2 className="question-section-title">Still have questions?</h2>
+          <p className="question-section-desc">Join the free Masterclass</p>
+          <span className="question-section-desc2">
+            Limited Seats Available
+          </span>
+          <Button
+            name="Register Now"
+            backgroundColor="rgb(255, 255, 255, 0.1)"
+            color="#ffffff"
+            hoverBackgroundColor="rgb(255, 255, 255, 0.1)"
+            hoverColor="#ffffff"
+            backgroundBlur={42}
+          />
+        </div>
+      </div>
+      <section className="course-gallery">
+        <div className="photos">
+          {Array(20)
+            .fill(0)
+            .map((_, index) => (
+              <div
+                className={`photo-item ${index % 2 === 0 ? "big" : "small"}`}
+                key={index}
+              >
+                <img
+                  src={
+                    index % 2 === 0
+                      ? "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D"
+                      : "https://images.unsplash.com/photo-1579550752291-74213f625700?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdhbGxwYXBlciUyMDRrfGVufDB8MXwwfHx8MA%3D%3D"
+                  }
+                  alt="Gallery Image"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+        </div>
+      </section>
     </main>
   );
 };
