@@ -1,6 +1,6 @@
 import "./Course.scss";
 import { IoIosArrowDown } from "react-icons/io";
-import { Button, Input } from "../../components";
+import { Accordion, Button, Input } from "../../components";
 import { FaVideo } from "react-icons/fa6";
 import { coursePage_img } from "../../assets";
 import { FaPlay } from "react-icons/fa6";
@@ -8,17 +8,40 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router";
 import { useEffect } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi2";
+import { TbCameraSpark } from "react-icons/tb";
+import { GiPublicSpeaker } from "react-icons/gi";
+import { AccordionDataProps } from "../../interfaces/interface";
+
+const accordionDummyData: AccordionDataProps[] = [
+  {
+    title: "Accordion 1",
+    icon: <GiPublicSpeaker />,
+    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+  },
+  {
+    title: "Accordion 2",
+    icon: <TbCameraSpark />,
+    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+  },
+  {
+    title: "Accordion 3",
+    icon: <IoIosArrowDown />,
+    accordionContent:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt et molestias saepe enim, ipsam veniam laboriosam, commodi nesciunt ullam atque numquam libero amet, sunt deleniti. Impedit nihil aut sit. Perspiciatis nam numquam distinctio expedita fuga deserunt sint modi eum itaque deleniti magnam nihil consectetur pariatur exercitationem nisi culpa, dolor laborum molestiae, officiis accusantium repellat! Laborum reprehenderit quidem quis dolor.",
+  },
+];
 
 const Course = () => {
   useEffect(() => {
     const rootElement = document.getElementById("root");
     if (rootElement && rootElement.style) {
       rootElement.style.background = "#000000";
+      rootElement.style.overflow = "hidden";
     }
 
     return () => {
       if (rootElement && rootElement.style) {
         rootElement.style.background = "#FBF7EC";
+        rootElement.style.overflow = "auto";
       }
     };
   }, []);
@@ -375,6 +398,42 @@ const Course = () => {
           </div>
         </div>
       </section>
+      <section className="course-whose-this-for-section">
+        <div className="course-whose-this-for-section-title">
+          <h2>Whose this for</h2>
+        </div>
+        <div className="course-whose-this-for-section-items">
+          <div className="item">
+            <TbCameraSpark />
+            <span>Content Creators</span>
+          </div>
+          <div className="item">
+            <GiPublicSpeaker />
+            <span>Aspiring Public Speakers</span>
+          </div>
+          <div className="item">
+            <TbCameraSpark />
+            <span>Content Creators</span>
+          </div>
+          <div className="item">
+            <TbCameraSpark />
+            <span>Content Creators</span>
+          </div>
+          <div className="item">
+            <TbCameraSpark />
+            <span>Content Creators</span>
+          </div>
+        </div>
+      </section>
+      <section className="course-accordion">
+        <div className="course-accordion-title">
+          <h2>Quick Answers to Your Questions</h2>
+        </div>
+        <div className="accordion-items">
+          <Accordion accordionData={accordionDummyData} />
+        </div>
+      </section>
+      x
     </main>
   );
 };

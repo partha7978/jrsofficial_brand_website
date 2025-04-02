@@ -8,7 +8,7 @@
   padding: 1rem 4rem;
   position: fixed;
   transition: all 0.3s ease-in-out;
-  z-index: 3;
+  z-index: 11;
 
   &.scrolled__navbar {
     backdrop-filter: blur(42px);

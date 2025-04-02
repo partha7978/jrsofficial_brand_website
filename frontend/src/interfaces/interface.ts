@@ -77,3 +77,20 @@ export interface MainAboutPageSchema {
   logoName: string;
   logoDesc: string;
 }
+export interface AccordionDataProps {
+  title: string;
+  icon: React.ReactElement;
+  accordionContent: string;
+}
+export interface AccordionStyleProps {
+  backgroundColor?: string;
+  hoverBackgroundColor?: string;
+  color?: string;
+  hoverColor?: string;
+  borderColor?: string;
+  hoverBorderColor?: string;
+  backgroundBlur?: string;
+  parentBackgroundColor?: string;
+  dividerBackgroundColor?: string;
+}
+
