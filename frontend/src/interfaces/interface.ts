@@ -76,6 +76,7 @@ export interface MainAboutPageSchema {
   featuredImage: string;
   logoName: string;
   logoDesc: string;
+  highlights: string[];
 }
 export interface AccordionDataProps {
   title: string;

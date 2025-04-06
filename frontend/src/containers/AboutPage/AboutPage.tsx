@@ -112,9 +112,10 @@ const AboutPage = () => {
               </a>
             </div>
           </section>
+          {about.highlights && 
           <section className="aboutPage-highlights">
-            <BentoGrid />
-          </section>
+            <BentoGrid highlights={about.highlights} />
+          </section>}
         </>
       )}
     </main>

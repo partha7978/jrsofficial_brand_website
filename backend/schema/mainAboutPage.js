@@ -88,5 +88,46 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: 'highlights',
+      title: 'Highlights Section',
+      // will be an array of 2 things text and image
+      type: 'array',
+      of: [
+        {
+          title: 'Highlight',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'text',
+              title: 'Text (Write about 150 words)',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              validation: (Rule) =>
+                Rule.required().custom((image) => {
+                  if (!image || !image.asset) return true
+                  const extension = getExtension(image.asset._ref)
+                  return extension === 'webp' ? true : 'Only .webp format images are allowed.'
+                }),
+            },
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.max(2),
+    },
   ],
 }
