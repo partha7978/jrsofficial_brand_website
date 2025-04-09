@@ -5,6 +5,7 @@ import about from './about'
 import testimonial from './testimonial'
 import contact from './contact'
 import mainAboutPage from './mainAboutPage'
+import course from './course'
 
 export const schemaTypes = [
   navigationBar,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   testimonial,
   contact,
   mainAboutPage,
+  course,
 ]
