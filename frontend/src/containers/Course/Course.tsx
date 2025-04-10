@@ -3,7 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Button, SmallLoader } from "../../components";
 import { FaVideo } from "react-icons/fa6";
 import Footer from "../Footer/Footer";
-import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 const MiniFormSectionWrapper = lazy(() => import("./subPages/MiniFormSection"));
 const CourseAboutSection = lazy(() => import("./subPages/CourseAboutSection"));
@@ -32,10 +32,10 @@ const CourseGallerySection = lazy(
 // todo: But it didnt worked on production due to Vite's tree shaking the files didnt load, and thats why I have to add lazy load here.
 
 const Course = () => {
-  const [loadedSections, setLoadedSections] = useState<number[]>([0]);
+  const [loadedSections, setLoadedSections] = useState<number[]>([0]); // load only first section
   const [loadingSections, setLoadingSections] = useState<number[]>([]);
+
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     // changing the cooter color and overflow when on load for this page only
@@ -53,48 +53,50 @@ const Course = () => {
     };
   }, []);
 
-  const loadSection = useCallback((index: number) => {
+  const loadSection = async (index: number) => {
+    if (loadedSections.includes(index) || loadingSections.includes(index))
+      return;
+
     setLoadingSections((prev) => [...prev, index]);
 
-    setTimeout(() => {
-      setLoadedSections((prev) => {
-        if (!prev.includes(index)) {
-          return [...prev, index];
-        }
-        return prev;
-      });
+    try {
+      //Fetch logic
+      await new Promise((res) => setTimeout(res, 200));
+      await new Promise((res) => setTimeout(res, 200));
 
+      setLoadedSections((prev) => [...prev, index]);
+    } finally {
       setLoadingSections((prev) => prev.filter((i) => i !== index));
-    }, 200);
-  }, []);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.getAttribute("data-index"));
-          console.log("Entry is intersecting: ", index, entry.isIntersecting);
           if (entry.isIntersecting) {
-            loadSection(index + 1);
+            loadSection(index + 1); // Load next section(s) when current is visible
           }
         });
       },
       {
-        rootMargin: "200px",
+        rootMargin: "200px", // preload next section 200px before visible
         threshold: 0.2,
       }
     );
 
-    observerRef.current = observer;
-
-    // Observe all currently loaded sections
-    loadedSections.forEach((index) => {
-      const el = sectionRefs.current[index];
+    sectionRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
 
+    console.log("Refs snapshot:");
+    sectionRefs.current.forEach((ref, i) => {
+      console.log(`Section ${i}:`, ref?.tagName, ref?.dataset.index);
+    });
+
     return () => observer.disconnect();
-  }, [loadedSections, loadSection]);
+  }, [loadedSections]);
 
   return (
     <main className="course">
@@ -153,13 +155,10 @@ const Course = () => {
         )}
 
         {loadedSections.includes(2) && (
-          <>
-            {console.log("Rendering CourseAboutSection")}
-            <CourseAboutSection
-              index={2}
-              ref={(el) => (sectionRefs.current[2] = el)}
-            />
-          </>
+          <CourseAboutSection
+            index={2}
+            ref={(el) => (sectionRefs.current[2] = el)}
+          />
         )}
       </Suspense>
       <Suspense fallback={<SmallLoader />}>
@@ -169,13 +168,10 @@ const Course = () => {
           </section>
         )}
         {loadedSections.includes(3) && (
-          <>
-            {console.log("Rendering CourseAboutSection")}
-            <FeaturedPodcastSection
-              index={3}
-              ref={(el) => (sectionRefs.current[3] = el)}
-            />
-          </>
+          <FeaturedPodcastSection
+            index={3}
+            ref={(el) => (sectionRefs.current[3] = el)}
+          />
         )}
       </Suspense>
       <Suspense fallback={<SmallLoader />}>
