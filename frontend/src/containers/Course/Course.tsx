@@ -88,6 +88,12 @@ const Course = () => {
     // 🔁 Observe only the newly rendered sections
     loadedSections.forEach((index) => {
       const el = sectionRefs.current[index];
+      if (el) {
+        console.log(
+          `Section ${index} height:`,
+          el.getBoundingClientRect().height
+        );
+      }
       if (el) observer.observe(el);
     });
 
@@ -130,7 +136,13 @@ const Course = () => {
           </div>
         </section>
       )}
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(1) && (
           <section className="section-loader">
             <SmallLoader />
@@ -143,7 +155,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(2) && (
           <section className="section-loader">
             <SmallLoader />
@@ -160,7 +178,13 @@ const Course = () => {
           </>
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(3) && (
           <section className="section-loader">
             <SmallLoader />
@@ -176,7 +200,13 @@ const Course = () => {
           </>
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(4) && (
           <section className="section-loader">
             <SmallLoader />
@@ -189,7 +219,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(5) && (
           <section className="section-loader">
             <SmallLoader />
@@ -202,7 +238,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(6) && (
           <section className="section-loader">
             <SmallLoader />
@@ -215,7 +257,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(7) && (
           <section className="section-loader">
             <SmallLoader />
@@ -228,7 +276,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(8) && (
           <section className="section-loader">
             <SmallLoader />
@@ -241,7 +295,13 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense fallback={<SmallLoader />}>
+      <Suspense
+        fallback={
+          <div style={{ minHeight: "80vh" }}>
+            <SmallLoader />
+          </div>
+        }
+      >
         {loadingSections.includes(9) && (
           <section className="section-loader">
             <SmallLoader />
