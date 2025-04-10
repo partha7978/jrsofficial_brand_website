@@ -73,6 +73,11 @@ const Course = () => {
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.getAttribute("data-index"));
+          console.log(
+            "Entry is intersecting:",
+            Number(entry.target.getAttribute("data-index")),
+            entry.isIntersecting
+          );
           if (entry.isIntersecting) {
             loadSection(index + 1); // Load next section(s) when current is visible
           }

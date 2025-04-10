@@ -4,7 +4,6 @@ import { Button } from "../../../components";
 
 const CourseAboutSection = forwardRef<HTMLElement, { index: number }>(
   ({ index }, ref) => {
-    console.log(ref);
     return (
       <section
         className="course-about"
