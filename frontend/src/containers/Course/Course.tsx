@@ -62,8 +62,6 @@ const Course = () => {
     try {
       //Fetch logic
       await new Promise((res) => setTimeout(res, 200));
-      await new Promise((res) => setTimeout(res, 200));
-
       setLoadedSections((prev) => [...prev, index]);
     } finally {
       setLoadingSections((prev) => prev.filter((i) => i !== index));
