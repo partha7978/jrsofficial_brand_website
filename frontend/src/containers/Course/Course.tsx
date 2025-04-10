@@ -73,28 +73,25 @@ const Course = () => {
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.getAttribute("data-index"));
-          console.log(
-            "Entry is intersecting:",
-            Number(entry.target.getAttribute("data-index")),
-            entry.isIntersecting
-          );
           if (entry.isIntersecting) {
-            loadSection(index + 1); // Load next section(s) when current is visible
+            loadSection(index + 1);
           }
         });
       },
       {
-        rootMargin: "200px", // preload next section 200px before visible
+        rootMargin: "200px",
         threshold: 0.2,
       }
     );
 
-    sectionRefs.current.forEach((el) => {
+    // 🔁 Observe only the newly rendered sections
+    loadedSections.forEach((index) => {
+      const el = sectionRefs.current[index];
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [loadedSections]);
+  }, [loadedSections]); // rerun when new section is loaded
 
   return (
     <main className="course">
