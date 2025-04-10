@@ -3,7 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Button, SmallLoader } from "../../components";
 import { FaVideo } from "react-icons/fa6";
 import Footer from "../Footer/Footer";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 
 const MiniFormSectionWrapper = lazy(() => import("./subPages/MiniFormSection"));
 const CourseAboutSection = lazy(() => import("./subPages/CourseAboutSection"));
@@ -32,10 +32,10 @@ const CourseGallerySection = lazy(
 // todo: But it didnt worked on production due to Vite's tree shaking the files didnt load, and thats why I have to add lazy load here.
 
 const Course = () => {
-  const [loadedSections, setLoadedSections] = useState<number[]>([0]); // load only first section
+  const [loadedSections, setLoadedSections] = useState<number[]>([0]);
   const [loadingSections, setLoadingSections] = useState<number[]>([]);
-
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     // changing the cooter color and overflow when on load for this page only
@@ -53,20 +53,20 @@ const Course = () => {
     };
   }, []);
 
-  const loadSection = async (index: number) => {
-    if (loadedSections.includes(index) || loadingSections.includes(index))
-      return;
-
+  const loadSection = useCallback((index: number) => {
     setLoadingSections((prev) => [...prev, index]);
 
-    try {
-      //Fetch logic
-      await new Promise((res) => setTimeout(res, 200));
-      setLoadedSections((prev) => [...prev, index]);
-    } finally {
+    setTimeout(() => {
+      setLoadedSections((prev) => {
+        if (!prev.includes(index)) {
+          return [...prev, index];
+        }
+        return prev;
+      });
+
       setLoadingSections((prev) => prev.filter((i) => i !== index));
-    }
-  };
+    }, 200);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -85,20 +85,16 @@ const Course = () => {
       }
     );
 
-    // 🔁 Observe only the newly rendered sections
+    observerRef.current = observer;
+
+    // Observe all currently loaded sections
     loadedSections.forEach((index) => {
       const el = sectionRefs.current[index];
-      if (el) {
-        console.log(
-          `Section ${index} height:`,
-          el.getBoundingClientRect().height
-        );
-      }
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [loadedSections]); // rerun when new section is loaded
+  }, [loadedSections, loadSection]);
 
   return (
     <main className="course">
@@ -136,13 +132,7 @@ const Course = () => {
           </div>
         </section>
       )}
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(1) && (
           <section className="section-loader">
             <SmallLoader />
@@ -155,13 +145,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(2) && (
           <section className="section-loader">
             <SmallLoader />
@@ -178,13 +162,7 @@ const Course = () => {
           </>
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(3) && (
           <section className="section-loader">
             <SmallLoader />
@@ -200,13 +178,7 @@ const Course = () => {
           </>
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(4) && (
           <section className="section-loader">
             <SmallLoader />
@@ -219,13 +191,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(5) && (
           <section className="section-loader">
             <SmallLoader />
@@ -238,13 +204,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(6) && (
           <section className="section-loader">
             <SmallLoader />
@@ -257,13 +217,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(7) && (
           <section className="section-loader">
             <SmallLoader />
@@ -276,13 +230,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(8) && (
           <section className="section-loader">
             <SmallLoader />
@@ -295,13 +243,7 @@ const Course = () => {
           />
         )}
       </Suspense>
-      <Suspense
-        fallback={
-          <div style={{ minHeight: "80vh" }}>
-            <SmallLoader />
-          </div>
-        }
-      >
+      <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(9) && (
           <section className="section-loader">
             <SmallLoader />
