@@ -1,6 +1,7 @@
 import "./Course.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { Button, SmallLoader } from "../../components";
+import { Button, SmallLoader } from "../../components";
 import { FaVideo } from "react-icons/fa6";
 import Footer from "../Footer/Footer";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
@@ -61,6 +62,7 @@ const Course = () => {
 
     try {
       //Fetch logic
+      await new Promise((res) => setTimeout(res, 200));
       await new Promise((res) => setTimeout(res, 200));
 
       setLoadedSections((prev) => [...prev, index]);
@@ -128,6 +130,124 @@ const Course = () => {
           </div>
         </section>
       )}
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(1) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(1) && (
+          <MiniFormSectionWrapper
+            index={1}
+            ref={(el) => (sectionRefs.current[1] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(2) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+
+        {loadedSections.includes(2) && (
+          <CourseAboutSection
+            index={2}
+            ref={(el) => (sectionRefs.current[2] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(3) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(3) && (
+          <FeaturedPodcastSection
+            index={3}
+            ref={(el) => (sectionRefs.current[3] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(4) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(4) && (
+          <CourseMembershipSection
+            index={4}
+            ref={(el) => (sectionRefs.current[4] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(5) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(5) && (
+          <WhoIsThisForSection
+            index={5}
+            ref={(el) => (sectionRefs.current[5] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(6) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(6) && (
+          <WhyDifferentSection
+            index={6}
+            ref={(el) => (sectionRefs.current[6] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(7) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(7) && (
+          <CourseAccordionSection
+            index={7}
+            ref={(el) => (sectionRefs.current[7] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(8) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(8) && (
+          <StillHaveQuestionSection
+            index={8}
+            ref={(el) => (sectionRefs.current[8] = el)}
+          />
+        )}
+      </Suspense>
+      <Suspense fallback={<SmallLoader />}>
+        {loadingSections.includes(9) && (
+          <section className="section-loader">
+            <SmallLoader />
+          </section>
+        )}
+        {loadedSections.includes(9) && (
+          <CourseGallerySection
+            index={9}
+            ref={(el) => (sectionRefs.current[9] = el)}
+          />
+        )}
+      </Suspense>
       <Suspense fallback={<SmallLoader />}>
         {loadingSections.includes(1) && (
           <section className="section-loader">
