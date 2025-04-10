@@ -73,6 +73,7 @@ const Course = () => {
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.getAttribute("data-index"));
+          console.log("Entry is intersecting: ", index, entry.isIntersecting);
           if (entry.isIntersecting) {
             loadSection(index + 1);
           }
@@ -150,10 +151,13 @@ const Course = () => {
         )}
 
         {loadedSections.includes(2) && (
-          <CourseAboutSection
-            index={2}
-            ref={(el) => (sectionRefs.current[2] = el)}
-          />
+          <>
+            {console.log("Rendering CourseAboutSection")}
+            <CourseAboutSection
+              index={2}
+              ref={(el) => (sectionRefs.current[2] = el)}
+            />
+          </>
         )}
       </Suspense>
       <Suspense fallback={<SmallLoader />}>
@@ -163,10 +167,13 @@ const Course = () => {
           </section>
         )}
         {loadedSections.includes(3) && (
-          <FeaturedPodcastSection
-            index={3}
-            ref={(el) => (sectionRefs.current[3] = el)}
-          />
+          <>
+            {console.log("Rendering CourseAboutSection")}
+            <FeaturedPodcastSection
+              index={3}
+              ref={(el) => (sectionRefs.current[3] = el)}
+            />
+          </>
         )}
       </Suspense>
       <Suspense fallback={<SmallLoader />}>
