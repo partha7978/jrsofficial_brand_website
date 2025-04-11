@@ -1,0 +1,10 @@
+export { default as CourseVideoSection } from "./CourseVideoSection";
+export { default as CourseMiniFormSection } from "./CourseMiniFormSection";
+export { default as CourseAboutSection } from "./CourseAboutSection";
+export { default as CourseFeaturedPodcastSection } from "./CourseFeaturedPodcastSection";
+export { default as CourseMembershipSection } from "./CourseMembershipSection";
+export { default as CourseWhosThisForSection } from "./CourseWhosThisForSection";
+export { default as CourseWhyDiffSection } from "./CourseWhyDiffSection";
+export { default as CourseAccordionSection } from "./CourseAccordionSection";
+export { default as CourseStillHaveQuestionSection } from "./CourseStillHaveQuestionSection";
+export { default as CourseGallerySection } from "./CourseGallerySection";
