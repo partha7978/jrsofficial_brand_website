@@ -101,7 +101,7 @@ const About = () => {
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
               className="about-card-content-action-btn"
             >
-              <Button name="Know More" link="/about" />
+              <Button name="Know More" action="redirectInternal" actionData="/about" />
             </motion.div>
           </div>
         </motion.div>

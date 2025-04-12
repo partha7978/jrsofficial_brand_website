@@ -21,11 +21,12 @@ const Footer = (Component?: React.FC, className?: string) => {
                   <input type="text" placeholder="Enter your email" />
                   <Button
                     name="Subscribe Now"
-                    link="/episodes"
                     backgroundColor="#141414"
                     color="#ffffff"
                     hoverBackgroundColor="#ffffff"
                     hoverColor="#000000"
+                    action="formSubmit"
+                    actionData={() => console.log("Subscribe Now")}
                   />
                 </div>
               </div>

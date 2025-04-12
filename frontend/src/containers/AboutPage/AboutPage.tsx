@@ -80,42 +80,33 @@ const AboutPage = () => {
           <section className="aboutPage-cta">
             <p>Because Every Contribution Counts — Let’s Keep the Momentum!</p>
             <div className="aboutPage-cta-action">
-              <a
-                href={about.youtubeLink || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-button"
-              >
-                <Button
-                  name="Subscribe Now"
-                  color="#FFCA85"
-                  hoverColor="#000000"
-                  backgroundColor="#000000"
-                  hoverBackgroundColor="#FFCA85"
-                  icon={<BsYoutube />}
-                ></Button>
-              </a>
-              <a
-                href={about.spotifyLink || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-button"
-              >
-                <Button
-                  name="Listen Now"
-                  color="#FFCA85"
-                  hoverColor="#000000"
-                  backgroundColor="#000000"
-                  hoverBackgroundColor="#FFCA85"
-                  icon={<BsSpotify />}
-                ></Button>
-              </a>
+              <Button
+                name="Subscribe Now"
+                color="#FFCA85"
+                hoverColor="#000000"
+                backgroundColor="#000000"
+                hoverBackgroundColor="#FFCA85"
+                icon={<BsYoutube />}
+                action="redirectExternal"
+                actionData={about.youtubeLink}
+              ></Button>
+              <Button
+                name="Listen Now"
+                color="#FFCA85"
+                hoverColor="#000000"
+                backgroundColor="#000000"
+                hoverBackgroundColor="#FFCA85"
+                icon={<BsSpotify />}
+                action="redirectExternal"
+                actionData={about.spotifyLink}
+              ></Button>
             </div>
           </section>
-          {about.highlights && 
-          <section className="aboutPage-highlights">
-            <BentoGrid highlights={about.highlights} />
-          </section>}
+          {about.highlights && (
+            <section className="aboutPage-highlights">
+              <BentoGrid highlights={about.highlights} />
+            </section>
+          )}
         </>
       )}
     </main>

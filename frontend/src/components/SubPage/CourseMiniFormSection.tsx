@@ -70,6 +70,7 @@ const CourseMiniFormSection = () => {
                   hoverBackgroundColor="#FFCA85"
                   hoverColor="#141414"
                   width="100%"
+                  action="formSubmit"
                 />
               </form>
               <div className="mini-form-section-content-terms">

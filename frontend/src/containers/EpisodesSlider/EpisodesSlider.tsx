@@ -65,16 +65,16 @@ const EpisodesSlider = () => {
               viewport={{ once: true }}
               className="episodes-title-section-action-btn"
             >
-              <Link to="/episodes/all">
-                <Button
-                  name="View All"
-                  link="/episodes/all"
-                  backgroundColor="#141414"
-                  color="#ffffff"
-                  hoverBackgroundColor="#FFCA85"
-                  hoverColor="#000000"
-                />
-              </Link>
+              <Button
+                name="View All"
+                link="/episodes/all"
+                backgroundColor="#141414"
+                color="#ffffff"
+                hoverBackgroundColor="#FFCA85"
+                hoverColor="#000000"
+                action="redirectInternal"
+                actionData="/episodes/all"
+              />
             </motion.div>
           </div>
           <div className="episodes-main__container">

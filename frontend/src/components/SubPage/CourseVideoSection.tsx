@@ -36,7 +36,7 @@ const CourseVideoSection = () => {
           <div className="course-video-heading">
             <h1>
               {mainData.title}
-              {" "}<span>{mainData.pinkLine}</span>
+              <span>{mainData.pinkLine}</span>
             </h1>
           </div>
           <div className="course-video-action">
@@ -47,6 +47,8 @@ const CourseVideoSection = () => {
               color=""
               hoverColor=""
               icon={<FaVideo />}
+              action="triggerPopup"
+              actionData="videoPopup"
             />
           </div>
           <div className="course-video-navigation">

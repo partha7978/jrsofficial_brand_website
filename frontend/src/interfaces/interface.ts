@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface episodeCardProps {
   title: string;
   speakerName: string;
@@ -30,6 +32,13 @@ export interface MainButton {
   height?: number;
   icon?: React.ReactElement;
   backgroundBlur?: number;
+  action?:
+    | "redirectExternal"
+    | "triggerPopup"
+    | "redirectInternal"
+    | "formSubmit";
+  disabled?: boolean;
+  actionData?: string | object | Array<any> | ((arg: any) => void);
 }
 
 export interface InputProps {

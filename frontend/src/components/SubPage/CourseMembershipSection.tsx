@@ -55,7 +55,6 @@ const CourseMembershipSection = () => {
                   ))}
                 </div>
                 <div className="card-action">
-                  <a href={membership.membershipItemButtonRedirect}>
                     <Button
                       name="Get Started"
                       backgroundColor="rgb(255, 255, 255, 0.1)"
@@ -64,8 +63,9 @@ const CourseMembershipSection = () => {
                       hoverColor="#ffffff"
                       backgroundBlur={42}
                       width="100%"
+                      action="redirectExternal"
+                      actionData={membership.membershipItemButtonRedirect}
                     />
-                  </a>
                 </div>
               </div>
             ))}

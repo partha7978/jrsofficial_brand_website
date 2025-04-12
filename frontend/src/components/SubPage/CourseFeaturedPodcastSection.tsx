@@ -100,6 +100,8 @@ const CourseFeaturedPodcastSection = () => {
                   color="#000000"
                   hoverBackgroundColor="#ffffff"
                   hoverColor="#000000"
+                  action="redirectExternal"
+                  actionData={'https://www.linkedin.com/in/partha-sarathi-muduli/'}
                 />
                 {/* <span className="additional-description">
                 FREE access to exclusive insights, private Q+As, and inspiring
@@ -127,6 +129,8 @@ const CourseFeaturedPodcastSection = () => {
                   hoverColor="#ffffff"
                   icon={<FaPlay />}
                   backgroundBlur={42}
+                  action="triggerPopup"
+                  actionData={'videoPopup'}
                 />
               </div>
             </div>

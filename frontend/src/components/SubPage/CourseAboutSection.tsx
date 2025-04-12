@@ -44,15 +44,15 @@ const CourseAboutSection = () => {
               {mainData?.aboutCardDescription}
             </span>
             <div className="course-about-content-action">
-              <Link to="/about">
                 <Button
                   name="Know More"
                   backgroundColor="rgb(0, 0, 0, 0.5)"
                   color="#ffffff"
                   hoverBackgroundColor="rgb(0, 0, 0, 0.5)"
                   hoverColor="#ffffff"
+                  action="redirectInternal"
+                  actionData={"/about"}
                 />
-              </Link>
             </div>
           </div>
         </div>
