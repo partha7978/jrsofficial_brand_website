@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "../../../components";
+import { Button } from "..";
 import { FaVideo } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 const CourseVideoSection = () => {
   const {

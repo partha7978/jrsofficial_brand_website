@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button } from "../../../components";
-import useFetchData from "../../../hooks/useFetchData";
-import { urlFor } from "../../../../client/client";
+import { Button } from "..";
+import useFetchData from "../../hooks/useFetchData";
+import { urlFor } from "../../../client/client";
 
 const CourseStillHaveQuestionSection = () => {
   const {

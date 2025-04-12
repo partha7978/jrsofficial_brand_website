@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../../../hooks/useFetchData";
-import { urlFor } from "../../../../client/client";
+import useFetchData from "../../hooks/useFetchData";
+import { urlFor } from "../../../client/client";
 
 const CourseGallerySection = () => {
   const {

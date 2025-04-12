@@ -14,7 +14,7 @@ import {
   CourseAccordionSection,
   CourseStillHaveQuestionSection,
   CourseGallerySection,
-} from "./SubPage";
+} from "../../components/SubPage";
 
 const Course = () => {
   const {
@@ -56,7 +56,7 @@ const Course = () => {
 
     try {
       //Fetch logic
-      await new Promise((res) => setTimeout(res, 1000));
+      await new Promise((res) => setTimeout(res, 500));
 
       setLoadedSections((prev) => [...prev, index]);
     } finally {

@@ -1,6 +1,6 @@
-import { Accordion } from "../../../components";
+import { Accordion } from "..";
 import { useEffect, useState } from "react";
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 const CourseAccordionSection = () => {
   const {

@@ -1,9 +1,9 @@
-import { Button, Input } from "../../../components";
+import { Button, Input } from "..";
 import { FaPlay } from "react-icons/fa";
 import { getFileAsset } from "@sanity/asset-utils";
 import { useEffect, useState } from "react";
-import useFetchData from "../../../hooks/useFetchData";
-import { urlFor } from "../../../../client/client";
+import useFetchData from "../../hooks/useFetchData";
+import { urlFor } from "../../../client/client";
 
 const CourseFeaturedPodcastSection = () => {
   const {

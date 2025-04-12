@@ -1,7 +1,7 @@
 import { HiOutlineArrowRight } from "react-icons/hi";
-import { Button } from "../../../components";
+import { Button } from "..";
 import { useEffect, useState } from "react";
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 const CourseMembershipSection = () => {
   const {

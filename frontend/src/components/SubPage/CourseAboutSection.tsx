@@ -1,8 +1,8 @@
-import { Button } from "../../../components";
+import { Button } from "..";
 import { Link } from "react-router";
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import { useEffect, useState } from "react";
-import { urlFor } from "../../../../client/client";
+import { urlFor } from "../../../client/client";
 
 const CourseAboutSection = () => {
   const {

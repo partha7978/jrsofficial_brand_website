@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, Input } from "../../../components";
-import useFetchData from "../../../hooks/useFetchData";
-import { urlFor } from "../../../../client/client";
+import { Button, Input } from "..";
+import useFetchData from "../../hooks/useFetchData";
+import { urlFor } from "../../../client/client";
 
 const CourseMiniFormSection = () => {
   const {

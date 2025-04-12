@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 const CourseWhyDiffSection = () => {
   const {
