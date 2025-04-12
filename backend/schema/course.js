@@ -377,7 +377,7 @@ export default {
                     },
                     {
                       name: 'whoIsThisForItemImage',
-                      title: 'Who Is This For Section Item Icon',
+                      title: 'Who Is This For Section Item Icon (add white colored icon only)',
                       type: 'image',
                       options: {
                         hotspot: true,
@@ -575,7 +575,7 @@ export default {
           ],
         },
       ],
-      validation: (Rule) => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

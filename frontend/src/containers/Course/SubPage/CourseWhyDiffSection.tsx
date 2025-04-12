@@ -1,22 +1,35 @@
+import { useEffect, useState } from "react";
+import useFetchData from "../../../hooks/useFetchData";
 
 const CourseWhyDiffSection = () => {
+  const {
+    data,
+    error,
+  }: {
+    data: any;
+    error: any;
+  } = useFetchData("course", "whyDifferent");
+
+  const [mainData, setMainData] = useState(null);
+  useEffect(() => {
+    if (data) {
+      setMainData(data.whyDifferent[0]);
+    }
+  }, [data]);
+
   return (
     <>
-      <div className="course-why-different-section-title">
-        <h2>Why Parivartan is different</h2>
-      </div>
-      <div className="course-why-different-section-desc">
-        <span>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum,
-          necessitatibus aut quae consequatur eligendi eius nam repellendus
-          nihil fugit quisquam modi est facilis non in alias. Ut odit, expedita
-          ipsam doloribus esse incidunt cupiditate aliquid ipsum commodi, illum
-          est, sed voluptas voluptatem officiis! Ipsa, eius asperiores. Beatae
-          facere distinctio asperiores aspernatur ullam optio sapiente veniam?
-          Adipisci voluptates officiis ex illum impedit fugit unde iure dolores
-          ducimus facere quasi, temporibus optio.
-        </span>
-      </div>
+      {error && <h1>Something went wrong</h1>}
+      {mainData && (
+        <>
+          <div className="course-why-different-section-title">
+            <h2>{mainData.whyDifferentTitle}</h2>
+          </div>
+          <div className="course-why-different-section-desc">
+            <span>{mainData.whyDifferentText}</span>
+          </div>
+        </>
+      )}
     </>
   );
 };

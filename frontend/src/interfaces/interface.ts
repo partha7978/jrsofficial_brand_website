@@ -79,9 +79,9 @@ export interface MainAboutPageSchema {
   highlights: string[];
 }
 export interface AccordionDataProps {
-  title: string;
-  icon: React.ReactElement;
-  accordionContent: string;
+  faqItemTitle: string;
+  faqItemImage: React.ReactElement | string;
+  faqItemText: string;
 }
 export interface AccordionStyleProps {
   backgroundColor?: string;
@@ -94,4 +94,3 @@ export interface AccordionStyleProps {
   parentBackgroundColor?: string;
   dividerBackgroundColor?: string;
 }
-

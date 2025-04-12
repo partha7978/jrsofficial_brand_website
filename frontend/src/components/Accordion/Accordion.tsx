@@ -5,6 +5,8 @@ import {
 } from "../../interfaces/interface";
 import "./Accordion.scss";
 import { IoIosArrowDown } from "react-icons/io";
+import { urlFor } from "../../../client/client";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 interface AccordionProps extends AccordionStyleProps {
   accordionData: AccordionDataProps[];
@@ -37,13 +39,23 @@ const AccordionItem = ({
     <div
       className="accordion"
       style={accordionStyle}
-      key={item.title}
+      key={item.faqItemTitle}
       onClick={() => handleAccordionClick()}
     >
       <div className={`accordion-title ${showAccordion ? "active" : ""}`}>
         <div className="accordion-title-text">
-          <div className="accordion-icon">{item.icon}</div>
-          <div className="accordion-title-text">{item.title}</div>
+          <div className="accordion-icon">
+            {item.faqItemImage ? (
+              <img
+                src={urlFor(item.faqItemImage).url()}
+                alt={item.faqItemTitle + " icon"}
+                loading="lazy"
+              />
+            ) : (
+              <FaRegArrowAltCircleRight />
+            )}
+          </div>
+          <div className="accordion-title-text">{item.faqItemTitle}</div>
         </div>
         <div className={`accordion-icon ${showAccordion ? "rotate" : ""}`}>
           <IoIosArrowDown />
@@ -62,7 +74,7 @@ const AccordionItem = ({
             backgroundColor: color ?? "#ffffff",
           }}
         ></div>
-        {item.accordionContent}
+        {item.faqItemText}
       </div>
     </div>
   );
@@ -98,7 +110,7 @@ const Accordion: React.FC<AccordionProps> = ({ accordionData, ...rest }) => {
     <section className="accordion-container" style={accordionParentStyle}>
       {accordionData?.map((item, index) => (
         <AccordionItem
-          key={item.title}
+          key={item.faqItemTitle}
           item={item}
           accordionStyle={accordionStyle}
           index={index}
