@@ -6,7 +6,7 @@ export default {
     {
       name: 'time',
       title: 'Time',
-      type: 'datetime',
+      type: 'string',
     },
     {
       name: 'name',

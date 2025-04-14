@@ -33,7 +33,6 @@ const CourseMiniFormSection = () => {
   const { name, email, phone } = formData;
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-    console.log(name, value, "form data");
     setFormData({ ...formData, [name]: value });
   };
 
@@ -56,10 +55,26 @@ const CourseMiniFormSection = () => {
     console.log(toast);
   }, [toast]);
 
+  const getCurrentDate = () => {
+    const now = new Date();
+
+    const formattedDate = now.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    
+    const formattedTime = now.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+    
+    return `${formattedDate} — ${formattedTime}`;
+  };
+
   const formDataSubmit = (e: any) => {
-    console.log(e, "event");
     e.preventDefault();
-    console.log(name, email, phone, "form data submitted");
 
     if (validateForm()) {
       const userSubmittedData = {
@@ -67,7 +82,7 @@ const CourseMiniFormSection = () => {
         name: name,
         email: email,
         phone: phone,
-        time: new Date(),
+        time: getCurrentDate(),
       };
 
       client

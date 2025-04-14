@@ -36,6 +36,7 @@ const CourseVideoSection = () => {
           <div className="course-video-heading">
             <h1>
               {mainData.title}
+              {" "}
               <span>{mainData.pinkLine}</span>
             </h1>
           </div>
