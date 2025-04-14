@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Input } from "..";
 import useFetchData from "../../hooks/useFetchData";
-import { urlFor } from "../../../client/client";
+import { client, urlFor } from "../../../client/client";
 
 const CourseMiniFormSection = () => {
   const {
@@ -12,12 +12,76 @@ const CourseMiniFormSection = () => {
     error: any;
   } = useFetchData("course", "miniForm");
 
+  const [toast, setToast] = useState<{
+    type: "success" | "error" | "def";
+    message: string;
+  }>({ type: "", message: "" });
   const [mainData, setMainData] = useState(null);
   useEffect(() => {
     if (data) {
       setMainData(data.miniForm[0]);
     }
   }, [data]);
+
+  //handling form
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const { name, email, phone } = formData;
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    console.log(name, value, "form data");
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validateForm = () => {
+    if (!name || !email) {
+      setToast({ type: "error", message: "Please fill all fields" });
+      return false;
+    }
+
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setToast({ type: "error", message: "Please enter a valid email" });
+      return false;
+    }
+
+    // setToast({ type: "", message: "" });
+    return true;
+  };
+
+  useEffect(() => {
+    console.log(toast);
+  }, [toast]);
+
+  const formDataSubmit = (e: any) => {
+    console.log(e, "event");
+    e.preventDefault();
+    console.log(name, email, phone, "form data submitted");
+
+    if (validateForm()) {
+      const userSubmittedData = {
+        _type: "userSubmittedData",
+        name: name,
+        email: email,
+        phone: phone,
+        time: new Date(),
+      };
+
+      client
+        .create(userSubmittedData)
+        .then(() => {
+          setToast({ type: "success", message: "Form submitted successfully" });
+          setFormData({ name: "", email: "", phone: "" });
+        })
+        .catch((err) => {
+          setToast({ type: "error", message: "Something went wrong" });
+          setFormData({ name: "", email: "", phone: "" });
+        });
+    }
+  };
 
   return (
     <>
@@ -51,7 +115,9 @@ const CourseMiniFormSection = () => {
                     className="input"
                     background="#e4e4e4"
                     color="#000000"
+                    value={name}
                     required={true}
+                    onChange={handleInputChange}
                   />
                   <Input
                     name="email"
@@ -61,6 +127,8 @@ const CourseMiniFormSection = () => {
                     background="#e4e4e4"
                     color="#000000"
                     required={true}
+                    onChange={handleInputChange}
+                    value={email}
                   />
                 </div>
                 <Button
@@ -71,6 +139,7 @@ const CourseMiniFormSection = () => {
                   hoverColor="#141414"
                   width="100%"
                   action="formSubmit"
+                  actionData={formDataSubmit}
                 />
               </form>
               <div className="mini-form-section-content-terms">

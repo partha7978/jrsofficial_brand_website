@@ -38,7 +38,7 @@ export interface MainButton {
     | "redirectInternal"
     | "formSubmit";
   disabled?: boolean;
-  actionData?: string | object | Array<any> | ((arg: any) => void);
+  actionData?: string | object | Array<any> | ((arg?: any) => void);
 }
 
 export interface InputProps {

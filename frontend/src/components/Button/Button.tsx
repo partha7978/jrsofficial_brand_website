@@ -60,7 +60,11 @@ function Button({
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (action === "formSubmit" && typeof actionData === "function") {
+      e.preventDefault();
+    }
+
     if (buttonRef.current) {
       const width = buttonRef.current.offsetWidth;
       setButtonFixedWidth(`${width}px`);
@@ -75,8 +79,8 @@ function Button({
         // Implement popup logic here
       } else if (action === "redirectInternal") {
         navigate(actionData);
-      } else if (action === "formSubmit") {
-        // Implement form submission logic here
+      } else if (action === "formSubmit" && typeof actionData === "function") {
+        actionData(e);
       } else {
         console.error("Invalid action");
       }

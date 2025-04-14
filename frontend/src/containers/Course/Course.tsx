@@ -16,17 +16,7 @@ import {
   CourseGallerySection,
 } from "../../components/SubPage";
 
-const Course = () => {
-  const {
-    data,
-    error,
-    loading,
-  }: {
-    data: any;
-    loading: boolean;
-    error: any;
-  } = useFetchData("course");
-  console.log(data, "data");
+const Course = () => {;
   const [loadedSections, setLoadedSections] = useState<number[]>([0]); // load only first section
   const [loadingSections, setLoadingSections] = useState<number[]>([]);
 
