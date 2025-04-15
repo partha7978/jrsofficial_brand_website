@@ -29,7 +29,7 @@ const CourseWhosThisForSection = () => {
           </div>
           <div className="course-whose-this-for-section-items">
             {mainData.whoIsThisForItems?.map((item: any, index: number) => (
-              <div className="item">
+              <div className="item" key={item.whoIsThisForItemTitle}>
                 {/* <TbCameraSpark /> */}
                 {item.whoIsThisForItemImage ? (
                   <img

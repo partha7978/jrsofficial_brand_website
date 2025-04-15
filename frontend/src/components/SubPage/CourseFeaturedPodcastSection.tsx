@@ -1,4 +1,4 @@
-import { Button, Input } from "..";
+import { Button, Input, VideoPlayer } from "..";
 import { FaPlay } from "react-icons/fa";
 import { getFileAsset } from "@sanity/asset-utils";
 import { useEffect, useState } from "react";
@@ -17,20 +17,41 @@ const CourseFeaturedPodcastSection = () => {
   const dataset = "production";
 
   const [mainData, setMainData] = useState(null);
-  const [videoUrl, setVideoUrl] = useState(null);
+  const [mainVideoData, setMainVideoData] = useState<string>("");
+  const [bgVideo, setBgVideo] = useState<string>("");
   useEffect(() => {
     if (data) {
       setMainData(data.featuredPodcast[0]);
-      const fileAsset = getFileAsset(
+      const bgVideoAsset = getFileAsset(
         data.featuredPodcast[0]?.podcastVideo[0]?.podcastBackgroundVideo,
         { projectId, dataset }
       );
-      setVideoUrl(fileAsset.url);
+      setBgVideo(bgVideoAsset.url);
+
+      const mainVideoAsset = getFileAsset(
+        data.featuredPodcast[0]?.podcastVideo[0]?.podcastVideo,
+        { projectId, dataset }
+      );
+      setMainVideoData(mainVideoAsset.url);
     }
   }, [data]);
+
+  // Video Popup
+  const [isOpen, setIsOpen] = useState(false);
+  const handleVideoPopup = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
       {error && <h1>Something went wrong</h1>}
+      <>
+        <VideoPlayer
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          videoLink={mainVideoData}
+        />
+      </>
       {mainData && (
         <>
           <div className="featured-podcast-top-section">
@@ -114,7 +135,7 @@ const CourseFeaturedPodcastSection = () => {
             </div>
             <div className="featured-podcast-bottom-section-video">
               <video
-                src={videoUrl}
+                src={bgVideo}
                 autoPlay
                 loop
                 muted
@@ -132,7 +153,7 @@ const CourseFeaturedPodcastSection = () => {
                   icon={<FaPlay />}
                   backgroundBlur={42}
                   action="triggerPopup"
-                  actionData={"videoPopup"}
+                  actionData={handleVideoPopup}
                 />
               </div>
             </div>

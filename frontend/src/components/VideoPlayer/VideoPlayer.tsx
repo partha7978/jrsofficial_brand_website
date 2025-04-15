@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./VideoPlayer.scss";
 import { IoClose } from "react-icons/io5";
+import Portal from "../ReactPortal/Portal";
 
 const VideoPlayer = ({ isOpen = false, setIsOpen, videoLink }) => {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -56,4 +57,6 @@ const VideoPlayer = ({ isOpen = false, setIsOpen, videoLink }) => {
   );
 };
 
-export default VideoPlayer;
+const PopupVideoPlayer = Portal(VideoPlayer);
+
+export default PopupVideoPlayer;

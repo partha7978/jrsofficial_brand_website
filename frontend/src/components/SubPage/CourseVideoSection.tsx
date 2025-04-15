@@ -25,16 +25,16 @@ const CourseVideoSection = () => {
     if (data) {
       setMainData(data.mainTitle[0]);
 
-      const fileAsset = getFileAsset(
+      const mainVideoAsset = getFileAsset(
         data.coursePageVideo[0].mainBackgroundVideo,
         { projectId, dataset }
       );
-      setMainVideoData(fileAsset.url);
-      const bgAsset = getFileAsset(
+      setMainVideoData(mainVideoAsset.url);
+      const bgVideoAsset = getFileAsset(
         data.coursePageVideo[0].mainBackgroundVideo,
         { projectId, dataset }
       );
-      setBgVideo(bgAsset.url);
+      setBgVideo(bgVideoAsset.url);
     }
   }, [data]);
 
