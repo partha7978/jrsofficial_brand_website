@@ -8,3 +8,4 @@ export { default as ScrollTo } from "./ScrollTo/ScrollTo";
 export { default as Input } from "./Input/Input";
 export { default as Accordion } from "./Accordion/Accordion";
 export { default as SmallLoader } from "./SmallLoader/SmallLoader";
+export { default as VideoPlayer } from "./VideoPlayer/VideoPlayer";

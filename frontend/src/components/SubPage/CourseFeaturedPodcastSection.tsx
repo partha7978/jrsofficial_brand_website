@@ -13,7 +13,7 @@ const CourseFeaturedPodcastSection = () => {
     data: any;
     error: any;
   } = useFetchData("course", "featuredPodcast");
-  const projectId = "lnbqi1qv"; // Replace with your actual project ID
+  const projectId = import.meta.env.VITE_API_KEY_PROJECTID;
   const dataset = "production";
 
   const [mainData, setMainData] = useState(null);
@@ -101,7 +101,9 @@ const CourseFeaturedPodcastSection = () => {
                   hoverBackgroundColor="#ffffff"
                   hoverColor="#000000"
                   action="redirectExternal"
-                  actionData={'https://www.linkedin.com/in/partha-sarathi-muduli/'}
+                  actionData={
+                    "https://www.linkedin.com/in/partha-sarathi-muduli/"
+                  }
                 />
                 {/* <span className="additional-description">
                 FREE access to exclusive insights, private Q+As, and inspiring
@@ -130,7 +132,7 @@ const CourseFeaturedPodcastSection = () => {
                   icon={<FaPlay />}
                   backgroundBlur={42}
                   action="triggerPopup"
-                  actionData={'videoPopup'}
+                  actionData={"videoPopup"}
                 />
               </div>
             </div>

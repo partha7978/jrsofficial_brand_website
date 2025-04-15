@@ -75,8 +75,8 @@ function Button({
     setTimeout(() => {
       if (action === "redirectExternal") {
         window.open(actionData, "_blank");
-      } else if (action === "triggerPopup") {
-        // Implement popup logic here
+      } else if (action === "triggerPopup" && typeof actionData === "function") {
+        actionData(e);
       } else if (action === "redirectInternal") {
         navigate(actionData);
       } else if (action === "formSubmit" && typeof actionData === "function") {

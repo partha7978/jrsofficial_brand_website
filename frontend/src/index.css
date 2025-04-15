@@ -3,126 +3,126 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Regular.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Regular.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Regular.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Black.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Black.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Black.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Bold.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Bold.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Bold.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-ExtraBold.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-ExtraBold.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-ExtraBold.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-ExtraBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Light.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Light.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Light.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-ExtraLight.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-ExtraLight.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-ExtraLight.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-ExtraLight.woff") format("woff");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Medium.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Medium.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Medium.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Regular.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Regular.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Regular.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-SemiBold.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-SemiBold.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-SemiBold.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('../src/assets/fonts/Onest-Thin.woff2') format('woff2'),
-      url('../src/assets/fonts/Onest-Thin.woff') format('woff');
+  font-family: "Onest";
+  src: url("../src/assets/fonts/Onest-Thin.woff2") format("woff2"),
+    url("../src/assets/fonts/Onest-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Dancing Script';
-  src: url('../src/assets/fonts/DancingScript-Medium.woff2') format('woff2'),
-      url('../src/assets/fonts/DancingScript-Medium.woff') format('woff');
+  font-family: "Dancing Script";
+  src: url("../src/assets/fonts/DancingScript-Medium.woff2") format("woff2"),
+    url("../src/assets/fonts/DancingScript-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Dancing Script';
-  src: url('../src/assets/fonts/DancingScript-Bold.woff2') format('woff2'),
-      url('../src/assets/fonts/DancingScript-Bold.woff') format('woff');
+  font-family: "Dancing Script";
+  src: url("../src/assets/fonts/DancingScript-Bold.woff2") format("woff2"),
+    url("../src/assets/fonts/DancingScript-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Dancing Script';
-  src: url('../src/assets/fonts/DancingScript-Regular.woff2') format('woff2'),
-      url('../src/assets/fonts/DancingScript-Regular.woff') format('woff');
+  font-family: "Dancing Script";
+  src: url("../src/assets/fonts/DancingScript-Regular.woff2") format("woff2"),
+    url("../src/assets/fonts/DancingScript-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Dancing Script';
-  src: url('../src/assets/fonts/DancingScript-SemiBold.woff2') format('woff2'),
-      url('../src/assets/fonts/DancingScript-SemiBold.woff') format('woff');
+  font-family: "Dancing Script";
+  src: url("../src/assets/fonts/DancingScript-SemiBold.woff2") format("woff2"),
+    url("../src/assets/fonts/DancingScript-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -135,8 +135,8 @@
   --white-color-text-primary: #ffffff;
   --white-color-text-secondary: #e4e4e4;
   --primary-color-contrast: #ffeace;
-  --primary-color-contrast-2: #FFCA85;
-  --primary-color-light: #FBF7EC;
+  --primary-color-contrast-2: #ffca85;
+  --primary-color-light: #fbf7ec;
 
   --bg-dark-primary: #010510;
   --bg-black-color: #000000;
@@ -148,7 +148,7 @@
   --black-color-text-tertiary: #313337;
   --black-color-text-quaternary: #3e3e3e;
   --gray-color-text-dark: rgba(194, 194, 194, 0.5);
-  --primary-color-text-contrast-2: #FFCA85;
+  --primary-color-text-contrast-2: #ffca85;
 
   --bg-course-page-yellow: rgb(255, 151, 0);
 
@@ -183,6 +183,11 @@ body {
 
   background-color: var(--bg-primary);
 }
+
+body.no-scroll {
+  overflow: hidden;
+}
+
 .main__loader {
   height: 100vh;
   display: flex;
@@ -199,11 +204,8 @@ body {
   flex-direction: column;
 }
 
-
-
-@layer base {}
-
-
+@layer base {
+}
 
 @layer base {
   * {

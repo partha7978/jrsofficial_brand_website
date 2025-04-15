@@ -3,6 +3,11 @@ import { Button } from "..";
 import { FaVideo } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import useFetchData from "../../hooks/useFetchData";
+import { VideoPlayer } from "../index";
+import { getFileAsset } from "@sanity/asset-utils";
+
+const projectId = import.meta.env.VITE_API_KEY_PROJECTID;
+const dataset = "production";
 
 const CourseVideoSection = () => {
   const {
@@ -11,22 +16,48 @@ const CourseVideoSection = () => {
   }: {
     data: any;
     error: any;
-  } = useFetchData("course", "mainTitle");
+  } = useFetchData("course", "mainTitle, coursePageVideo");
 
   const [mainData, setMainData] = useState(null);
+  const [mainVideoData, setMainVideoData] = useState<string>("");
+  const [bgVideo, setBgVideo] = useState<string>("");
   useEffect(() => {
     if (data) {
       setMainData(data.mainTitle[0]);
+
+      const fileAsset = getFileAsset(
+        data.coursePageVideo[0].mainBackgroundVideo,
+        { projectId, dataset }
+      );
+      setMainVideoData(fileAsset.url);
+      const bgAsset = getFileAsset(
+        data.coursePageVideo[0].mainBackgroundVideo,
+        { projectId, dataset }
+      );
+      setBgVideo(bgAsset.url);
     }
   }, [data]);
+
+  // Video Popup
+  const [isOpen, setIsOpen] = useState(false);
+  const handleVideoPopup = () => {
+    setIsOpen(true);
+  };
 
   return (
     <>
       {error && <h1>Something went wrong</h1>}
+      <>
+        <VideoPlayer
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          videoLink={mainVideoData}
+        />
+      </>
       {mainData && (
         <>
           <video
-            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            src={bgVideo}
             autoPlay
             loop
             muted
@@ -35,9 +66,7 @@ const CourseVideoSection = () => {
           ></video>
           <div className="course-video-heading">
             <h1>
-              {mainData.title}
-              {" "}
-              <span>{mainData.pinkLine}</span>
+              {mainData.title} <span>{mainData.pinkLine}</span>
             </h1>
           </div>
           <div className="course-video-action">
@@ -49,7 +78,7 @@ const CourseVideoSection = () => {
               hoverColor=""
               icon={<FaVideo />}
               action="triggerPopup"
-              actionData="videoPopup"
+              actionData={handleVideoPopup}
             />
           </div>
           <div className="course-video-navigation">

@@ -32,8 +32,8 @@
   background-color: var(--bg-black-color);
 
   &-video {
-    min-height: 1000px;
-    height: 96vh;
+    min-height: 100%;
+    height: 100vh;
     width: 100%;
     position: relative;
     color: var(--white-color-text-primary);

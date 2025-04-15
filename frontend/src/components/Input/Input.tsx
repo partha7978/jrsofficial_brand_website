@@ -30,13 +30,14 @@ const Input = ({
     <input
       className={className || ""}
       style={inputStyle}
-      value={value || ""}
       type={type || "text"}
       placeholder={placeholder || "Enter value here"}
       name={name || ""}
       required={required || false}
       disabled={disabled || false}
-      onChange={onChange}
+      {...(onChange
+        ? { value: value || "", onChange }
+        : { defaultValue: value || "" })}
     />
   );
 };
