@@ -60,8 +60,8 @@ const Testimonials = () => {
             </div>
             <div className="testimonial-carousel-action">
               <motion.button
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: [-50, 0] }}
+                initial={{ opacity: 0, y: +20 }}
+                whileInView={{ opacity: 1, y: [+20, 0] }}
                 transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
                 viewport={{ once: true }}
                 className={`prev ${disableButton === 0 ? "disabled" : ""}`}
@@ -73,9 +73,9 @@ const Testimonials = () => {
                 <IoIosArrowBack />
               </motion.button>
               <motion.button
-                initial={{ opacity: 0, x: +50 }}
-                whileInView={{ opacity: 1, x: [+50, 0] }}
-                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                initial={{ opacity: 0, y: +20 }}
+                whileInView={{ opacity: 1, y: [+20, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 viewport={{ once: true }}
                 className={`next ${
                   disableButton === data.length - 1 ? "disabled" : ""

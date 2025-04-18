@@ -44,6 +44,16 @@ const CourseVideoSection = () => {
     setIsOpen(true);
   };
 
+  const handleSmallScroll = () => {
+    const element = document.querySelector(".course-video");
+    if (element) {
+      const yOffset = +150;
+      const y =
+      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {error && <h1>Something went wrong</h1>}
@@ -81,7 +91,7 @@ const CourseVideoSection = () => {
               actionData={handleVideoPopup}
             />
           </div>
-          <div className="course-video-navigation">
+          <div className="course-video-navigation" onClick={handleSmallScroll}>
             <IoIosArrowDown />
           </div>
         </>
