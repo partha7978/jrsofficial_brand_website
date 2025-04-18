@@ -32,7 +32,7 @@
   background-color: var(--bg-black-color);
 
   &-video {
-    min-height: 100%;
+    min-height: 800px;
     height: 100vh;
     width: 100%;
     position: relative;
@@ -325,12 +325,13 @@
       width: 100%;
       position: relative;
       height: 100%;
+      min-height: 650px;
     }
 
     &-image-section {
       img {
         min-height: 85vh;
-        height: 85vh;
+        height: 100%;
         width: 100%;
         object-fit: cover;
         border-radius: 25px;
