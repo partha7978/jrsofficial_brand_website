@@ -2,6 +2,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { Button } from "..";
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
+import { motion } from "framer-motion";
 
 const CourseMembershipSection = () => {
   const {
@@ -18,19 +19,41 @@ const CourseMembershipSection = () => {
       setMainData(data.membership[0]);
     }
   }, [data]);
-  
+
   return (
     <>
       {error && <h1>Something went wrong</h1>}
       {mainData && (
         <>
           <div className="course-membership-title">
-            <h2>{mainData.membershipTitle}</h2>
-            <span>{mainData.membershipDescription}</span>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {mainData.membershipTitle}
+            </motion.h2>
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {mainData.membershipDescription}
+            </motion.span>
           </div>
           <div className="course-membership-cards">
             {mainData.membershipItem?.map((membership: any, index: number) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "backInOut",
+                  delay: index * 0.2,
+                }}
+                viewport={{ once: true }}
                 className={`card ${index === 1 ? "bestSeller" : ""} `}
                 key={membership.membershipItemTitle}
               >
@@ -54,20 +77,30 @@ const CourseMembershipSection = () => {
                     </p>
                   ))}
                 </div>
-                <div className="card-action">
-                    <Button
-                      name="Get Started"
-                      backgroundColor="rgb(255, 255, 255, 0.1)"
-                      color="#ffffff"
-                      hoverBackgroundColor="rgb(255, 255, 255, 0.1)"
-                      hoverColor="#ffffff"
-                      backgroundBlur={42}
-                      width="100%"
-                      action="redirectExternal"
-                      actionData={membership.membershipItemButtonRedirect}
-                    />
-                </div>
-              </div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "backInOut",
+                    delay: index * 0.2,
+                  }}
+                  viewport={{ once: true }}
+                  className="card-action"
+                >
+                  <Button
+                    name="Get Started"
+                    backgroundColor="rgb(255, 255, 255, 0.1)"
+                    color="#ffffff"
+                    hoverBackgroundColor="rgb(255, 255, 255, 0.1)"
+                    hoverColor="#ffffff"
+                    backgroundBlur={42}
+                    width="100%"
+                    action="redirectExternal"
+                    actionData={membership.membershipItemButtonRedirect}
+                  />
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </>

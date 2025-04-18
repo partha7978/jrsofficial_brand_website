@@ -5,6 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import useFetchData from "../../hooks/useFetchData";
 import { VideoPlayer } from "../index";
 import { getFileAsset } from "@sanity/asset-utils";
+import { motion } from "framer-motion";
 
 const projectId = import.meta.env.VITE_API_KEY_PROJECTID;
 const dataset = "production";
@@ -49,7 +50,7 @@ const CourseVideoSection = () => {
     if (element) {
       const yOffset = +150;
       const y =
-      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
@@ -75,11 +76,22 @@ const CourseVideoSection = () => {
             playsInline
           ></video>
           <div className="course-video-heading">
-            <h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: [30, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               {mainData.title} <span>{mainData.pinkLine}</span>
-            </h1>
+            </motion.h1>
           </div>
-          <div className="course-video-action">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7, ease: "backInOut", delay: 0.4 }}
+            viewport={{ once: true }}
+            className="course-video-action"
+          >
             <Button
               name="Watch the video"
               backgroundColor=""
@@ -90,7 +102,7 @@ const CourseVideoSection = () => {
               action="triggerPopup"
               actionData={handleVideoPopup}
             />
-          </div>
+          </motion.div>
           <div className="course-video-navigation" onClick={handleSmallScroll}>
             <IoIosArrowDown />
           </div>

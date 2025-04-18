@@ -2,6 +2,7 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
 import { useEffect, useState } from "react";
 import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 
 const CourseWhosThisForSection = () => {
   const {
@@ -25,11 +26,29 @@ const CourseWhosThisForSection = () => {
       {mainData && (
         <>
           <div className="course-whose-this-for-section-title">
-            <h2>{mainData.whoIsThisForTitle}</h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {mainData.whoIsThisForTitle}
+            </motion.h2>
           </div>
           <div className="course-whose-this-for-section-items">
             {mainData.whoIsThisForItems?.map((item: any, index: number) => (
-              <div className="item" key={item.whoIsThisForItemTitle}>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "backInOut",
+                  delay: index * 0.2,
+                }}
+                viewport={{ once: true }}
+                className="item"
+                key={item.whoIsThisForItemTitle}
+              >
                 {/* <TbCameraSpark /> */}
                 {item.whoIsThisForItemImage ? (
                   <img
@@ -41,7 +60,7 @@ const CourseWhosThisForSection = () => {
                   <FaRegArrowAltCircleRight />
                 )}
                 <span>{item.whoIsThisForItemTitle}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </>

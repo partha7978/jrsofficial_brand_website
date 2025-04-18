@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 
 const CourseGallerySection = () => {
   const {
@@ -24,7 +25,11 @@ const CourseGallerySection = () => {
       {mainData && (
         <>
           {mainData?.map((item, index) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
               className={`photo-item ${index % 2 === 0 ? "big" : "small"}`}
               key={item}
             >
@@ -33,7 +38,7 @@ const CourseGallerySection = () => {
                 alt="Gallery Image"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           ))}
         </>
       )}

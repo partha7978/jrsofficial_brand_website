@@ -4,6 +4,7 @@ import { getFileAsset } from "@sanity/asset-utils";
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 
 const CourseFeaturedPodcastSection = () => {
   const {
@@ -57,7 +58,11 @@ const CourseFeaturedPodcastSection = () => {
           <div className="featured-podcast-top-section">
             <div className="featured-podcast-top-section-banner">
               <div className="img-bg">
-                <img
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+                  viewport={{ once: true }}
                   src={urlFor(mainData.podcastImage).url()}
                   alt="featured podcast banner"
                   loading="lazy"
@@ -67,7 +72,14 @@ const CourseFeaturedPodcastSection = () => {
               </div>
             </div>
             <div className="featured-podcast-top-section-heading">
-              <h2>{mainData.podcastTitle}</h2>
+              <motion.h2
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {mainData.podcastTitle}
+              </motion.h2>
             </div>
           </div>
           <div className="featured-podcast-mobile-separator">
@@ -76,19 +88,49 @@ const CourseFeaturedPodcastSection = () => {
           </div>
           <div className="featured-podcast-bottom-section">
             <div className="featured-podcast-bottom-section-action">
-              <h2>{mainData.podcastForm[0]?.podcastFormTitle}</h2>
-              <span className="description">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {mainData.podcastForm[0]?.podcastFormTitle}
+              </motion.h2>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                viewport={{ once: true }}
+                className="description"
+              >
                 {mainData.podcastForm[0]?.podcastFormDescription}
-              </span>
+              </motion.span>
               <div className="featured-ratio">
                 {mainData.podcastForm[0]?.podcastFormHighlights?.map((item) => (
-                  <div className="ratio" key={item.highlightPercentageName}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, y: [30, 0] }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: 0.6,
+                    }}
+                    viewport={{ once: true }}
+                    className="ratio"
+                    key={item.highlightPercentageName}
+                  >
                     <p>{item.highlightPercentage}%</p>
                     <span>{item.highlightPercentageName}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-              <form action="">
+              <motion.form
+                action=""
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
+                viewport={{ once: true }}
+              >
                 <Input
                   name="First Name"
                   type="text"
@@ -131,7 +173,7 @@ const CourseFeaturedPodcastSection = () => {
                 episodes of The JRS Show, delivered with 💜 to your inbox.
                 (Unsub anytime in a click.)
               </span> */}
-              </form>
+              </motion.form>
             </div>
             <div className="featured-podcast-bottom-section-video">
               <video
@@ -143,7 +185,13 @@ const CourseFeaturedPodcastSection = () => {
                 playsInline
               ></video>
               <div className="video-overlay"></div>
-              <div className="video-play-btn">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                viewport={{ once: true }}
+                className="video-play-btn"
+              >
                 <Button
                   name="Watch"
                   backgroundColor="rgb(0, 0, 0, 0.1)"
@@ -155,7 +203,7 @@ const CourseFeaturedPodcastSection = () => {
                   action="triggerPopup"
                   actionData={handleVideoPopup}
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
         </>

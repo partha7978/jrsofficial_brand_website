@@ -1,6 +1,7 @@
 import { Accordion } from "..";
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
+import { motion } from "framer-motion";
 
 const CourseAccordionSection = () => {
   const {
@@ -24,11 +25,24 @@ const CourseAccordionSection = () => {
       {mainData && (
         <>
           <div className="course-accordion-title">
-            <h2>{mainData.faqTitle}</h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {mainData.faqTitle}
+            </motion.h2>
           </div>
-          <div className="accordion-items">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+            viewport={{ once: true }}
+            className="accordion-items"
+          >
             <Accordion accordionData={mainData.faqItems} />
-          </div>
+          </motion.div>
         </>
       )}
     </>

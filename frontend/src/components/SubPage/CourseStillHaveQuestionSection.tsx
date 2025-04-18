@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "..";
 import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
+import { motion } from "framer-motion";
 
 const CourseStillHaveQuestionSection = () => {
   const {
@@ -24,7 +25,11 @@ const CourseStillHaveQuestionSection = () => {
       {error && <h1>Something went wrong</h1>}
       {mainData && (
         <>
-          <img
+          <motion.img
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+            viewport={{ once: true }}
             src={urlFor(mainData?.imageCTAImage).url()}
             alt="The JRS Show Image"
             loading="lazy"
@@ -32,11 +37,33 @@ const CourseStillHaveQuestionSection = () => {
             width={200}
           />
           <div className="question-section">
-            <h2 className="question-section-title">{mainData.imageCTATitle}</h2>
-            <p className="question-section-desc">{mainData.imageCTAText}</p>
-            <span className="question-section-desc2">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="question-section-title"
+            >
+              {mainData.imageCTATitle}
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+              className="question-section-desc"
+            >
+              {mainData.imageCTAText}
+            </motion.p>
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+              className="question-section-desc2"
+            >
               {mainData.imageCTASubText}
-            </span>{" "}
+            </motion.span>{" "}
             <Button
               name={mainData.imageCTAButton}
               backgroundColor="rgb(255, 255, 255, 0.1)"

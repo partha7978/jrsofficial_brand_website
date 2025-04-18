@@ -3,6 +3,7 @@ import { Button, Input } from "..";
 import useFetchData from "../../hooks/useFetchData";
 import { client, urlFor } from "../../../client/client";
 import { Toast } from "../index";
+import { motion } from "framer-motion";
 
 const CourseMiniFormSection = () => {
   const {
@@ -113,7 +114,13 @@ const CourseMiniFormSection = () => {
         />
       </>
       {mainData && (
-        <section className="mini-form">
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mini-form"
+        >
           <div className="mini-form-section">
             <div className="mini-form-section-image">
               <img
@@ -125,15 +132,40 @@ const CourseMiniFormSection = () => {
               />
             </div>
             <div className="mini-form-section-content">
-              <h2>{mainData.miniFormTitle}</h2>
-              <span className="mini-form-section-content-subtext">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {mainData.miniFormTitle}
+              </motion.h2>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                viewport={{ once: true }}
+                className="mini-form-section-content-subtext"
+              >
                 {mainData.miniFormDescription}
-              </span>
-              <span className="mini-form-section-content-additionalText">
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.7 }}
+                viewport={{ once: true }}
+                className="mini-form-section-content-additionalText"
+              >
                 {mainData.miniFormAdditionalDescription}
-              </span>
+              </motion.span>
               <form action="" className="mini-form-section-content-form">
-                <div className="input-box">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="input-box"
+                >
                   <Input
                     name="name"
                     type="text"
@@ -156,7 +188,7 @@ const CourseMiniFormSection = () => {
                     onChange={handleInputChange}
                     value={email}
                   />
-                </div>
+                </motion.div>
                 <Button
                   name="Get Started"
                   backgroundColor="#141414"
@@ -168,12 +200,18 @@ const CourseMiniFormSection = () => {
                   actionData={formDataSubmit}
                 />
               </form>
-              <div className="mini-form-section-content-terms">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.6 }}
+                viewport={{ once: true }}
+                className="mini-form-section-content-terms"
+              >
                 <span>{mainData.miniFormNoticeText}</span>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
     </>
   );
