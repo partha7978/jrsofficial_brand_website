@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Input } from "..";
 import useFetchData from "../../hooks/useFetchData";
 import { client, urlFor } from "../../../client/client";
+import { Toast } from "../index";
 
 const CourseMiniFormSection = () => {
   const {
@@ -13,10 +14,12 @@ const CourseMiniFormSection = () => {
   } = useFetchData("course", "miniForm");
 
   const [toast, setToast] = useState<{
-    type: "success" | "error" | "def";
+    type: "success" | "error" | "def" | "warning";
     message: string;
-  }>({ type: "", message: "" });
+  }>({ type: "def", message: "" });
   const [mainData, setMainData] = useState(null);
+  const [toastOpen, setToastOpen] = useState(false);
+
   useEffect(() => {
     if (data) {
       setMainData(data.miniForm[0]);
@@ -38,12 +41,12 @@ const CourseMiniFormSection = () => {
 
   const validateForm = () => {
     if (!name || !email) {
-      setToast({ type: "error", message: "Please fill all fields" });
+      setToast({ type: "warning", message: "Please fill all fields" });
       return false;
     }
 
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      setToast({ type: "error", message: "Please enter a valid email" });
+      setToast({ type: "warning", message: "Please enter a valid email" });
       return false;
     }
 
@@ -52,7 +55,9 @@ const CourseMiniFormSection = () => {
   };
 
   useEffect(() => {
-    console.log(toast);
+    if (toast.message.length > 1 && toastOpen === false) {
+      setToastOpen(true);
+    }
   }, [toast]);
 
   const getCurrentDate = () => {
@@ -63,19 +68,16 @@ const CourseMiniFormSection = () => {
       month: "long",
       day: "numeric",
     });
-    
     const formattedTime = now.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "2-digit",
       hour12: true,
     });
-    
     return `${formattedDate} — ${formattedTime}`;
   };
 
   const formDataSubmit = (e: any) => {
     e.preventDefault();
-
     if (validateForm()) {
       const userSubmittedData = {
         _type: "userSubmittedData",
@@ -101,6 +103,15 @@ const CourseMiniFormSection = () => {
   return (
     <>
       {error && <h1>Something went wrong</h1>}
+      <>
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          isOpen={toastOpen}
+          setIsOpen={setToastOpen}
+          setToast={setToast}
+        />
+      </>
       {mainData && (
         <section className="mini-form">
           <div className="mini-form-section">
