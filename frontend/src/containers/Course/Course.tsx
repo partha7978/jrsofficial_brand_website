@@ -23,7 +23,7 @@ const Course = () => {;
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    // changing the cooter color and overflow when on load for this page only
+    // changing the footer color and overflow when on load for this page only
     const rootElement = document.getElementById("root");
     if (rootElement && rootElement.style) {
       rootElement.style.background = "#000000";
