@@ -110,10 +110,13 @@
 
         .app__navbar-links-item-extra {
           display: grid;
+          opacity: 1;
+          transform: translateY(0);
           background-color: var(--bg-primary);
           a {
             color: var(--black-color-text-primary);
             background-color: var(--bg-primary);
+            height: 100%;
           }
         }
       }
@@ -143,11 +146,12 @@
         border-radius: 20px;
         display: none;
         gap: 0.5rem;
-        min-width: 460px;
+        min-width: 260px;
         width: 520px;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         justify-items: center;
         align-items: center;
+        min-height: 160px;
 
         .app__navbar-links-item-extra-link {
           color: var(--black-color-text-primary);
@@ -158,7 +162,7 @@
           text-transform: capitalize;
           width: 100%;
           height: 0;
-          padding-top: 100%;
+          aspect-ratio: 150px / 150px;
           position: relative;
           border-radius: 10px;
           margin: 0;
