@@ -1,5 +1,5 @@
 import { Button, Input, VideoPlayer } from "..";
-import { FaPlay } from "react-icons/fa";
+import { HiPlay } from "react-icons/hi2";
 import { getFileAsset } from "@sanity/asset-utils";
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
@@ -198,7 +198,7 @@ const CourseFeaturedPodcastSection = () => {
                   color="#ffffff"
                   hoverBackgroundColor="rgb(0, 0, 0, 0.1)"
                   hoverColor="#ffffff"
-                  icon={<FaPlay />}
+                  icon={<HiPlay />}
                   backgroundBlur={42}
                   action="triggerPopup"
                   actionData={handleVideoPopup}

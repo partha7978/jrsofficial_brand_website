@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "./Production.scss";
-import { ProductionHomePage } from "../../components/ProdSubPage";
+import {
+  ProductionHomePage,
+  ProductionAboutPage,
+} from "../../components/ProdSubPage";
 import { SmallLoader } from "../../components";
 
 const Production = () => {
@@ -14,13 +17,13 @@ const Production = () => {
     const rootElement = document.getElementById("root");
     if (rootElement && rootElement.style) {
       rootElement.style.background = "#000000";
-      rootElement.style.height = '100%';
+      rootElement.style.height = "100%";
     }
 
     return () => {
       if (rootElement && rootElement.style) {
         rootElement.style.background = "#FBF7EC";
-        rootElement.style.height = 'auto';
+        rootElement.style.height = "auto";
       }
     };
   }, []);
@@ -73,13 +76,13 @@ const Production = () => {
           <SmallLoader />
         </section>
       )}
-        {loadedSections.includes(1) && (
+      {loadedSections.includes(1) && (
         <section
-          className="production-home"
+          className="production-about"
           data-index={1}
           ref={(el) => (sectionRefs.current[1] = el)}
         >
-          <ProductionHomePage />
+          <ProductionAboutPage />
         </section>
       )}
       {loadingSections.includes(2) && (
