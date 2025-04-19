@@ -61,7 +61,7 @@ const ProductionHomePage = () => {
           >
             <Button
               name="Know More"
-              backgroundColor="rgb(0, 0, 0, 0.5)"
+              backgroundColor="rgb(39 39 39 / 50%)"
               color="#ffffff"
               hoverBackgroundColor="#ffffff"
               hoverColor="#000000"
