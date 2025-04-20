@@ -4,6 +4,7 @@ import {
   ProductionHomePage,
   ProductionAboutPage,
   ProductionPricePage,
+  ProductionEndCtaPage,
 } from "../../components/ProdSubPage";
 import { SmallLoader } from "../../components";
 
@@ -91,16 +92,30 @@ const Production = () => {
           <SmallLoader />
         </section>
       )}
-        {loadedSections.includes(2) && (
+      {loadedSections.includes(2) && (
         <section
           className="production-price"
-          data-index={1}
+          data-index={2}
           ref={(el) => (sectionRefs.current[2] = el)}
         >
           <ProductionPricePage />
         </section>
       )}
       {loadingSections.includes(3) && (
+        <section className="section-loader">
+          <SmallLoader />
+        </section>
+      )}
+      {loadedSections.includes(3) && (
+        <section
+          className="production-end"
+          data-index={3}
+          ref={(el) => (sectionRefs.current[3] = el)}
+        >
+          <ProductionEndCtaPage />
+        </section>
+      )}
+      {loadingSections.includes(4) && (
         <section className="section-loader">
           <SmallLoader />
         </section>

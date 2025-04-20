@@ -1,8 +1,7 @@
 import "./Home.scss";
 import { motion } from "framer-motion";
 import useFetchData from "../../hooks/useFetchData";
-import AnimatedCircularProgressBar from "../../components/ui/animated-circular-progress-bar";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import Loader from "../../components/Loader/Loader";
 import Particles from "../../components/ui/particles";
 
