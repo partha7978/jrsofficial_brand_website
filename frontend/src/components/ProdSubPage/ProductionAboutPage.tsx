@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { VideoPlayer } from "..";
 import useFetchData from "../../hooks/useFetchData";
 import { getFileAsset } from "@sanity/asset-utils";
+import { ProductionReusuableSeparator } from "./";
 
 const ProductionAboutPage = () => {
   const {
@@ -20,7 +21,7 @@ const ProductionAboutPage = () => {
   const [mainData, setMainData] = useState(null);
   const [mainVideoData, setMainVideoData] = useState<string>("");
   const [bgVideo, setBgVideo] = useState<string>("");
-  
+
   useEffect(() => {
     if (data) {
       setMainData(data.featuredPodcast[0]);
@@ -55,10 +56,7 @@ const ProductionAboutPage = () => {
       {mainData && (
         <section className="production-about-main">
           <div className="production-about-main-header">
-            <div className="separator">
-              <div className="separator-large"></div>
-              <div className="separator-small"></div>
-            </div>
+            <ProductionReusuableSeparator color={"#ffffff"} />
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: [30, 0] }}

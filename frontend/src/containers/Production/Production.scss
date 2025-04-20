@@ -38,6 +38,26 @@
   width: 100%;
   background-color: var(--bg-black-color);
 
+  .separator {
+    @include flex-row-center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+
+    &-large {
+      width: 70px;
+      border-radius: 10px;
+      @media screen and (max-width: 650px) {
+        width: 40px;
+      }
+    }
+
+    &-small {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+  }
+
   &-home {
     @include flex-column-center;
     width: 100%;
@@ -177,7 +197,7 @@
     @include flex-column-center;
 
     &-main {
-      padding: 2rem 4rem;
+      padding: 2rem 4rem 4rem 4rem;
       width: 80%;
       align-self: center;
       gap: 1.5rem;
@@ -207,28 +227,6 @@
           margin: 1rem 0 2rem 0;
         }
 
-        .separator {
-          @include flex-row-center;
-          gap: 0.5rem;
-          margin: 1rem 0;
-
-          &-large {
-            width: 70px;
-            border: 2px solid var(--white-color-text-primary);
-            border-radius: 10px;
-            @media screen and (max-width: 650px) {
-              width: 40px;
-            }
-          }
-
-          &-small {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: var(--white-color-text-primary);
-          }
-        }
-
         h1 {
           font-size: 4rem;
           font-weight: 600;
@@ -245,7 +243,7 @@
             width: 100%;
             line-height: 105%;
             // text-align: left;
-        }
+          }
         }
       }
 
@@ -282,6 +280,165 @@
           left: 50%;
           transform: translate(-50%, -50%);
           z-index: 2;
+        }
+      }
+    }
+  }
+
+  &-price {
+    width: 100%;
+    @include flex-column-center;
+    background-color: var(--bg-sky-color);
+
+    &-main {
+      padding: 2rem 4rem;
+      width: 80%;
+      align-self: center;
+      gap: 1.5rem;
+      color: var(--black-color-text-primary);
+
+      @media screen and (max-width: 1600px) {
+        width: 90%;
+      }
+
+      @media screen and (max-width: 1100px) {
+        width: 100%;
+      }
+
+      @media screen and (max-width: 768px) {
+        padding: 0 0 2rem 0;
+        width: 90%;
+        grid-template-columns: 1fr;
+      }
+
+      &-heading {
+        @include flex-column-center;
+        gap: 0.5rem;
+        text-align: center;
+        margin: 2rem 0;
+
+        @media screen and (max-width: 768px) {
+          margin: 1rem 0;
+        }
+
+        &-text {
+          @include flex-row-center;
+
+          h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            line-height: 100%;
+            margin: 0;
+            width: 70%;
+            text-align: center;
+
+            @media screen and (max-width: 1300px) {
+              font-size: 3rem;
+            }
+
+            @media screen and (max-width: 768px) {
+              font-size: 2.2rem;
+              width: 100%;
+              line-height: 105%;
+            }
+          }
+        }
+
+        &-subtext {
+          margin: 1rem 0;
+
+          span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: 1px;
+            color: var(--black-color-text-tertiary);
+
+            @media screen and (max-width: 768px) {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+
+      &-content {
+        @include flex-row-center;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+        }
+
+        &-item {
+          @include flex-col-center-start;
+          align-items: stretch;
+          gap: 0.5rem;
+          background-color: var(--bg-white-color);
+          border-radius: 16px;
+          width: 45%;
+          height: auto;
+          padding: 2rem;
+
+          @media screen and (max-width: 768px) {
+            width: 100%;
+            padding: 1.5rem;
+          }
+
+          &-heading {
+            @include flex-row-center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            h2 {
+              font-size: 2.2rem;
+              font-weight: 600;
+              line-height: 100%;
+            }
+
+            .price {
+              font-size: 1.5rem;
+              font-weight: 600;
+              line-height: 100%;
+              color: var(--gray-color-text-dark-2);
+              @include flex-column-center;
+              gap: 0.1rem;
+
+              span:last-of-type {
+                font-size: 0.8rem;
+                font-weight: 600;
+                line-height: 100%;
+              }
+            }
+
+            @media screen and (max-width: 1050px) {
+              h2 {
+                font-size: 1.8rem;
+              }
+
+              .price {
+                font-size: 1.2rem;
+              }
+            }
+          }
+
+          &-list {
+            @include flex-col-center-start;
+            gap: 1rem;
+            margin: 1rem 0;
+
+            &-item {
+              @include flex-row-center;
+              gap: 0.5rem;
+              font-size: 1rem;
+              font-weight: 500;
+              line-height: 100%;
+            }
+          }
+
+          &-action {
+            @include flex-row-center;
+          }
         }
       }
     }

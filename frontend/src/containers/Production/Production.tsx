@@ -3,6 +3,7 @@ import "./Production.scss";
 import {
   ProductionHomePage,
   ProductionAboutPage,
+  ProductionPricePage,
 } from "../../components/ProdSubPage";
 import { SmallLoader } from "../../components";
 
@@ -86,6 +87,20 @@ const Production = () => {
         </section>
       )}
       {loadingSections.includes(2) && (
+        <section className="section-loader">
+          <SmallLoader />
+        </section>
+      )}
+        {loadedSections.includes(2) && (
+        <section
+          className="production-price"
+          data-index={1}
+          ref={(el) => (sectionRefs.current[2] = el)}
+        >
+          <ProductionPricePage />
+        </section>
+      )}
+      {loadingSections.includes(3) && (
         <section className="section-loader">
           <SmallLoader />
         </section>

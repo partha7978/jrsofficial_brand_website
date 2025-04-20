@@ -143,11 +143,13 @@
   --bg-black-color-contrast: #141414;
   --bg-black-color-contrast-2: #313337;
   --bg-black-color-contrast-3: #3e3e3e;
+  --bg-sky-color: #bce4e9;
   --black-color-text-primary: #000000;
   --black-color-text-secondary: #141414;
   --black-color-text-tertiary: #313337;
   --black-color-text-quaternary: #3e3e3e;
   --gray-color-text-dark: rgba(194, 194, 194, 0.5);
+  --gray-color-text-dark-2: #a0a0a0;
   --primary-color-text-contrast-2: #ffca85;
 
   --bg-course-page-yellow: rgb(255, 151, 0);
