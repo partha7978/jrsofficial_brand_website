@@ -7,6 +7,7 @@ import "./Accordion.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { urlFor } from "../../../client/client";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface AccordionProps extends AccordionStyleProps {
   accordionData: AccordionDataProps[];
@@ -61,21 +62,28 @@ const AccordionItem = ({
           <IoIosArrowDown />
         </div>
       </div>
-      <div
-        className="accordion-content"
-        style={{
-          maxHeight: showAccordion ? "500px" : "0px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          className="accordion-divider"
-          style={{
-            backgroundColor: color ?? "#ffffff",
-          }}
-        ></div>
-        {item.faqItemText}
-      </div>
+
+      <AnimatePresence initial={false}>
+        {showAccordion && (
+          <motion.div
+            key="accordion-content"
+            className="accordion-content"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              className="accordion-divider"
+              style={{
+                backgroundColor: color ?? "#ffffff",
+              }}
+            ></div>
+            {item.faqItemText}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
