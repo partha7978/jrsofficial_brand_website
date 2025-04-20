@@ -5,6 +5,7 @@ import {
   ProductionAboutPage,
   ProductionPricePage,
   ProductionEndCtaPage,
+  ProductionDynamicAccordionPage,
 } from "../../components/ProdSubPage";
 import { SmallLoader } from "../../components";
 
@@ -94,11 +95,11 @@ const Production = () => {
       )}
       {loadedSections.includes(2) && (
         <section
-          className="production-price"
+          className="production-accordion"
           data-index={2}
           ref={(el) => (sectionRefs.current[2] = el)}
         >
-          <ProductionPricePage />
+          <ProductionDynamicAccordionPage />
         </section>
       )}
       {loadingSections.includes(3) && (
@@ -108,14 +109,28 @@ const Production = () => {
       )}
       {loadedSections.includes(3) && (
         <section
-          className="production-end"
+          className="production-price"
           data-index={3}
           ref={(el) => (sectionRefs.current[3] = el)}
+        >
+          <ProductionPricePage />
+        </section>
+      )}
+      {loadingSections.includes(4) && (
+        <section className="section-loader">
+          <SmallLoader />
+        </section>
+      )}
+      {loadedSections.includes(4) && (
+        <section
+          className="production-end"
+          data-index={4}
+          ref={(el) => (sectionRefs.current[4] = el)}
         >
           <ProductionEndCtaPage />
         </section>
       )}
-      {loadingSections.includes(4) && (
+      {loadingSections.includes(5) && (
         <section className="section-loader">
           <SmallLoader />
         </section>

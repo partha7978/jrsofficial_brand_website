@@ -285,6 +285,200 @@
     }
   }
 
+  &-accordion {
+    width: 100%;
+    @include flex-column-center;
+
+    &-main {
+      padding: 4rem;
+      width: 80%;
+      align-self: center;
+      gap: 1.5rem;
+      color: var(--white-color-text-primary);
+
+      @media screen and (max-width: 1600px) {
+        width: 90%;
+      }
+
+      @media screen and (max-width: 1100px) {
+        width: 100%;
+      }
+
+      @media screen and (max-width: 768px) {
+        padding: 3rem 0 5rem 0;
+        width: 90%;
+        grid-template-columns: 1fr;
+      }
+
+      &-heading {
+        @include flex-column-center;
+        gap: 0.5rem;
+        text-align: center;
+        margin: 1.5rem 0 4rem 0;
+
+        @media screen and (max-width: 768px) {
+          margin: 1rem 0;
+        }
+
+        h1 {
+          font-size: 4rem;
+          font-weight: 600;
+          line-height: 100%;
+          margin: 0;
+          width: 70%;
+          text-align: center;
+
+          @media screen and (max-width: 1300px) {
+            font-size: 3rem;
+          }
+
+          @media screen and (max-width: 768px) {
+            font-size: 2.2rem;
+            width: 100%;
+            line-height: 105%;
+          }
+        }
+      }
+
+      &-content {
+        @include flex-row-center;
+        gap: 2rem;
+        justify-content: space-between;
+
+        @media screen and (max-width: 768px) {
+          margin-top: 4rem;
+        }
+
+        &-action {
+          @include flex-col-center-start;
+          gap: 2rem;
+
+          &-item {
+            @include flex-col-center-start;
+            gap: 0.5rem;
+            cursor: pointer;
+
+            &-heading {
+              h2 {
+                font-size: 2.2rem;
+                font-weight: 600;
+                line-height: 100%;
+                color: var(--gray-color-text-dark-2);
+              }
+            }
+
+            &-description {
+              span {
+                font-size: 1.2rem;
+                font-weight: 400;
+                line-height: 100%;
+                color: var(--gray-color-text-dark-2);
+              }
+            }
+
+            &-image {
+              display: none;
+              width: 100%;
+              margin-top: 1rem;
+              position: relative;
+
+              img {
+                width: 100%;
+                height: 250px;
+                border-radius: 20px;
+                object-fit: cover;
+              }
+
+              .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                  to top,
+                  var(--bg-black-color),
+                  transparent
+                );
+                z-index: 1;
+              }
+            }
+
+            &.active {
+              h2 {
+                color: var(--white-color-text-primary);
+              }
+
+              span {
+                color: var(--white-color-text-tertiary);
+              }
+            }
+
+            @media screen and (max-width: 768px) {
+              &-heading {
+                h2 {
+                  font-size: 1.5rem;
+                }
+              }
+
+              &-description {
+                span {
+                  font-size: 0.8rem;
+                }
+              }
+              &-image {
+                display: block;
+              }
+            }
+          }
+
+          .dynamic-progressbar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--gray-color-text-dark);
+            border-radius: 10px;
+            overflow: hidden;
+
+            .progress {
+              height: 100%;
+              transition: width 0.22s ease-out; /* Smooth transition */
+
+              background-color: var(--white-color-text-primary);
+            }
+          }
+        }
+
+        &-image {
+          position: relative;
+          @media screen and (max-width: 768px) {
+            display: none;
+          }
+
+          img {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            object-fit: cover;
+          }
+
+          .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              to left,
+              var(--bg-black-color),
+              transparent
+            );
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+
   &-price {
     width: 100%;
     @include flex-column-center;
