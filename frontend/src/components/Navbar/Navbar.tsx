@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import useFetchData from "../../hooks/useFetchData";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ShimmerButton from "../ui/shimmer-button";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
@@ -10,6 +10,7 @@ import { MdArrowForward } from "react-icons/md";
 import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
 import { NavLink } from "react-router";
 import { EpisodesArraySchemaForSlider } from "../../interfaces/interface";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = () => {
   const navbarLinksSchema = [
@@ -22,7 +23,7 @@ const Navbar = () => {
     },
     {
       name: "Work With Me",
-      extraLinks: ['courses', 'production'],
+      extraLinks: ["courses", "production"],
       link: "work",
     },
     { name: "Contact", extraLinks: false, link: "contact" },
@@ -32,6 +33,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollYNumber }: any = useCalculateScrollAndWidth();
   const [navbarLinks, setNavbarLinks] = useState(navbarLinksSchema);
+  const [smallScreenAccordion, setSmallScreenAccordion] = useState(-1);
 
   // for episodes navbar items starts
   const {
@@ -53,7 +55,7 @@ const Navbar = () => {
         episodesData.map((card) => card.category)
       );
       setNavbarLinks(updatedNavbarLinks);
-      console.log(updatedNavbarLinks, 'eeeeeeeeeee');
+      console.log(updatedNavbarLinks, "eeeeeeeeeee");
     }
   }, [episodesData]);
   // for episodes navbar items ends
@@ -74,8 +76,19 @@ const Navbar = () => {
     setMenuOpen(true);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (closeSubMenu?: boolean) => {
     setMenuOpen(false);
+    if (closeSubMenu) {
+      setSmallScreenAccordion(-1);
+    }
+  };
+
+  const handleSubMenu = (index: number) => {
+    if (smallScreenAccordion === index) {
+      setSmallScreenAccordion(-1);
+    } else {
+      setSmallScreenAccordion(index);
+    }
   };
 
   return (
@@ -110,7 +123,7 @@ const Navbar = () => {
                           className="app__navbar-links-item-extra-link"
                         >
                           <motion.span
-                            key={extraLink.name}
+                            key={extraLink}
                             whileInView={{
                               opacity: [0, 1],
                               transition: {
@@ -149,7 +162,7 @@ const Navbar = () => {
               className={`app__navbar-hamburgerMenu-overlay ${
                 menuOpen ? "active" : ""
               }`}
-              onClick={handleMenuClose}
+              onClick={() => handleMenuClose(true)}
             ></div>
             {/* sliding menu content */}
             <div
@@ -160,25 +173,81 @@ const Navbar = () => {
               <div className="menu-item__container">
                 <IoClose
                   className="menu-close-icon"
-                  onClick={handleMenuClose}
+                  onClick={() => handleMenuClose(true)}
                 />
                 <h1 className="menu-item__container-title">THEJRSSHOW</h1>
                 <div className="menu-item__container-links">
-                  {navbarLinks.map((item) => (
-                    <NavLink
-                      to={item.link}
-                      key={item.link}
-                      className="hamburger-link"
-                    >
-                      <div
-                        className="menu-item__container-link"
-                        onClick={() => handleMenuClose()}
+                  {navbarLinks?.map((item, index) =>
+                    item.extraLinks && item.extraLinks?.length > 0 ? (
+                      <>
+                        <div
+                          className="menu-item__container-link"
+                          onClick={() => handleSubMenu(index)}
+                        >
+                          {item.name}
+                          {smallScreenAccordion === index ? (
+                            <IoIosArrowDown
+                              style={{
+                                transform: "rotate(180deg)",
+                                transition: "transform 0.3s ease-in-out",
+                              }}
+                            />
+                          ) : (
+                            <IoIosArrowDown />
+                          )}
+                        </div>
+                        <AnimatePresence mode="wait">
+                          {smallScreenAccordion === index && (
+                            <motion.div
+                              className="extra-link-container"
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.1, ease: "backInOut" }}
+                            >
+                              {item.extraLinks?.map((extraLink: any, idx) => (
+                                <motion.div
+                                  key={extraLink}
+                                  initial={{ y: 20, opacity: 0 }}
+                                  animate={{ y: 0, opacity: 1 }}
+                                  exit={{ y: 20, opacity: 0 }}
+                                  transition={{
+                                    duration: 0.25,
+                                    ease: "easeInOut",
+                                    delay: idx * 0.05,
+                                  }}
+                                >
+                                  <NavLink
+                                    to={`/${
+                                      item.link
+                                    }/${extraLink.toLowerCase()}`}
+                                    className="extra-link-container-extra"
+                                    onClick={() => handleMenuClose(false)}
+                                  >
+                                    <span>{extraLink}</span>
+                                  </NavLink>
+                                </motion.div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <NavLink
+                        to={item.link}
+                        key={item.link}
+                        className="hamburger-link"
                       >
-                        {item.name}
-                        <MdArrowForward />
-                      </div>
-                    </NavLink>
-                  ))}
+                        <div
+                          className="menu-item__container-link"
+                          onClick={() => handleMenuClose(true)}
+                        >
+                          {item.name}
+                          <MdArrowForward />
+                        </div>
+                      </NavLink>
+                    )
+                  )}
                 </div>
                 <div className="menu-item__container-redirect">
                   <a href={data.redirectLink} target="_blank" rel="noreferrer">

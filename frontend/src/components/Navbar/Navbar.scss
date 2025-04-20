@@ -207,11 +207,12 @@
             display: none;
           }
 
-          &:hover, &.active {
+          &:hover,
+          &.active {
             span {
               background-color: var(--bg-black-color-contrast);
               color: var(--white-color-text-primary);
-              color: var(--primary-color-contrast)
+              color: var(--primary-color-contrast);
             }
 
             img.extra-link-hover-img {
@@ -261,7 +262,6 @@
 
         div {
           box-shadow: none !important;
-          // display: none !important;
         }
 
         svg {
@@ -420,6 +420,35 @@
             font-weight: 600;
             background-color: #ffeace;
             border-radius: 10px;
+          }
+        }
+
+        .extra-link-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: hidden;
+          transition: all 0.3s ease-in-out;
+
+          &-extra {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color-light);
+            color: var(--black-color-text-primary);
+            border-radius: 6px;
+
+            font-size: 0.8rem;
+            font-weight: 600;
+
+            &.active {
+              background-color: var(--primary-color-contrast-2);
+            }
           }
         }
       }
