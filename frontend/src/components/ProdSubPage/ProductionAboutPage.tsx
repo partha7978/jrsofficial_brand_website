@@ -25,7 +25,6 @@ const ProductionAboutPage = () => {
   useEffect(() => {
     if (data) {
       setMainData(data.secondPage[0]);
-      console.log(data.secondPage[0]);
       const bgVideoAsset = getFileAsset(
         data.secondPage[0]?.mainBackgroundVideo,
         { projectId, dataset }
