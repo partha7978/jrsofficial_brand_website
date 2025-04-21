@@ -29,7 +29,6 @@ const useFetchData = (
         setLoading(true);
         const fetchedData = await client.fetch(query);
         dispatch(setLoadingValue(70));
-        console.log(fetchedData, url, "---------------");
         setData(fetchedData.length > 1 ? fetchedData : fetchedData[0]);
         dispatch(setLoadingValue(90));
       } catch (err: any) {

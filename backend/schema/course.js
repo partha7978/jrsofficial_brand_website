@@ -85,7 +85,12 @@ export default {
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) =>
+                Rule.required().custom((image) => {
+                  if (!image || !image.asset) return true
+                  const extension = getExtension(image.asset._ref)
+                  return extension === 'webp' ? true : 'Only .webp format images are allowed.'
+                }),
             },
             {
               name: 'miniFormTitle',
@@ -134,6 +139,12 @@ export default {
               options: {
                 hotspot: true,
               },
+              validation: (Rule) =>
+                Rule.required().custom((image) => {
+                  if (!image || !image.asset) return true
+                  const extension = getExtension(image.asset._ref)
+                  return extension === 'webp' ? true : 'Only .webp format images are allowed.'
+                }),
             },
             {
               name: 'aboutCardTitle',
@@ -540,7 +551,7 @@ export default {
             },
             {
               name: 'imageCTALink',
-              title: 'Link to be opened when image is clicked',
+              title: 'Link to be opened when button is clicked',
               type: 'url',
               validation: (Rule) => Rule.required(),
             },

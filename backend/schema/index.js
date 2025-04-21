@@ -7,6 +7,7 @@ import contact from './contact'
 import mainAboutPage from './mainAboutPage'
 import course from './course'
 import userSubmittedData from './userSubmittedData'
+import production from './production'
 
 export const schemaTypes = [
   navigationBar,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   mainAboutPage,
   course,
   userSubmittedData, 
+  production,
 ]

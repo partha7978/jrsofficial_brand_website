@@ -14,7 +14,7 @@ const ProductionAboutPage = () => {
   }: {
     data: any;
     error: any;
-  } = useFetchData("course", "featuredPodcast");
+  } = useFetchData("production", "secondPage");
   const projectId = import.meta.env.VITE_API_KEY_PROJECTID;
   const dataset = "production";
 
@@ -24,17 +24,18 @@ const ProductionAboutPage = () => {
 
   useEffect(() => {
     if (data) {
-      setMainData(data.featuredPodcast[0]);
+      setMainData(data.secondPage[0]);
+      console.log(data.secondPage[0]);
       const bgVideoAsset = getFileAsset(
-        data.featuredPodcast[0]?.podcastVideo[0]?.podcastBackgroundVideo,
+        data.secondPage[0]?.mainBackgroundVideo,
         { projectId, dataset }
       );
       setBgVideo(bgVideoAsset.url);
 
-      const mainVideoAsset = getFileAsset(
-        data.featuredPodcast[0]?.podcastVideo[0]?.podcastVideo,
-        { projectId, dataset }
-      );
+      const mainVideoAsset = getFileAsset(data.secondPage[0]?.mainVideo, {
+        projectId,
+        dataset,
+      });
       setMainVideoData(mainVideoAsset.url);
     }
   }, [data]);
@@ -64,8 +65,7 @@ const ProductionAboutPage = () => {
               viewport={{ once: true }}
               className="production-about-main-header-title"
             >
-              Learn the strategies JRS uses to generate 50 Lakh+ per year with
-              100+ clients
+              {mainData?.heading}
             </motion.h1>
           </div>
           <motion.div

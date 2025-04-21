@@ -8,6 +8,7 @@ import {
   ProductionDynamicAccordionPage,
 } from "../../components/ProdSubPage";
 import { SmallLoader } from "../../components";
+import Footer from "../Footer/Footer";
 
 const Production = () => {
   const [loadedSections, setLoadedSections] = useState<number[]>([0]); // load only first section
@@ -21,11 +22,14 @@ const Production = () => {
     if (rootElement && rootElement.style) {
       rootElement.style.background = "#000000";
       rootElement.style.height = "100%";
+      document.body.style.background = "#000000";
+
     }
 
     return () => {
       if (rootElement && rootElement.style) {
         rootElement.style.background = "#FBF7EC";
+        document.body.style.background = "#FBF7EC";
         rootElement.style.height = "auto";
       }
     };
@@ -139,4 +143,6 @@ const Production = () => {
   );
 };
 
-export default Production;
+export const ProductionWithFooter = Footer(Production);
+
+export default ProductionWithFooter;

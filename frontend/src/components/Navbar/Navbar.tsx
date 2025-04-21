@@ -55,7 +55,6 @@ const Navbar = () => {
         episodesData.map((card) => card.category)
       );
       setNavbarLinks(updatedNavbarLinks);
-      console.log(updatedNavbarLinks, "eeeeeeeeeee");
     }
   }, [episodesData]);
   // for episodes navbar items ends
