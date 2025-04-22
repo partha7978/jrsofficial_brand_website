@@ -747,7 +747,7 @@
 
   &-membership {
     height: auto;
-    padding: 4rem;
+    padding: 4rem 4rem 0 4rem;
     width: 80%;
     @include flex-column-center;
     align-self: center;
@@ -766,7 +766,7 @@
     }
 
     @media screen and (max-width: 768px) {
-      padding: 4rem 0 4rem 0;
+      padding: 2rem 0 2rem 0;
       width: 90%;
       margin-top: 0;
     }
@@ -824,8 +824,8 @@
 
       @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 2rem 0;
+        gap: 2rem;
+        padding: 1rem 0;
       }
 
       &::before {
@@ -990,7 +990,7 @@
     }
 
     @media screen and (max-width: 768px) {
-      padding: 2rem 0 4rem 0;
+      padding: 2rem 0 2rem 0;
       width: 90%;
       margin-top: 0;
     }
@@ -1082,7 +1082,7 @@
     }
 
     @media screen and (max-width: 768px) {
-      padding: 2rem 0 4rem 0;
+      padding: 2rem 0 2rem 0;
       width: 90%;
       margin-top: 0;
     }
@@ -1146,6 +1146,12 @@
         }
       }
     }
+  }
+
+  &-testimonial {
+    height: auto;
+    width: 100%;
+    @include flex-row-center;
   }
 
   &-accordion {

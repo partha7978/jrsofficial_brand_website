@@ -15,8 +15,9 @@ import {
   CourseStillHaveQuestionSection,
   CourseGallerySection,
 } from "../../components/SubPage";
+import { VideoTestimonial } from "../../components";
 
-const Course = () => {;
+const Course = () => {
   const [loadedSections, setLoadedSections] = useState<number[]>([0]); // load only first section
   const [loadingSections, setLoadingSections] = useState<number[]>([]);
 
@@ -33,7 +34,7 @@ const Course = () => {;
     return () => {
       if (rootElement && rootElement.style) {
         rootElement.style.background = "#FBF7EC";
-        rootElement.style.overflow = "auto";
+        rootElement.style.overflow = "";
       }
     };
   }, []);
@@ -173,11 +174,11 @@ const Course = () => {;
       )}
       {loadedSections.includes(7) && (
         <section
-          className="course-accordion"
+          className="course-testimonial"
           data-index={7}
           ref={(el) => (sectionRefs.current[7] = el)}
         >
-          <CourseAccordionSection />
+          <VideoTestimonial />
         </section>
       )}
       {loadingSections.includes(8) && (
@@ -187,11 +188,11 @@ const Course = () => {;
       )}
       {loadedSections.includes(8) && (
         <section
-          className="section-still-have-question-section"
+          className="course-accordion"
           data-index={8}
           ref={(el) => (sectionRefs.current[8] = el)}
         >
-          <CourseStillHaveQuestionSection />
+          <CourseAccordionSection />
         </section>
       )}
       {loadingSections.includes(9) && (
@@ -201,9 +202,23 @@ const Course = () => {;
       )}
       {loadedSections.includes(9) && (
         <section
-          className="course-gallery"
+          className="section-still-have-question-section"
           data-index={9}
           ref={(el) => (sectionRefs.current[9] = el)}
+        >
+          <CourseStillHaveQuestionSection />
+        </section>
+      )}
+      {loadingSections.includes(10) && (
+        <section className="section-loader">
+          <SmallLoader />
+        </section>
+      )}
+      {loadedSections.includes(10) && (
+        <section
+          className="course-gallery"
+          data-index={10}
+          ref={(el) => (sectionRefs.current[10] = el)}
         >
           <CourseGallerySection />
         </section>

@@ -1,0 +1,207 @@
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-col-center-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@mixin flex-row-center-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.videoTestimonial {
+  height: auto;
+  padding: 4rem;
+  width: 80%;
+  @include flex-column-center;
+  align-self: center;
+  background-color: var(--bg-black-color);
+  color: var(--white-color-text-primary);
+  will-change: transform;
+  z-index: 4;
+  background: transparent;
+  gap: 2rem;
+
+  @media screen and (max-width: 1600px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 2rem 0 2rem 0;
+    width: 90%;
+    margin-top: 0;
+  }
+
+  &-heading {
+    width: 100%;
+    @include flex-col-center-start;
+    gap: 1rem;
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 120%;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &-content {
+    @include flex-column-center;
+    gap: 1rem;
+    width: 100%;
+
+    &-items {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+
+      // Hide scrollbar on Webkit browsers (Chrome, Safari)
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      // Hide scrollbar on Firefox
+      scrollbar-width: none;
+
+      // Optional: For better mobile experience
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+
+      @media screen and (max-width: 768px) {
+        gap: 10px;
+      }
+
+      &-item {
+        height: 100%;
+        flex-wrap: nowrap;
+
+        flex: 0 0 calc(40% - 10px);
+        border-radius: 25px;
+        min-height: 550px;
+        height: 550px;
+        max-width: 350px;
+        position: relative;
+
+        @media screen and (max-width: 1000px) {
+          flex: 0 0 calc(50% - 10px);
+        }
+
+        @media screen and (max-width: 768px) {
+          flex: 0 0 calc(100% - 24px);
+        }
+
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 20px;
+        }
+
+        .watchBtn {
+          position: absolute;
+          top: 80%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          font-size: 2rem;
+          padding: 0.4rem;
+          border-radius: 50%;
+          color: var(--black-color-text-primary);
+          background-color: var(--bg-white-color);
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+
+          svg {
+            height: 24px;
+            width: 24px;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            background-color: var(--primary-color-contrast-2);
+
+            svg {
+              transform: rotate(-45deg);
+            }
+          }
+        }
+
+        .video-overlay {
+          position: absolute;
+          border-radius: 20px 0 0 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+          z-index: 1;
+        }
+      }
+    }
+
+    &-action {
+      @include flex-row-center;
+      justify-content: flex-end;
+      gap: 1rem;
+      width: 100%;
+
+      button {
+        background-color: var(--bg-white-color);
+        color: var(--black-color-text-primary);
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: var(--bg-course-page-yellow);
+        }
+
+        svg {
+          height: 24px;
+          width: 24px;
+        }
+      }
+    }
+  }
+}
