@@ -4,11 +4,13 @@ import { VscDebugBreakpointLog } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import useFetchData from "../../hooks/useFetchData";
 import { urlFor } from "../../../client/client";
+import Loader from "../Loader/Loader";
 
 const ProductionHomePage = () => {
   const {
     data,
     error,
+    loading,
   }: {
     data: any;
     error: any;
@@ -24,6 +26,7 @@ const ProductionHomePage = () => {
 
   return (
     <>
+      {loading && <h2 style={{ color: "#ffffff" }}>Loading ...</h2>}
       {error && <h1>Something went wrong</h1>}
       {mainData && (
         <motion.section
