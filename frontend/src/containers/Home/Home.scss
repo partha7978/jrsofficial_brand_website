@@ -3,6 +3,11 @@
   width: 100%;
 
   background: var(--gradient-black-bg);
+  min-height: 650px;
+  
+  @media screen and (max-width: 768px) {
+    min-height: 800px;
+  }
 
   &-main {
     display: flex;
@@ -32,6 +37,7 @@
           text-align: center;
           text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
           margin: 0;
+          line-height: 120%;
 
           @media screen and (max-height: 800px) {
             font-size: 4rem;
@@ -79,11 +85,17 @@
         }
       }
 
+      .homepage-cta {
+        margin-top: 2rem;
+
+        @media screen and (max-height: 768px) {
+          margin-top: 1rem;
+        }
+      }
+
       @media screen and (max-height: 750px) {
         top: 20%;
       }
     }
-
-   
   }
 }

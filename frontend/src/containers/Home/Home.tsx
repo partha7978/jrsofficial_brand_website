@@ -4,6 +4,7 @@ import useFetchData from "../../hooks/useFetchData";
 import React, { Suspense } from "react";
 import Loader from "../../components/Loader/Loader";
 import Particles from "../../components/ui/particles";
+import { Button } from "../../components";
 
 const Home = () => {
   const { data, loading, error } = useFetchData(
@@ -47,6 +48,19 @@ const Home = () => {
             >
               <p>{data.mainSubheading}</p>
             </motion.div>
+            <div className="homepage-cta">
+              <Button
+                name="Get Started"
+                backgroundColor="#ffffff"
+                color="#000000"
+                hoverBackgroundColor="#ffca85"
+                hoverColor="#000000"
+                action="redirectExternal"
+                actionData={
+                  "https://www.linkedin.com/in/partha-sarathi-muduli/"
+                }
+              />
+            </div>
           </section>
           <Suspense fallback={<Loader />}>
             <MainMarquee />
