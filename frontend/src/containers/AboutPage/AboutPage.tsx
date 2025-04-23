@@ -8,6 +8,7 @@ import Loader from "../../components/Loader/Loader";
 import { urlFor } from "../../../client/client";
 import { MainAboutPageSchema } from "../../interfaces/interface";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const AboutPage = () => {
   const [about, setAbout] = useState<MainAboutPageSchema | null>(null);
@@ -40,45 +41,126 @@ const AboutPage = () => {
         <>
           <section className="aboutPage-heading">
             <div className="heading-container">
-              <h1>{about.title || "About Us"}</h1>
-              <span>{about.description}</span>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {about.title || "About Us"}
+              </motion.h1>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "backInOut", delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                {about.description}
+              </motion.span>
             </div>
           </section>
-          <section className="aboutPage-main">
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+            viewport={{ once: true }}
+            className="aboutPage-main"
+          >
             <div className="aboutPage-main-top">
               <div className="aboutPage-main-top-text">
-                <h2>{about.logoName}</h2>
-                <span>{about.logoDesc}</span>
+                <motion.h2
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  {about.logoName}
+                </motion.h2>
+                <motion.span
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  {about.logoDesc}
+                </motion.span>
               </div>
               <div className="aboutPage-main-top-img">
-                <img
+                <motion.img
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                  viewport={{ once: true }}
                   src={urlFor(about.featuredImage).url()}
                   alt="About Us Image"
                   loading="lazy"
                 />
               </div>
             </div>
-            <div className="aboutPage-main-stats">
-              <div className="aboutPage-main-stats-item">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="aboutPage-main-stats"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+                className="aboutPage-main-stats-item"
+              >
                 <h2>{about.views || "N/A"}+</h2>
                 <span>Views</span>
-              </div>
-              <div className="aboutPage-main-stats-item">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+                viewport={{ once: true }}
+                className="aboutPage-main-stats-item"
+              >
                 <h2>{about.impressions || "N/A"}+</h2>
                 <span>Impression</span>
-              </div>
-              <div className="aboutPage-main-stats-item">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                viewport={{ once: true }}
+                className="aboutPage-main-stats-item"
+              >
                 <h2>{about.clients || "N/A"}+</h2>
                 <span>Clients</span>
-              </div>
-              <div className="aboutPage-main-stats-item">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.5 }}
+                viewport={{ once: true }}
+                className="aboutPage-main-stats-item"
+              >
                 <h2>{about.hosts || "N/A"}+</h2>
                 <span>Hosts</span>
-              </div>
-            </div>
-          </section>
-          <section className="aboutPage-cta">
-            <p>Because Every Contribution Counts — Let’s Keep the Momentum!</p>
+              </motion.div>
+            </motion.div>
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+            viewport={{ once: true }}
+            className="aboutPage-cta"
+          >
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Because Every Contribution Counts — Let’s Keep the Momentum!
+            </motion.p>
             <div className="aboutPage-cta-action">
               <Button
                 name="Subscribe Now"
@@ -101,7 +183,7 @@ const AboutPage = () => {
                 actionData={about.spotifyLink}
               ></Button>
             </div>
-          </section>
+          </motion.section>
           {about.highlights && (
             <section className="aboutPage-highlights">
               <BentoGrid highlights={about.highlights} />

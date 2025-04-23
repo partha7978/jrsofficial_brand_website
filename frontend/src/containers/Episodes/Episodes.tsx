@@ -140,12 +140,24 @@ const Episodes = () => {
         <div className="episodesPage">
           <section className="episodesPage-top">
             <div className="episodesPage-top-title">
-              <h1>Listen Featured Episodes</h1>
-              <span>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Listen Featured Episodes
+              </motion.h1>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 Explore vibrant soundscapes where stories of every kind come
                 alive, taking you on an immersive journey and through
                 captivating narratives.
-              </span>
+              </motion.span>
             </div>
             <div className="episodesPage-featureCards">
               {
@@ -160,17 +172,43 @@ const Episodes = () => {
           </section>
           <section className="episodesPage-episodes">
             <div className="episodesPage-episodes-title">
-              <h2>Our All Episodes</h2>
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Our All Episodes
+              </motion.h2>
             </div>
             <div
               className="episodesPage-episodes-filter"
               onClick={handleFilterSearch}
             >
-              <div className="filter-item selected">All</div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut"}}
+                viewport={{ once: true }}
+                className="filter-item selected"
+              >
+                All
+              </motion.div>
               {categories.map((category, index) => (
-                <div className="filter-item" key={category + index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "backInOut",
+                    delay: index * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                  className="filter-item"
+                  key={category + index}
+                >
                   {category}
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="episodesPage-episodes-cards__container">

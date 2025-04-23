@@ -8,6 +8,7 @@ import { ContactSchema } from "../../interfaces/interface";
 import Loader from "../../components/Loader/Loader";
 import Footer from "../Footer/Footer";
 import Testimonials from "../Testimonials/Testimonials";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -34,7 +35,7 @@ const Contact = () => {
       {error && <h1>Something went wrong</h1>}
       {loading && (
         <div style={{ marginBottom: "20rem" }}>
-           <Loader />
+          <Loader />
         </div>
       )}
       {contactData && (
@@ -43,12 +44,40 @@ const Contact = () => {
             <section className="contact">
               <div className="contact-data">
                 <div className="contact-data-title">
-                  <h1>{contactData.title}</h1>
+                  <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: 0.2,
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {contactData.title}
+                  </motion.h1>
                 </div>
                 <div className="contact-data-subtext">
-                  <span>{contactData.description}</span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: 0.3,
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {contactData.description}
+                  </motion.span>
                 </div>
-                <div className="contact-data-form">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="contact-data-form"
+                >
                   <form>
                     <div
                       className="contact-data-form-item"
@@ -93,16 +122,36 @@ const Contact = () => {
                       </button>
                     </div>
                   </form>
-                </div>
+                </motion.div>
                 <div className="contact-data-link">
-                  <div className="contact-data-link-item">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: 0.5,
+                    }}
+                    viewport={{ once: true }}
+                    className="contact-data-link-item"
+                  >
                     <MdOutlineMail />
                     <span>{contactData.email}</span>
-                  </div>
-                  <div className="contact-data-link-item">
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: 0.6,
+                    }}
+                    viewport={{ once: true }}
+                    className="contact-data-link-item"
+                  >
                     <FiPhoneCall />
                     <span>+91 {contactData.phone}</span>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </section>

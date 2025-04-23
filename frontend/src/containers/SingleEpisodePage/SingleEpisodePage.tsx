@@ -11,6 +11,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { ImPriceTags } from "react-icons/im";
 import { MdOutlineAccessTime } from "react-icons/md";
 import Footer from "../Footer/Footer";
+import { motion } from "framer-motion";
 
 const components = {
   block: {
@@ -78,9 +79,22 @@ const SingleEpisodePage = () => {
           <div className="singleEpisode-background"></div>
           <section className="singleEpisode">
             <div className="singleEpisode-title">
-              <h1>{data.title}</h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {data.title}
+              </motion.h1>
             </div>
-            <section className="singleEpisode-author-section">
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              viewport={{ once: true }}
+              className="singleEpisode-author-section"
+            >
               <div className="singleEpisode-author-section-name">
                 <FaRegUserCircle />
                 <span>{data?.speakerName}</span>
@@ -103,18 +117,35 @@ const SingleEpisodePage = () => {
                   <span>09:23</span>
                 </div>
               </div>
-            </section>
+            </motion.section>
             {data.relatedTags && (
               <div className="singleEpisode-chip">
-                {data.relatedTags.map((tag: Array<string>) => (
-                  <div key={tag} className="singleEpisode-chip-item">
+                {data.relatedTags.map((tag: Array<string>, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "backInOut",
+                      delay: index * 0.1,
+                    }}
+                    viewport={{ once: true }}
+                    key={tag}
+                    className="singleEpisode-chip-item"
+                  >
                     <ImPriceTags />
                     <span>{tag}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             )}
-            <div className="singleEpisode-thumbnail-img">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              viewport={{ once: true }}
+              className="singleEpisode-thumbnail-img"
+            >
               {data?.episodeMainImage && (
                 <img
                   src={urlFor(data?.episodeMainImage).url()}
@@ -122,7 +153,7 @@ const SingleEpisodePage = () => {
                   loading="lazy"
                 />
               )}
-            </div>
+            </motion.div>
             <section className="singleEpisode-desc">
               <h2 className="singleEpisode-desc-title">Episode Overview</h2>
               <PortableText value={data?.content} components={components} />
