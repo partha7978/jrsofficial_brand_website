@@ -28,27 +28,33 @@ const Home = () => {
         <div className="homepage-main">
           <section className="homepage-main-content">
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: [30, 0] }}
               transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
+              viewport={{ once: true }}
               className="main-heading"
               layoutId="main-heading"
-              viewport={{ once: true }}
             >
               <h1>{data.mainHeadingFirstLine}</h1>
               <h1>{data.mainHeadingSecondLine}</h1>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              viewport={{ once: true }}
               className="main-subheading"
               layoutId="main-subheading"
-              viewport={{ once: true }}
             >
               <p>{data.mainSubheading}</p>
             </motion.div>
-            <div className="homepage-cta">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, y: [30, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+              className="homepage-cta"
+            >
               <Button
                 name="Get Started"
                 backgroundColor="#ffffff"
@@ -60,7 +66,7 @@ const Home = () => {
                   "https://www.linkedin.com/in/partha-sarathi-muduli/"
                 }
               />
-            </div>
+            </motion.div>
           </section>
           <Suspense fallback={<Loader />}>
             <MainMarquee />
