@@ -8,6 +8,7 @@ import mainAboutPage from './mainAboutPage'
 import course from './course'
 import userSubmittedData from './userSubmittedData'
 import production from './production'
+import videoTestimonial from './videoTestimonial'
 
 export const schemaTypes = [
   navigationBar,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   course,
   userSubmittedData, 
   production,
+  videoTestimonial,
 ]
