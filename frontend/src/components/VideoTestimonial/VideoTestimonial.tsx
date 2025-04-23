@@ -78,21 +78,25 @@ const VideoTestimonial = () => {
                 Real People, Real Growth, Real Impact
               </motion.h2>
               <span>
-                From self-doubt to self-made. How our community members transformed their lives. 
+                From self-doubt to self-made. How our community members
+                transformed their lives.
               </span>
             </div>
             <div className="videoTestimonial-content">
-              <div className="videoTestimonial-content-items" ref={sliderRef}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: [30, 0] }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  ease: "backInOut",
+                  delay: 0.2,
+                }}
+                className="videoTestimonial-content-items"
+                ref={sliderRef}
+              >
                 {mainData.map((video, index) => (
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: [30, 0] }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      ease: "backInOut",
-                      delay: 0.2,
-                    }}
+                  <div
                     className="videoTestimonial-content-items-item"
                     key={video.title}
                   >
@@ -143,9 +147,9 @@ const VideoTestimonial = () => {
                         {video.name}
                       </motion.p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </div>
+              </motion.div>
               <div className="videoTestimonial-content-action">
                 <motion.button
                   initial={{ opacity: 0, x: -50 }}
