@@ -77,10 +77,15 @@ const VideoTestimonial = () => {
               >
                 Real People, Real Growth, Real Impact
               </motion.h2>
-              <span>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              >
                 From self-doubt to self-made. How our community members
                 transformed their lives.
-              </span>
+              </motion.span>
             </div>
             <div className="videoTestimonial-content">
               <motion.div
@@ -90,7 +95,7 @@ const VideoTestimonial = () => {
                 transition={{
                   duration: 0.5,
                   ease: "backInOut",
-                  delay: 0.2,
+                  delay: 0.4,
                 }}
                 className="videoTestimonial-content-items"
                 ref={sliderRef}
