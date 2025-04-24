@@ -1,7 +1,7 @@
 import "./Home.scss";
 import { motion } from "framer-motion";
 import useFetchData from "../../hooks/useFetchData";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import Particles from "../../components/ui/particles";
 import { Button } from "../../components";
@@ -9,8 +9,17 @@ import { Button } from "../../components";
 const Home = () => {
   const { data, loading, error } = useFetchData(
     "homepage",
-    "mainHeadingFirstLine,mainHeadingSecondLine,mainSubheading"
+    "mainHeadingFirstLine,mainHeadingSecondLine,mainSubheading,mainButton"
   );
+
+  const [mainData, setMainData] = useState(null);
+
+  useEffect(() => {
+    if (data) {
+      setMainData(data);
+      console.log(data, "mainData");
+    }
+  }, [data]);
 
   const MainMarquee = React.lazy(
     () => import("../../components/Marquee/MainMarquee")
@@ -24,7 +33,7 @@ const Home = () => {
     <section className="homepage">
       {error && <h1>Something went wrong</h1>}
       {loading && <Loader />}
-      {data && (
+      {mainData && (
         <div className="homepage-main">
           <section className="homepage-main-content">
             <motion.div
@@ -35,8 +44,8 @@ const Home = () => {
               className="main-heading"
               layoutId="main-heading"
             >
-              <h1>{data.mainHeadingFirstLine}</h1>
-              <h1>{data.mainHeadingSecondLine}</h1>
+              <h1>{mainData.mainHeadingFirstLine}</h1>
+              <h1>{mainData.mainHeadingSecondLine}</h1>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -46,7 +55,7 @@ const Home = () => {
               className="main-subheading"
               layoutId="main-subheading"
             >
-              <p>{data.mainSubheading}</p>
+              <p>{mainData.mainSubheading}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -55,17 +64,17 @@ const Home = () => {
               viewport={{ once: true }}
               className="homepage-cta"
             >
-              <Button
-                name="Get Started"
-                backgroundColor="#ffffff"
-                color="#000000"
-                hoverBackgroundColor="#ffca85"
-                hoverColor="#000000"
-                action="redirectExternal"
-                actionData={
-                  "https://www.linkedin.com/in/partha-sarathi-muduli/"
-                }
-              />
+              {mainData.mainButton && (
+                <Button
+                  name={mainData.mainButton[0]?.buttonText}
+                  backgroundColor="#ffffff"
+                  color="#000000"
+                  hoverBackgroundColor="#ffca85"
+                  hoverColor="#000000"
+                  action="redirectExternal"
+                  actionData={mainData.mainButton[0]?.buttonLink}
+                />
+              )}
             </motion.div>
           </section>
           <Suspense fallback={<Loader />}>

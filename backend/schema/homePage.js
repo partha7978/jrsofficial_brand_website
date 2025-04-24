@@ -43,5 +43,30 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: 'mainButton',
+      title: 'Homepage Main Button',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'buttonText',
+              title: 'Button Text',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'buttonLink',
+              title: 'Button Link',
+              type: 'url',
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.required().max(1).error('One button is allowed.'),
+    },
   ],
 }
