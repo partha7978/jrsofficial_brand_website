@@ -17,7 +17,6 @@ const Home = () => {
   useEffect(() => {
     if (data) {
       setMainData(data);
-      console.log(data, "mainData");
     }
   }, [data]);
 

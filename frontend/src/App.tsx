@@ -5,6 +5,7 @@ import {
   Testimonials,
   EpisodesSlider,
   Footer,
+  HomepageCourse,
 } from "./containers";
 import { Navbar, ScrollTo } from "./components";
 import { Provider } from "react-redux";
@@ -29,6 +30,7 @@ const HomeComponent = () => {
       <Home />
       <EpisodesSlider />
       <About />
+      <HomepageCourse />
       <Testimonials />
     </>
   );

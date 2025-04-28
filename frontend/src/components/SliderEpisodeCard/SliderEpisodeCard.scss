@@ -12,6 +12,10 @@
   padding: 2rem;
   color: var(--white-color-text-primary);
 
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   .top-section,
   .bottom-section {
     display: flex;

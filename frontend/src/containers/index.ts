@@ -9,3 +9,4 @@ export { default as Footer } from "./Footer/Footer";
 export { default as AboutPage } from "./AboutPage/AboutPage";
 export { default as Course } from "./Course/Course";
 export { default as Production } from "./Production/Production";
+export { default as HomepageCourse } from "./HomepageCourse/HomepageCourse";
