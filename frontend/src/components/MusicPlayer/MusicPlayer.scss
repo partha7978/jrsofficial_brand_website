@@ -1,0 +1,131 @@
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row-center-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.musicPlayer {
+  width: 100%;
+  @include flex-column-center;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: default;
+  background-color: var(--primary-color-contrast);
+
+  &-player {
+    width: 100%;
+    @include flex-column-center;
+    gap: 1rem;
+
+    &-control {
+      width: 100%;
+      @include flex-row-center-start;
+      gap: 1rem;
+
+      &-play {
+        width: 24px;
+        height: 24px;
+
+        svg {
+          height: 24px;
+          width: 24px;
+        }
+      }
+
+      &-progress {
+        width: calc(100% - 24px);
+        @include flex-row-center;
+        gap: 1rem;
+
+        font-size: 0.9rem;
+        font-weight: 500;
+
+        &-bar {
+          width: 100%;
+          background-color: var(--gray-color-text-dark-2);
+          height: 4px;
+          border-radius: 10px;
+          @include flex-row-center-start;
+
+          &-fill {
+            background-color: var(--bg-black-color);
+            width: 40%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    &-action {
+      @include flex-row-center;
+      width: 100%;
+      gap: 1rem;
+
+      &-link {
+        width: 50%;
+        background-color: var(--bg-white-color);
+        border-radius: 10px;
+        @include flex-row-center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease-in-out;
+
+        svg {
+          height: 18px;
+          width: 18px;
+        }
+
+        .redirect-icon {
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          background-color: var(--primary-color-text-contrast-2);
+
+          .redirect-icon {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        gap: 0.5rem;
+
+        &-link {
+          font-size: 0.8rem;
+
+          svg {
+            height: 16px;
+            width: 16px;
+          }
+        }
+      }
+
+      @media screen and (max-width: 350px) {
+        flex-direction: column;
+
+        &-link {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

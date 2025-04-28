@@ -11,6 +11,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import Footer from "../Footer/Footer";
 import { useParams } from "react-router";
+import { MusicPlayer } from "../../components";
 
 const Episodes = () => {
   const {
@@ -96,6 +97,9 @@ const Episodes = () => {
               alt="Episode Image"
             />
             <div className="episode-card-category">{card.category}</div>
+          </div>
+          <div className="episode-card-musicplayer">
+            <MusicPlayer />
           </div>
           <div className="episodePage-card-details">
             <div>
@@ -188,7 +192,7 @@ const Episodes = () => {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut"}}
+                transition={{ duration: 0.5, ease: "backInOut" }}
                 viewport={{ once: true }}
                 className="filter-item selected"
               >

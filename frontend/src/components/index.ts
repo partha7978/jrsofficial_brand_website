@@ -11,3 +11,4 @@ export { default as SmallLoader } from "./SmallLoader/SmallLoader";
 export { default as VideoPlayer } from "./VideoPlayer/VideoPlayer";
 export { default as Toast } from "./Toast/Toast";
 export { default as VideoTestimonial } from "./VideoTestimonial/VideoTestimonial";
+export { default as MusicPlayer } from "./MusicPlayer/MusicPlayer";
