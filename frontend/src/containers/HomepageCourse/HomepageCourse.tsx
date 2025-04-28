@@ -57,7 +57,7 @@ const HomepageCourse = () => {
                 name="Visit Course"
                 backgroundColor="#000"
                 color="#fff"
-                hoverBackgroundColor="#fff"
+                hoverBackgroundColor="#bce4e9"
                 hoverColor="#000"
                 action="redirectInternal"
                 actionData={"/work/course"}
@@ -103,7 +103,7 @@ const HomepageCourse = () => {
                 name="Visit Production"
                 backgroundColor="#000"
                 color="#fff"
-                hoverBackgroundColor="#fff"
+                hoverBackgroundColor="#bce4e9"
                 hoverColor="#000"
                 action="redirectInternal"
                 actionData={"/work/production"}
