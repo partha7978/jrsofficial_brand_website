@@ -140,6 +140,14 @@
           font-size: 0.8rem;
         }
       }
+
+      .episode-card-musicplayer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0.5rem 1rem;
+        width: 100%;
+      }
     }
 
     &-details {

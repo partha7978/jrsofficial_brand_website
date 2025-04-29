@@ -22,14 +22,14 @@
 .musicPlayer {
   width: 100%;
   @include flex-column-center;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
+  gap: 0.5rem;
   cursor: default;
-  background-color: var(--primary-color-contrast);
 
   &-player {
     width: 100%;
-    @include flex-column-center;
+    @include flex-row-center;
     gap: 1rem;
 
     &-control {
@@ -66,6 +66,7 @@
             background-color: var(--bg-black-color);
             width: 40%;
             height: 100%;
+            border-radius: 10px;
           }
         }
       }
@@ -124,6 +125,47 @@
 
         &-link {
           width: 100%;
+        }
+      }
+    }
+  }
+
+  &.musicPlayer-large {
+    gap: 1rem;
+    background-color: red !important;
+
+    .musicPlayer-player {
+      width: 100%;
+      @include flex-row-center;
+      gap: 1rem;
+
+      .musicPlayer-player-control {
+        @media screen and (max-width: 768px) {
+          gap: 0.5rem;
+
+          .musicPlayer-player-control-progress {
+            gap: 0.5rem;
+          }
+        }
+
+        .musicPlayer-player-control-play {
+          width: 42px;
+          height: 42px;
+
+          svg {
+            height: 42px;
+            width: 42px;
+          }
+
+          @media screen and (max-width: 768px) {
+            width: 24px;
+            height: 24px;
+
+            svg {
+              height: 24px;
+              width: 24px;
+            }
+          }
         }
       }
     }

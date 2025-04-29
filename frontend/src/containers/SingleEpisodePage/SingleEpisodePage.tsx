@@ -12,6 +12,7 @@ import { ImPriceTags } from "react-icons/im";
 import { MdOutlineAccessTime } from "react-icons/md";
 import Footer from "../Footer/Footer";
 import { motion } from "framer-motion";
+import { MusicPlayer } from "../../components";
 
 const components = {
   block: {
@@ -154,6 +155,16 @@ const SingleEpisodePage = () => {
                 />
               )}
             </motion.div>
+            <section className="singleEpisode-music-player">
+              <MusicPlayer
+                showRedirectBtn={true}
+                backgroundColor="linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)"
+                color="#ffffff"
+                redirectionBgColor="#ffffff"
+                redirectionColor="#000000"
+                size="large"
+              />
+            </section>
             <section className="singleEpisode-desc">
               <h2 className="singleEpisode-desc-title">Episode Overview</h2>
               <PortableText value={data?.content} components={components} />

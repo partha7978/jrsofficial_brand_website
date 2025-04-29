@@ -43,7 +43,7 @@
       height: 80vh;
     }
 
-    @media screen and ( max-height: 800px) and (max-width: 1300px){
+    @media screen and (max-height: 800px) and (max-width: 1300px) {
       height: 90vh;
     }
 
@@ -188,6 +188,10 @@
         height: 200px;
       }
     }
+  }
+
+  &-music-player {
+    width: 100%;
   }
 
   &-desc {

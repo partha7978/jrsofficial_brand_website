@@ -97,9 +97,9 @@ const Episodes = () => {
               alt="Episode Image"
             />
             <div className="episode-card-category">{card.category}</div>
-          </div>
-          <div className="episode-card-musicplayer">
-            <MusicPlayer />
+            <div className="episode-card-musicplayer">
+              <MusicPlayer showRedirectBtn={false} />
+            </div>
           </div>
           <div className="episodePage-card-details">
             <div>
