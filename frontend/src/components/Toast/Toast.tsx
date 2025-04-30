@@ -91,7 +91,9 @@ const Toast = ({
             <div className="toast-main-message-section-content">{message}</div>
           </div>
 
-          <div className="toast-close" onClick={() => setIsOpen(false)}>
+          <div className="toast-close" onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(false)}}>
             <IoClose />
           </div>
         </div>

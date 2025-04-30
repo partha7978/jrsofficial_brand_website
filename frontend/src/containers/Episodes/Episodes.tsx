@@ -98,7 +98,11 @@ const Episodes = () => {
             />
             <div className="episode-card-category">{card.category}</div>
             <div className="episode-card-musicplayer">
-              <MusicPlayer showRedirectBtn={false} />
+              <MusicPlayer
+                showRedirectBtn={false}
+                size="small"
+                audioUrl={card.title}
+              />
             </div>
           </div>
           <div className="episodePage-card-details">

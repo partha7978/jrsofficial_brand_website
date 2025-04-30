@@ -35,13 +35,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: [50, 0] }}
           transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
         >
-          <motion.div
-            className="about-card-img"
-            viewport={{ once: true }}
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ opacity: 1, y: [100, 0] }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
-          >
+          <div className="about-card-img">
             <img
               src={urlFor(
                 data.featuredImage || data.featuredImageForMobile
@@ -50,59 +44,33 @@ const About = () => {
               height={400}
               width={200}
             />
-          </motion.div>
+          </div>
           <div className="about-card-content">
             <div className="about-card-content-title">
-              <motion.h2
-                viewport={{ once: true }}
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ opacity: 1, y: [100, 0] }}
-                transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
-              >
-                {data.title}
-              </motion.h2>
+              <h2>{data.title}</h2>
             </div>
             <div className="about-card-content-subText">
-              <motion.span
-                viewport={{ once: true }}
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ opacity: 1, y: [100, 0] }}
-                transition={{ duration: 0.8, ease: "easeInOut", delay: 0.5 }}
-              >
-                {data.description}
-              </motion.span>
+              <span>{data.description}</span>
             </div>
             <div className="about-card-content-list">
               {data.featuredList && (
                 <ul>
                   {data.featuredList?.map((item, index) => (
-                    <motion.li
-                      viewport={{ once: true }}
-                      initial={{ y: 30, opacity: 0 }}
-                      whileInView={{ opacity: 1, y: [30, 0] }}
-                      transition={{
-                        duration: index / 3 + 0.2,
-                        ease: "backInOut",
-                        delay: 0.3,
-                      }}
-                      key={item + index}
-                    >
+                    <li key={item + index}>
                       <BsArrowRightCircle />
                       {item}
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               )}
             </div>
-            <motion.div
-              viewport={{ once: true }}
-              initial={{ y: 100, opacity: 0 }}
-              whileInView={{ opacity: 1, y: [100, 0] }}
-              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
-              className="about-card-content-action-btn"
-            >
-              <Button name="Know More" action="redirectInternal" actionData="/about" />
-            </motion.div>
+            <div className="about-card-content-action-btn">
+              <Button
+                name="Know More"
+                action="redirectInternal"
+                actionData="/about"
+              />
+            </div>
           </div>
         </motion.div>
       )}
