@@ -35,6 +35,7 @@ const MusicPlayer = ({
     type: "success" | "error" | "def" | "warning";
     message: string;
   }>({ type: "def", message: "" });
+  const [progress, setProgress] = useState(0);
 
   const style = {
     background: backgroundColor || "#ffffff",
@@ -59,6 +60,16 @@ const MusicPlayer = ({
       audioRef.current.pause();
     }
   }, [audioSrc, isPlaying]);
+
+  // Update progress bar dynamically
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const currentTime = audioRef.current.currentTime;
+      const duration = audioRef.current.duration;
+      const progressPercentage = (currentTime / duration) * 100;
+      setProgress(progressPercentage);
+    }
+  };
 
   const playAudio = async (e: any, shouldFetchAudio: boolean) => {
     if (!shouldFetchAudio) {
@@ -139,18 +150,32 @@ const MusicPlayer = ({
                 hidden
                 preload="auto"
                 playsInline
+                onTimeUpdate={handleTimeUpdate}
               />
             )}
             <div className="musicPlayer-player-control-progress">
               <div className="musicPlayer-player-control-progress-bar">
                 <div
                   className="musicPlayer-player-control-progress-bar-fill"
-                  style={{ backgroundColor: color || "#000000" }}
+                  style={{
+                    backgroundColor: color || "#000000",
+                    width: `${progress}%`,
+                  }}
                 ></div>
               </div>
-              <div className="musicPlayer-player-control-progress-time">
-                00:00
-              </div>
+              {audioRef.current && (
+                <div className="musicPlayer-player-control-progress-time">
+                  {audioRef.current
+                    ? `${Math.floor(audioRef.current.currentTime / 60)
+                        .toString()
+                        .padStart(2, "0")}:${Math.floor(
+                        audioRef.current.currentTime % 60
+                      )
+                        .toString()
+                        .padStart(2, "0")}`
+                    : "00:00"}
+                </div>
+              )}
             </div>
           </div>
         </div>
