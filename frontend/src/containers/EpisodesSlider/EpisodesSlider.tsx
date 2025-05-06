@@ -78,18 +78,25 @@ const EpisodesSlider = () => {
             </motion.div>
           </div>
           <div className="episodes-main__container">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
-              viewport={{ once: true }}
+            <div
               className="simple-slider"
             >
               <div className="slider-container" ref={sliderRef}>
                 {showLatestResult &&
                   showLatestResult.length > 0 &&
                   showLatestResult.map((episode, index) => (
-                    <div className="slider-item" key={episode.title + index}>
+                    <motion.div
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "backInOut",
+                        delay: 0.1 * index,
+                      }}
+                      viewport={{ once: true }}
+                      className="slider-item"
+                      key={episode.title + index}
+                    >
                       <Link
                         to={`/episodes/${episode.category.toLowerCase()}/${episode.title
                           .split(" ")
@@ -97,10 +104,10 @@ const EpisodesSlider = () => {
                       >
                         <SliderEpisodeCard {...episode} />
                       </Link>
-                    </div>
+                    </motion.div>
                   ))}
               </div>
-            </motion.div>
+            </div>
             <div className="slider-action-btn">
               <motion.button
                 initial={{ opacity: 0, x: -50 }}
