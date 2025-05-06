@@ -15,11 +15,7 @@ const SliderEpisodeCard = ({
   episodeDate,
 }: episodeCardProps) => {
   return (
-    <motion.div
-      viewport={{ once: true }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
+    <div
       className="slider-card"
       style={{
         backgroundImage: `${
@@ -67,7 +63,7 @@ const SliderEpisodeCard = ({
           {/* <audio controls src={episodeAudio} /> */}
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

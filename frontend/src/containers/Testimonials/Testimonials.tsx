@@ -51,10 +51,11 @@ const Testimonials = () => {
               ref={testimonialSliderRef}
             >
               {data &&
-                data.map((testimonial: TestimonialSchema, idx) => (
+                data.map((testimonial: TestimonialSchema, idx: number) => (
                   <Testimonial
                     key={testimonial._id}
                     testimonial={testimonial}
+                    idx={idx}
                   />
                 ))}
             </div>
