@@ -28,7 +28,6 @@ const Episodes = () => {
     undefined,
     "episodeDate desc"
   );
-  const { urlCategory } = useParams();
   const [episodeCards, setEpisodeCards] = useState<any[]>([]);
   const [topEpisodeCards, setTopEpisodeCards] = useState<any[]>([]);
   const [categories, setCategories] = useState<string[]>([]);

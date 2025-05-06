@@ -1,4 +1,3 @@
-import { LuSun } from "react-icons/lu";
 import { PiWarning } from "react-icons/pi";
 import { RxCrossCircled } from "react-icons/rx";
 import { FiInfo } from "react-icons/fi";
@@ -7,6 +6,8 @@ import Portal from "../ReactPortal/Portal";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Toast.scss";
+import { SiTicktick } from "react-icons/si";
+
 
 const Toast = ({
   isOpen = false,
@@ -79,7 +80,7 @@ const Toast = ({
           <div className="toast-main-message-section">
             <div className="toast-main-message-section-icon" style={iconStyle}>
               {type === "success" ? (
-                <LuSun />
+                <SiTicktick />
               ) : type === "error" ? (
                 <RxCrossCircled />
               ) : type === "warning" ? (

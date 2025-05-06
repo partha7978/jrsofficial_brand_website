@@ -163,6 +163,7 @@ const SingleEpisodePage = () => {
                 redirectionBgColor="#ffffff"
                 redirectionColor="#000000"
                 size="large"
+                audioUrl={data?.title}
               />
             </section>
             <section className="singleEpisode-desc">

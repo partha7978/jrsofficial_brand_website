@@ -96,8 +96,7 @@ const MusicPlayer = ({
         setAudioSrc(audio.episodeAudio); // 👈 Set source
         setToast({ type: "success", message: `Playing ${audio.title}` });
         setIsPlaying(true);
-
-        // Do something with audio (set state, play audio, etc.)
+        
       } catch (error) {
         console.error("Error fetching audio:", error);
         setToast({
