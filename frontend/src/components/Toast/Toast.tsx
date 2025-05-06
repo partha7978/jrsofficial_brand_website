@@ -1,12 +1,12 @@
-import { PiWarning } from "react-icons/pi";
-import { RxCrossCircled } from "react-icons/rx";
+import { BiSolidError } from "react-icons/bi";
+import { MdError } from "react-icons/md";
 import { FiInfo } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import Portal from "../ReactPortal/Portal";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Toast.scss";
-import { SiTicktick } from "react-icons/si";
+import { FaCircleCheck } from "react-icons/fa6";
 
 
 const Toast = ({
@@ -39,32 +39,32 @@ const Toast = ({
   const toastStyle = {
     backgroundColor:
       type === "success"
-        ? "#e9ffea"
+        ? "#f5fff7"
         : type === "error"
-        ? "#ffc6c6"
+        ? "#ffece5"
         : type === "warning"
-        ? "#ffdfb8"
-        : "#d8f3ff",
+        ? "#fff8e7"
+        : "#f5feff",
 
     borderColor:
       type === "success"
-        ? "#43a047"
+        ? "#00520e"
         : type === "error"
-        ? "#d32f2f"
+        ? "#a13307"
         : type === "warning"
-        ? "#fb8c00"
-        : "#29b6f6",
+        ? "#884001"
+        : "#004466",
   };
 
   const iconStyle = {
     color:
       type === "success"
-        ? "#43a047"
+        ? "#186325"
         : type === "error"
-        ? "#d32f2f"
+        ? "#aa451c"
         : type === "warning"
-        ? "#fb8c00"
-        : "#29b6f6",
+        ? "#945218"
+        : "#185675",
   };
 
   return (
@@ -80,11 +80,11 @@ const Toast = ({
           <div className="toast-main-message-section">
             <div className="toast-main-message-section-icon" style={iconStyle}>
               {type === "success" ? (
-                <SiTicktick />
+                <FaCircleCheck />
               ) : type === "error" ? (
-                <RxCrossCircled />
+                <BiSolidError />
               ) : type === "warning" ? (
-                <PiWarning />
+                <MdError />
               ) : (
                 <FiInfo />
               )}
