@@ -182,12 +182,14 @@
         color: var(--black-color-text-primary);
       }
 
-      @media screen and (max-width: 768px) {
-        min-height: auto;
-
+      @media screen and (max-width: 1300px) {
         h3 {
           font-size: 2rem;
         }
+      }
+
+      @media screen and (max-width: 768px) {
+        min-height: auto;
       }
     }
   }
