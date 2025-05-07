@@ -1,3 +1,9 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .about {
   height: auto;
   padding: 4rem;
@@ -63,12 +69,21 @@
       }
 
       @media screen and (max-width: 1300px) {
-        max-height: 450px;
+        // max-height: 450px;
 
         img {
           width: 100%;
-          height: 450px;
+          height: 500px;
           min-height: 350px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+
+      @media screen and (min-width: 1350px) {
+        img {
+          width: 100%;
+          height: 400px;
           object-fit: cover;
           border-radius: 10px;
         }
@@ -78,23 +93,22 @@
         width: 100%;
         img {
           width: 100%;
-          height: auto;
-          min-height: 400px;
         }
       }
     }
 
     &-content {
       width: 55%;
-      height: 100%;
+      height: auto;
+      align-self: stretch;
+      justify-content: space-between;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
 
-      
       @media screen and (max-width: 940px) {
-       width: 100%;
-       gap: 18px;
+        width: 100%;
+        gap: 18px;
       }
 
       &-title {
@@ -107,7 +121,7 @@
           margin: 0;
           font-size: 4rem;
           line-height: 90%;
-          font-weight: 700;
+          font-weight: 600;
 
           line-height: 120%;
           background: linear-gradient(
@@ -125,7 +139,7 @@
 
           @media screen and (max-width: 1300px) {
             font-size: 3rem;
-          }    
+          }
 
           @media screen and (max-width: 768px) {
             font-size: 2.5rem;
@@ -135,8 +149,8 @@
 
       &-subText {
         span {
-          font-size: 1.2rem;
-          line-height: 1.2;
+          font-size: 1rem;
+          line-height: 150%;
           color: var(--bg-black-color-contrast-3);
           opacity: 0.8;
 
@@ -147,15 +161,118 @@
       }
 
       &-list {
-        li {
-          list-style-type: none;
-          display: flex;
-          gap: 16px;
-          align-items: center;
-          color: var(--bg-black-color-contrast-2);
-          margin-bottom: 12px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 16px;
+
+        @media screen and (max-width: 940px) {
+          margin: 1rem 0;
+        }
+
+        &-item {
+          @include flex-center;
+          flex-direction: column;
+          gap: 0.5rem;
           font-weight: 500;
-          font-size: 1.2rem;
+          font-size: 1rem;
+          color: var(--bg-black-color-contrast-3);
+
+          .icon {
+            @include flex-center;
+            padding: 1rem;
+            background-color: var(--primary-color-contrast-2);
+            border-radius: 10px;
+
+            svg {
+              width: 24px;
+              height: 24px;
+              min-width: 24px;
+              min-height: 24px;
+              color: var(--bg-black-color-contrast-2);
+
+              @media screen and (max-width: 940px) {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+                min-height: 20px;
+              }
+            }
+          }
+        }
+      }
+
+      &-redirection {
+        @include flex-center;
+        flex-direction: row;
+        gap: 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+
+        @media screen and (max-width: 940px) {
+          font-size: 0.9rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        &-item {
+          width: 50%;
+          height: 100%;
+          max-height: 60px;
+          position: relative;
+          border-radius: 10px;
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.03);
+          }
+
+          @media screen and (max-width: 940px) {
+            width: 100%;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            max-height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+
+          .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+          }
+
+          &-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white-color-text-primary);
+
+            @include flex-center;
+            gap: 0.5rem;
+
+            @media screen and (max-width: 940px) {
+              gap: 0.2rem;
+            }
+
+            svg {
+              width: 20px;
+              height: 20px;
+              min-width: 20px;
+              min-height: 20px;
+            }
+          }
         }
       }
     }
