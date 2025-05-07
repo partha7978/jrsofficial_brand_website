@@ -58,17 +58,34 @@ const About = () => {
               {data.featuredList && (
                 <>
                   {data.featuredList?.map((item, index) => (
-                    <div className="about-card-content-list-item" key={item}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: [50, 0] }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "backInOut",
+                        delay: index * 0.1,
+                      }}
+                      viewport={{ once: true }}
+                      className="about-card-content-list-item"
+                      key={item}
+                    >
                       <div className="icon">
                         <FaPodcast />
                       </div>
                       <span>{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </>
               )}
             </div>
-            <div className="about-card-content-redirection">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: [50, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.3 }}
+              viewport={{ once: true }}
+              className="about-card-content-redirection"
+            >
               <Link
                 to="/work/courses"
                 className="about-card-content-redirection-item"
@@ -103,15 +120,21 @@ const About = () => {
                   </div>
                 </div>
               </Link>
-            </div>
-            <div className="about-card-content-action-btn">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: [50, 0] }}
+              transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
+              viewport={{ once: true }}
+              className="about-card-content-action-btn"
+            >
               <Button
                 name="Know More"
                 action="redirectInternal"
                 actionData="/about"
                 width="100%"
               />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
