@@ -50,21 +50,10 @@ const EpisodesSlider = () => {
       ) : (
         <section className="episodes">
           <div className="episodes-title-section">
-            <motion.h2
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <h2>
               Our Most Recent <br /> Episodes
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
-              className="episodes-title-section-action-btn"
-            >
+            </h2>
+            <div className="episodes-title-section-action-btn">
               <Button
                 name="View All"
                 link="/episodes/all"
@@ -75,12 +64,10 @@ const EpisodesSlider = () => {
                 action="redirectInternal"
                 actionData="/episodes/all"
               />
-            </motion.div>
+            </div>
           </div>
           <div className="episodes-main__container">
-            <div
-              className="simple-slider"
-            >
+            <div className="simple-slider">
               <div className="slider-container" ref={sliderRef}>
                 {showLatestResult &&
                   showLatestResult.length > 0 &&
@@ -110,21 +97,13 @@ const EpisodesSlider = () => {
             </div>
             <div className="slider-action-btn">
               <motion.button
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn prev-btn"
-                viewport={{ once: true }}
                 onClick={() => handleScroll("prev")}
                 aria-label="previous"
               >
                 <IoIosArrowRoundBack />
               </motion.button>
               <motion.button
-                initial={{ opacity: 0, x: 50 }}
-                viewport={{ once: true }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "backInOut", delay: 0.4 }}
                 className="slider-btn next-btn"
                 onClick={() => handleScroll("next")}
                 aria-label="next"
