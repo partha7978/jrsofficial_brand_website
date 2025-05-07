@@ -30,7 +30,7 @@ const HomeComponent = () => {
       <Home />
       <EpisodesSlider />
       <About />
-      {/* <HomepageCourse /> */}
+      <HomepageCourse />
       <Testimonials />
     </>
   );

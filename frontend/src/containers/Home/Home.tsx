@@ -81,13 +81,15 @@ const Home = () => {
           </Suspense>
         </div>
       )}
-      <Particles
-        className="absolute inset-0"
-        quantity={150}
-        ease={80}
-        color={"#ffffff"}
-        refresh
-      />
+      <div className="homepage-bg-particles">
+        <Particles
+          className="absolute inset-0"
+          quantity={250}
+          ease={80}
+          color={"#ffffff"}
+          refresh
+        />
+      </div>
     </section>
   );
 };
