@@ -71,7 +71,7 @@ const About = () => {
                   transition={{
                     duration: 0.5,
                     ease: "backInOut",
-                    delay: 0.2,
+                    delay: 0.1,
                   }}
                   viewport={{ once: true }}
                   className="about-card-content-list-item"
@@ -92,7 +92,7 @@ const About = () => {
                   transition={{
                     duration: 0.5,
                     ease: "backInOut",
-                    delay: 0.3,
+                    delay: 0.2,
                   }}
                   viewport={{ once: true }}
                   className="about-card-content-list-item"
@@ -114,7 +114,7 @@ const About = () => {
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: [50, 0] }}
                   transition={{
-                    duration: 0.5,
+                    duration: 0.3,
                     ease: "backInOut",
                     delay: 0.4,
                   }}
