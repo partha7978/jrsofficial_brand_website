@@ -16,7 +16,8 @@ export default {
       name: 'description',
       title: 'About Description',
       type: 'string',
-      validation: (Rule) => Rule.required().max(280).error('Description should be less than 200 characters.'),
+      validation: (Rule) =>
+        Rule.required().max(280).error('Description should be less than 200 characters.'),
     },
     {
       name: 'featuredImage',
@@ -47,16 +48,31 @@ export default {
         }),
     },
     {
-      name: 'featuredList',
-      title: 'Featured List',
-      type: 'array',
-      of: [
-        {
-          name: 'listItem',
-          title: 'List Item',
-          type: 'string',
-        },
-      ],
+      name: 'spotifyLink',
+      title: 'Spotify Link',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required()
+          .uri({scheme: ['http', 'https']})
+          .error('Invalid URL format.'),
+    },
+    {
+      name: 'youtubeLink',
+      title: 'YouTube Link',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required()
+          .uri({scheme: ['http', 'https']})
+          .error('Invalid URL format.'),
+    },
+    {
+      name: 'instagramLink',
+      title: 'Instagram Link',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required()
+          .uri({scheme: ['http', 'https']})
+          .error('Invalid URL format.'),
     },
   ],
 }

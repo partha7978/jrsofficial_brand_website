@@ -6,9 +6,11 @@ import { useMemo } from "react";
 import useCalculateScrollAndWidth from "../../hooks/useCalculateScroll";
 import { motion } from "framer-motion";
 import { Button } from "../../components";
-import { FaPodcast } from "react-icons/fa";
 import { TiLocationArrowOutline } from "react-icons/ti";
 import { Link } from "react-router";
+import { FaSpotify } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
 
 const About = () => {
   const { innerWidth } = useCalculateScrollAndWidth();
@@ -55,29 +57,69 @@ const About = () => {
               <span>{data.description}</span>
             </div>
             <div className="about-card-content-list">
-              {data.featuredList && (
-                <>
-                  {data.featuredList?.map((item, index) => (
-                    <motion.div
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: [50, 0] }}
-                      transition={{
-                        duration: 0.5,
-                        ease: "backInOut",
-                        delay: index * 0.1,
-                      }}
-                      viewport={{ once: true }}
-                      className="about-card-content-list-item"
-                      key={item}
-                    >
-                      <div className="icon">
-                        <FaPodcast />
-                      </div>
-                      <span>{item}</span>
-                    </motion.div>
-                  ))}
-                </>
-              )}
+              <a
+                href={
+                  data.spotifyLink ||
+                  "https://open.spotify.com/show/4qBCmtPsd77nPadhNlFHxv?si=74638e733b6c4a0d"
+                }
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: [50, 0] }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "backInOut",
+                    delay: 0.2,
+                  }}
+                  viewport={{ once: true }}
+                  className="about-card-content-list-item"
+                >
+                  <div className="icon">
+                    <FaSpotify />
+                  </div>
+                </motion.div>
+              </a>
+              <a
+                href={data.youtubeLink || "https://www.youtube.com/@Thejrsshow"}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: [50, 0] }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "backInOut",
+                    delay: 0.3,
+                  }}
+                  viewport={{ once: true }}
+                  className="about-card-content-list-item"
+                >
+                  <div className="icon">
+                    <FaYoutube />
+                  </div>
+                </motion.div>
+              </a>
+              <a
+                href={
+                  data.instagramLink ||
+                  "https://www.instagram.com/jrsofficial_/"
+                }
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: [50, 0] }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "backInOut",
+                    delay: 0.4,
+                  }}
+                  viewport={{ once: true }}
+                  className="about-card-content-list-item"
+                >
+                  <div className="icon">
+                    <RiInstagramFill />
+                  </div>
+                </motion.div>
+              </a>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
