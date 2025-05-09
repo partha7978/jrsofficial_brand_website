@@ -62,6 +62,8 @@ const About = () => {
                   data.spotifyLink ||
                   "https://open.spotify.com/show/4qBCmtPsd77nPadhNlFHxv?si=74638e733b6c4a0d"
                 }
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
@@ -81,6 +83,8 @@ const About = () => {
               </a>
               <a
                 href={data.youtubeLink || "https://www.youtube.com/@Thejrsshow"}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
@@ -103,6 +107,8 @@ const About = () => {
                   data.instagramLink ||
                   "https://www.instagram.com/jrsofficial_/"
                 }
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}

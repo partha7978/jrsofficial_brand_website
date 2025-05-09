@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 
   @media screen and (max-width: 1600px) {
     width: 90%;
@@ -177,7 +178,14 @@
           gap: 0.5rem;
           font-weight: 500;
           font-size: 1rem;
-          color: var(--bg-black-color-contrast-3);
+          color: var(--bg-black-color-contrast-2);
+          text-decoration: none;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            transform: scale(1.03) !important;
+          }
 
           .icon {
             @include flex-center;
