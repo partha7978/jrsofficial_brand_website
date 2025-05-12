@@ -1,10 +1,10 @@
-import { Button, Input, VideoPlayer } from "..";
+import { Button, Input, Toast, VideoPlayer } from "../index";
 import { HiPlay } from "react-icons/hi2";
 import { getFileAsset } from "@sanity/asset-utils";
 import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
-import { urlFor } from "../../../client/client";
 import { motion } from "framer-motion";
+import { client, urlFor } from "../../../client/client";
 
 const CourseFeaturedPodcastSection = () => {
   const {
@@ -20,6 +20,17 @@ const CourseFeaturedPodcastSection = () => {
   const [mainData, setMainData] = useState(null);
   const [mainVideoData, setMainVideoData] = useState<string>("");
   const [bgVideo, setBgVideo] = useState<string>("");
+  const [toast, setToast] = useState<{
+    type: "success" | "error" | "def" | "warning";
+    message: string;
+  }>({ type: "def", message: "" });
+  const [toastOpen, setToastOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
   useEffect(() => {
     if (data) {
       setMainData(data.featuredPodcast[0]);
@@ -37,10 +48,101 @@ const CourseFeaturedPodcastSection = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (toast.message.length > 1 && toastOpen === false) {
+      setToastOpen(true);
+    }
+  }, [toast]);
+
   // Video Popup
   const [isOpen, setIsOpen] = useState(false);
   const handleVideoPopup = () => {
     setIsOpen(true);
+  };
+
+  //handling form
+  const { name, email, phone } = formData;
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const validateForm = () => {
+    if (!name || !email || !phone) {
+      setToast({ type: "warning", message: "Please fill all fields" });
+      return false;
+    }
+
+    //Validate email
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setToast({ type: "warning", message: "Please enter a valid email" });
+      return false;
+    }
+
+    // Validate phone number length
+    if (phone.length < 10 || phone.length > 13) {
+      setToast({
+        type: "warning",
+        message: "Please enter a valid phone number including country code",
+      });
+      return false;
+    }
+
+    // Validate phone number format (e.g., starts with + and contains only digits)
+    if (!/^\+?[1-9]\d{9,12}$/.test(phone)) {
+      setToast({
+        type: "warning",
+        message: "Please enter a valid phone number in the correct format",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  useEffect(() => {
+    if (toast.message.length > 1 && toastOpen === false) {
+      setToastOpen(true);
+    }
+  }, [toast]);
+
+  const getCurrentDate = () => {
+    const now = new Date();
+
+    const formattedDate = now.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const formattedTime = now.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+    return `${formattedDate} — ${formattedTime}`;
+  };
+
+  const formDataSubmit = (e: any) => {
+    e.preventDefault();
+    if (validateForm()) {
+      const userSubmittedData = {
+        _type: "userSubmittedData",
+        name: name,
+        email: email,
+        phone: phone,
+        time: getCurrentDate(),
+      };
+
+      client
+        .create(userSubmittedData)
+        .then(() => {
+          setToast({ type: "success", message: "Form submitted successfully" });
+          setFormData({ name: "", email: "", phone: "" });
+        })
+        .catch((err) => {
+          setToast({ type: "error", message: "Something went wrong" });
+          setFormData({ name: "", email: "", phone: "" });
+        });
+    }
   };
 
   return (
@@ -51,6 +153,15 @@ const CourseFeaturedPodcastSection = () => {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           videoLink={mainVideoData}
+        />
+      </>
+      <>
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          isOpen={toastOpen}
+          setIsOpen={setToastOpen}
+          setToast={setToast}
         />
       </>
       {mainData && (
@@ -132,12 +243,15 @@ const CourseFeaturedPodcastSection = () => {
                 viewport={{ once: true }}
               >
                 <Input
-                  name="First Name"
+                  name="name"
                   type="text"
-                  placeholder="First Name"
+                  placeholder="Name"
                   className="name"
                   background="#141414"
                   color="#ffffff"
+                  value={name}
+                  required={true}
+                  onChange={handleInputChange}
                 />
                 <Input
                   name="email"
@@ -147,15 +261,19 @@ const CourseFeaturedPodcastSection = () => {
                   background="#141414"
                   color="#ffffff"
                   required={true}
+                  value={email}
+                  onChange={handleInputChange}
                 />
                 <Input
                   name="phone"
-                  type="phone"
+                  type="number"
                   placeholder="Phone"
                   className="phone"
                   background="#141414"
                   color="#ffffff"
                   required={true}
+                  value={phone}
+                  onChange={handleInputChange}
                 />
                 <Button
                   name="Send me invitations"
@@ -163,16 +281,9 @@ const CourseFeaturedPodcastSection = () => {
                   color="#000000"
                   hoverBackgroundColor="#ffffff"
                   hoverColor="#000000"
-                  action="redirectExternal"
-                  actionData={
-                    "https://www.linkedin.com/in/partha-sarathi-muduli/"
-                  }
+                  action="formSubmit"
+                  actionData={formDataSubmit}
                 />
-                {/* <span className="additional-description">
-                FREE access to exclusive insights, private Q+As, and inspiring
-                episodes of The JRS Show, delivered with 💜 to your inbox.
-                (Unsub anytime in a click.)
-              </span> */}
               </motion.form>
             </div>
             <div className="featured-podcast-bottom-section-video">
