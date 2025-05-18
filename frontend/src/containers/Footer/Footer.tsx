@@ -6,6 +6,8 @@ import { SubscribeSectionImg } from "../../assets";
 import { Button } from "../../components";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa6";
+import { youtubeLogo } from "../../assets";
+import { Link } from "react-router";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -53,10 +55,10 @@ const Footer = (Component?: React.FC, className?: string) => {
                 <a href="#" className="social-link">
                   <MdOutlineFacebook />
                 </a>
-                <a href="#" className="social-link">
+                <a href="https://www.youtube.com/@Thejrsshow" target="_blank" className="social-link">
                   <PiYoutubeLogoFill />
                 </a>
-                <a href="#" className="social-link">
+                <a href="https://www.linkedin.com/in/jyotshnarani-senapati-23a180224/" target="_blank" className="social-link">
                   <TbBrandLinkedinFilled />
                 </a>
               </div>
@@ -65,30 +67,32 @@ const Footer = (Component?: React.FC, className?: string) => {
             <div className="footer-section-links">
               <div className="links-container">
                 <span>Quick Links</span>
-                <a href="http://" className="link">
+                <Link to="/" className="link">
                   Home
-                </a>
-                <a href="http://" className="link">
+                </Link>
+                <Link to="/about" className="link">
                   About
-                </a>
-                <a href="http://" className="link">
+                </Link>
+                <Link to="/episodes" className="link">
                   Episodes
-                </a>
-                <a href="http://" className="link">
+                </Link>
+                <Link to="/work/courses" className="link">
                   Courses
-                </a>
-                <a href="http://" className="link">
+                </Link>
+                <Link to="/contact" className="link">
                   Contact
-                </a>
+                </Link>
               </div>
               <div className="footer-section-vertical-separator-mobile"></div>
               <div className="additional-link">
                 <span>Listen On</span>
-                <a href="http://" className="link">
+                <a href="https://www.youtube.com/@Thejrsshow" className="link">
                   <img
-                    src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_White.png"
-                    alt="spotify"
+                    src={youtubeLogo}
+                    alt="YouTube Logo"
                     loading="lazy"
+                    height={20}
+                    width={20}
                   />
                 </a>
               </div>

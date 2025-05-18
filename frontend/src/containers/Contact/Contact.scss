@@ -20,6 +20,11 @@
 
 .contact-section-wrapper {
   @include flex-column-center;
+  margin-bottom: 30rem;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20rem;
+  }
 }
 
 .contact-container {
@@ -33,7 +38,7 @@
   height: 100vh;
   padding: 10rem 4rem 4rem 4rem;
   width: 80%;
-  min-height: 900px;
+  min-height: 800px;
   align-self: center;
   gap: 2rem;
   position: relative;
@@ -43,16 +48,12 @@
     width: 90%;
   }
 
-  @media screen and (max-width: 1250px) {
-    min-height: 1100px;
-  }
-
   @media screen and (max-width: 1100px) {
     width: 100%;
   }
 
   @media screen and (max-width: 900px) {
-    min-height: 1200px;
+    min-height: 850px;
   }
 
   @media screen and (max-width: 800px) {

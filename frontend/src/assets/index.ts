@@ -3,3 +3,4 @@ export { default as placeholder_image } from "./images/placeholder_img.webp";
 export { default as sliderImgPlaceholder } from "./images/sliderImgPlaceholder.webp";
 export { default as SubscribeSectionImg } from "./images/SubscribeSectionImg.webp";
 export { default as coursePage_img } from "./images/coursePage_img.webp";
+export { default as youtubeLogo } from "./images/yt_logo_mono_dark.webp";

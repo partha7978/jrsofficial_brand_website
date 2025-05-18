@@ -30,6 +30,14 @@ const Contact = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    document.body.style.backgroundColor="#000000";
+
+    return () => {
+      document.body.style.backgroundColor = "#fbf7ec";
+    };
+  }, [])
+
   return (
     <>
       {error && <h1>Something went wrong</h1>}
@@ -155,9 +163,7 @@ const Contact = () => {
                 </div>
               </div>
             </section>
-            /* FAQ COMPONENT */ /* TESTIMONIAL COMPONENT */
           </div>
-          <Testimonials />
         </div>
       )}
     </>

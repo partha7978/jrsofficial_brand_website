@@ -103,3 +103,18 @@ export interface AccordionStyleProps {
   parentBackgroundColor?: string;
   dividerBackgroundColor?: string;
 }
+
+export interface HomepageCourseSchema {
+  coursePage: {
+    title: string;
+    description: string;
+    buttonText: string;
+    courseBanner: string;
+  }[],
+  productionPage: {
+    title: string;
+    description: string;
+    buttonText: string;
+    courseBanner: string;
+  }[]
+}
