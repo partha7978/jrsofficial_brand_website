@@ -82,9 +82,10 @@ const CourseMiniFormSection = () => {
     if (validateForm()) {
       const userSubmittedData = {
         _type: "userSubmittedData",
-        name: name,
+        source: "Course Page Mini Form",
+        name: name || "N/A",
         email: email,
-        phone: phone,
+        phone: phone || "N/A",
         time: getCurrentDate(),
       };
 

@@ -3,16 +3,106 @@ import { MdOutlineFacebook } from "react-icons/md";
 import { PiYoutubeLogoFill } from "react-icons/pi";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { SubscribeSectionImg } from "../../assets";
-import { Button } from "../../components";
+import { Button, Toast } from "../../components";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa6";
 import { youtubeLogo } from "../../assets";
 import { Link } from "react-router";
+import { client } from "../../../client/client";
+import { useEffect, useState } from "react";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
+    const [formData, setFormData] = useState({
+      email: "",
+    });
+
+    const [toast, setToast] = useState<{
+      type: "success" | "error" | "def" | "warning";
+      message: string;
+    }>({ type: "def", message: "" });
+    const [toastOpen, setToastOpen] = useState(false);
+
+    const { email } = formData;
+    const handleInputChange = (e: any) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    };
+
+    const validateForm = () => {
+      if (!email) {
+        setToast({ type: "warning", message: "Please enter your email" });
+        return false;
+      }
+
+      if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        setToast({ type: "warning", message: "Please enter a valid email" });
+        return false;
+      }
+
+      return true;
+    };
+
+    useEffect(() => {
+      if (toast.message.length > 1 && toastOpen === false) {
+        setToastOpen(true);
+      }
+    }, [toast]);
+
+    const getCurrentDate = () => {
+      const now = new Date();
+
+      const formattedDate = now.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      const formattedTime = now.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      return `${formattedDate} — ${formattedTime}`;
+    };
+
+    const formDataSubmit = (e: any) => {
+      e.preventDefault();
+      if (validateForm()) {
+        const userSubmittedData = {
+          _type: "userSubmittedData",
+          source: "Footer Newsletter Subscription",
+          name: 'Only Email Provided',
+          email: email,
+          time: getCurrentDate(),
+        };
+
+        client
+          .create(userSubmittedData)
+          .then(() => {
+            setToast({
+              type: "success",
+              message:
+                "We have received your email, we will get back to you soon",
+            });
+            setFormData({ email: "" });
+          })
+          .catch((err) => {
+            setToast({ type: "error", message: "Something went wrong" });
+            setFormData({ email: "" });
+          });
+      }
+    };
     return (
       <>
+        <>
+          <Toast
+            type={toast.type}
+            message={toast.message}
+            isOpen={toastOpen}
+            setIsOpen={setToastOpen}
+            setToast={setToast}
+          />
+        </>
         {Component && <Component {...props} />}
         <footer className={`footer ${className || ""}`}>
           <div className="footer-subscribe">
@@ -20,7 +110,14 @@ const Footer = (Component?: React.FC, className?: string) => {
               <h2>Easy access to your favorite podcasts and hosts</h2>
               <div className="action-section">
                 <div className="footerInput">
-                  <input type="text" placeholder="Enter your email" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    onChange={handleInputChange}
+                    required={true}
+                    value={email}
+                  />
                   <Button
                     name="Subscribe Now"
                     backgroundColor="#141414"
@@ -28,7 +125,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                     hoverBackgroundColor="#ffffff"
                     hoverColor="#000000"
                     action="formSubmit"
-                    actionData={() => console.log("Subscribe Now")}
+                    actionData={formDataSubmit}
                   />
                 </div>
               </div>
@@ -55,10 +152,18 @@ const Footer = (Component?: React.FC, className?: string) => {
                 <a href="#" className="social-link">
                   <MdOutlineFacebook />
                 </a>
-                <a href="https://www.youtube.com/@Thejrsshow" target="_blank" className="social-link">
+                <a
+                  href="https://www.youtube.com/@Thejrsshow"
+                  target="_blank"
+                  className="social-link"
+                >
                   <PiYoutubeLogoFill />
                 </a>
-                <a href="https://www.linkedin.com/in/jyotshnarani-senapati-23a180224/" target="_blank" className="social-link">
+                <a
+                  href="https://www.linkedin.com/in/jyotshnarani-senapati-23a180224/"
+                  target="_blank"
+                  className="social-link"
+                >
                   <TbBrandLinkedinFilled />
                 </a>
               </div>
@@ -86,7 +191,11 @@ const Footer = (Component?: React.FC, className?: string) => {
               <div className="footer-section-vertical-separator-mobile"></div>
               <div className="additional-link">
                 <span>Listen On</span>
-                <a href="https://www.youtube.com/@Thejrsshow" className="link">
+                <a
+                  href="https://www.youtube.com/@Thejrsshow"
+                  className="link"
+                  target="_blank"
+                >
                   <img
                     src={youtubeLogo}
                     alt="YouTube Logo"
