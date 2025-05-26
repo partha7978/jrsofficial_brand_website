@@ -20,6 +20,7 @@ const CourseMiniFormSection = () => {
   }>({ type: "def", message: "" });
   const [mainData, setMainData] = useState(null);
   const [toastOpen, setToastOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -77,9 +78,29 @@ const CourseMiniFormSection = () => {
     return `${formattedDate} — ${formattedTime}`;
   };
 
-  const formDataSubmit = (e: any) => {
+  const formDataSubmit = async (e: any) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent multiple clicks
     if (validateForm()) {
+      setIsSubmitting(true);
+
+      const alreadyExists = await checkDuplicate();
+      if (alreadyExists) {
+        setToast({ type: "warning", message: "Email already subscribed" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const alreadySubmitted = await hasSubmittedToday();
+      if (alreadySubmitted) {
+        setToast({
+          type: "warning",
+          message: "You already submitted today, please try again tomorrow",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const userSubmittedData = {
         _type: "userSubmittedData",
         source: "Course Page Mini Form",
@@ -98,8 +119,29 @@ const CourseMiniFormSection = () => {
         .catch((err) => {
           setToast({ type: "error", message: "Something went wrong" });
           setFormData({ name: "", email: "", phone: "" });
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setIsSubmitting(false);
+          }, 15000);
         });
     }
+  };
+
+  const checkDuplicate = async () => {
+    const query = `*[_type == "userSubmittedData" && (email == $email && source == "Course Page Mini Form")]`;
+    const existing = await client.fetch(query, { email });
+
+    return existing.length > 0;
+  };
+
+  const hasSubmittedToday = async () => {
+    const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+    const query = `
+    *[_type == "userSubmittedData" && (email == $email && source == "Course Page Mini Form") && time >= "${today}T00:00:00Z"]
+  `;
+    const result = await client.fetch(query, { email });
+    return result.length > 0;
   };
 
   return (
@@ -199,6 +241,7 @@ const CourseMiniFormSection = () => {
                   width="100%"
                   action="formSubmit"
                   actionData={formDataSubmit}
+                  disabled={isSubmitting}
                 />
               </form>
               <motion.div

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
 import { motion } from "framer-motion";
 import { client, urlFor } from "../../../client/client";
+import { getCurrentDate } from "../../service/getCurrentDate";
 
 const CourseFeaturedPodcastSection = () => {
   const {
@@ -30,6 +31,7 @@ const CourseFeaturedPodcastSection = () => {
     email: "",
     phone: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -121,9 +123,30 @@ const CourseFeaturedPodcastSection = () => {
     return `${formattedDate} — ${formattedTime}`;
   };
 
-  const formDataSubmit = (e: any) => {
+  const formDataSubmit = async (e: any) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent multiple clicks
+
     if (validateForm()) {
+      setIsSubmitting(true);
+
+      const alreadyExists = await checkDuplicate();
+      if (alreadyExists) {
+        setToast({ type: "warning", message: "Email already subscribed" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const alreadySubmitted = await hasSubmittedToday();
+      if (alreadySubmitted) {
+        setToast({
+          type: "warning",
+          message: "You already submitted today, please try again tomorrow",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const userSubmittedData = {
         _type: "userSubmittedData",
         source: "Course Featured Podcast Form",
@@ -142,8 +165,29 @@ const CourseFeaturedPodcastSection = () => {
         .catch((err) => {
           setToast({ type: "error", message: "Something went wrong" });
           setFormData({ name: "", email: "", phone: "" });
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setIsSubmitting(false);
+          }, 15000);
         });
     }
+  };
+
+  const checkDuplicate = async () => {
+    const query = `*[_type == "userSubmittedData" && (email == $email && source == "Course Featured Podcast Form")]`;
+    const existing = await client.fetch(query, { email });
+
+    return existing.length > 0;
+  };
+
+  const hasSubmittedToday = async () => {
+    const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+    const query = `
+    *[_type == "userSubmittedData" && (email == $email && source == "Course Featured Podcast Form") && time >= "${today}T00:00:00Z"]
+  `;
+    const result = await client.fetch(query, { email });
+    return result.length > 0;
   };
 
   return (

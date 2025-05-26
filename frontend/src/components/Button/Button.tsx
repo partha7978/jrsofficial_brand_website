@@ -19,6 +19,7 @@ function Button({
   width,
   action,
   actionData,
+  disabled
 }: MainButton) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -61,6 +62,8 @@ function Button({
   };
 
   const handleClick = (e) => {
+    if (disabled || loading) return;
+
     if (action === "formSubmit" && typeof actionData === "function") {
       e.preventDefault();
     }
@@ -101,6 +104,7 @@ function Button({
       onMouseOut={(e) => hoverAction(e, "remove")}
       onClick={handleClick}
       className="button-main"
+      disabled={disabled || loading}
     >
       {loading ? (
         <span className="loader" style={loaderStyle}></span>

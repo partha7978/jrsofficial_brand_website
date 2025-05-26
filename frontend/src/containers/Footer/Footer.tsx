@@ -10,12 +10,15 @@ import { youtubeLogo } from "../../assets";
 import { Link } from "react-router";
 import { client } from "../../../client/client";
 import { useEffect, useState } from "react";
+import { getCurrentDate } from "../../service/getCurrentDate";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
     const [formData, setFormData] = useState({
       email: "",
     });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [toast, setToast] = useState<{
       type: "success" | "error" | "def" | "warning";
@@ -49,29 +52,34 @@ const Footer = (Component?: React.FC, className?: string) => {
       }
     }, [toast]);
 
-    const getCurrentDate = () => {
-      const now = new Date();
-
-      const formattedDate = now.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-      const formattedTime = now.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-      return `${formattedDate} — ${formattedTime}`;
-    };
-
-    const formDataSubmit = (e: any) => {
+    const formDataSubmit = async (e: any) => {
       e.preventDefault();
+      if (isSubmitting) return; // Prevent multiple clicks
+
       if (validateForm()) {
+        setIsSubmitting(true);
+
+        const alreadyExists = await checkDuplicate();
+        if (alreadyExists) {
+          setToast({ type: "warning", message: "Email already subscribed" });
+          setIsSubmitting(false);
+          return;
+        }
+
+        const alreadySubmitted = await hasSubmittedToday();
+        if (alreadySubmitted) {
+          setToast({
+            type: "warning",
+            message: "You already submitted today, please try again tomorrow",
+          });
+          setIsSubmitting(false);
+          return;
+        }
+
         const userSubmittedData = {
           _type: "userSubmittedData",
           source: "Footer Newsletter Subscription",
-          name: 'Only Email Provided',
+          name: "Only Email Provided",
           email: email,
           time: getCurrentDate(),
         };
@@ -89,8 +97,27 @@ const Footer = (Component?: React.FC, className?: string) => {
           .catch((err) => {
             setToast({ type: "error", message: "Something went wrong" });
             setFormData({ email: "" });
+          })
+          .finally(() => {
+            setTimeout(() => {
+              setIsSubmitting(false);
+            }, 15000);
           });
       }
+    };
+
+    const checkDuplicate = async () => {
+      const query = `*[_type == "userSubmittedData" && (email == $emai && source == "Footer Newsletter Subscription")l]`;
+      const existing = await client.fetch(query, { email });
+
+      return existing.length > 0;
+    };
+
+    const hasSubmittedToday = async () => {
+      const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+      const query = `*[_type == "userSubmittedData" && (email == $emai && source == "Footer Newsletter Subscription") && time >= "${today}T00:00:00Z"]`;
+      const result = await client.fetch(query, { email });
+      return result.length > 0;
     };
     return (
       <>
@@ -126,6 +153,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                     hoverColor="#000000"
                     action="formSubmit"
                     actionData={formDataSubmit}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
