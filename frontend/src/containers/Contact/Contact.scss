@@ -65,6 +65,7 @@
     padding-top: 10rem;
     width: 90%;
     margin-top: 0;
+    margin-bottom: 12rem;
   }
 
   &-data {
@@ -128,7 +129,7 @@
       color: var(--gray-color-text-dark);
 
       form {
-        @include flex-row-center;
+        @include flex-column-center;
         width: 100%;
 
         .contact-data-form-item {
@@ -190,6 +191,82 @@
               }
             }
           }
+
+          // loader animation
+          .loader {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+          }
+
+          @keyframes rotation {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        }
+
+        .contact-data-form-error {
+          position: relative;
+          display: flex;
+          align-items: center;
+          min-width: 400px;
+          margin-top: 0.5rem;
+
+          @media screen and (max-width: 768px) {
+            min-width: 100%;
+          }
+
+          span {
+            font-size: 0.8rem;
+            color: var(--error-color);
+            font-weight: 500;
+          }
+        }
+
+        .contact-data-form-message {
+          position: relative;
+          @include flex-column-center;
+          align-items: center;
+          min-width: 400px;
+          margin-top: 0.5rem;
+          gap: 0.2rem;
+          padding: 1rem;
+          border-radius: 15px;
+          border: 1px solid var(--bg-black-color-contrast-3);
+          text-align: center;
+
+          h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            line-height: 100%;
+            color: var(--gray-color-text-dark);
+          }
+
+          span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-color-text-dark);
+          }
+
+          @media screen and (max-width: 768px) {
+            min-width: 100%;
+            gap: 0.5rem;
+
+            h2 {
+              font-size: 1.8rem;
+            }
+
+            span {
+              font-size: 0.9rem;
+            }
+          }
         }
       }
     }
@@ -204,6 +281,10 @@
       color: var(--gray-color-text-dark);
       font-size: 1rem;
       font-weight: 500;
+
+      @media screen and (max-width: 900px) {
+        bottom: -3rem;
+      }
 
       @media screen and (max-width: 768px) {
         @include flex-column-center;

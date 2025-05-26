@@ -107,7 +107,7 @@ const Footer = (Component?: React.FC, className?: string) => {
     };
 
     const checkDuplicate = async () => {
-      const query = `*[_type == "userSubmittedData" && (email == $emai && source == "Footer Newsletter Subscription")l]`;
+      const query = `*[_type == "userSubmittedData" && (email == $email && source == "Footer Newsletter Subscription")]`;
       const existing = await client.fetch(query, { email });
 
       return existing.length > 0;
@@ -115,7 +115,7 @@ const Footer = (Component?: React.FC, className?: string) => {
 
     const hasSubmittedToday = async () => {
       const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-      const query = `*[_type == "userSubmittedData" && (email == $emai && source == "Footer Newsletter Subscription") && time >= "${today}T00:00:00Z"]`;
+      const query = `*[_type == "userSubmittedData" && (email == $email && source == "Footer Newsletter Subscription") && time >= "${today}T00:00:00Z"]`;
       const result = await client.fetch(query, { email });
       return result.length > 0;
     };
