@@ -73,12 +73,12 @@ const EpisodesSlider = () => {
                   showLatestResult.length > 0 &&
                   showLatestResult.map((episode, index) => (
                     <motion.div
-                      initial={{ opacity: 0, x: 30 }}
+                      initial={{ opacity: 0, x: 10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{
                         duration: 0.5,
                         ease: "backInOut",
-                        delay: 0.1 * index,
+                        delay: 0.1,
                       }}
                       viewport={{ once: true }}
                       className="slider-item"

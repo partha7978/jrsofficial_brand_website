@@ -97,6 +97,13 @@
           max-height: 400px;
         }
       }
+
+      @media screen and (max-width: 550px) {
+        img {
+          height: 300px;
+          min-height: 200px;
+        }
+      }
     }
 
     &-content {
