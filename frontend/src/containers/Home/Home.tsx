@@ -82,13 +82,13 @@ const Home = () => {
         </div>
       )}
       <div className="homepage-bg-particles">
-        <Particles
+        {/* <Particles
           className="absolute inset-0"
           quantity={250}
           ease={80}
           color={"#ffffff"}
           refresh
-        />
+        /> */}
       </div>
     </section>
   );
