@@ -179,6 +179,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   href="https://www.instagram.com/jrsofficial_/?igsh=MXBhbzBqOHI1cGFwYg%3D%3D&utm_source=qr#"
                   className="social-link"
                   target="_blank"
+                  aria-label="Instagram"
                 >
                   <FaInstagram />
                 </a>
@@ -186,6 +187,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   href="https://www.facebook.com/share/19r6NXNV9w/?mibextid=wwXIfr"
                   className="social-link"
                   target="_blank"
+                  aria-label="Facebook"
                 >
                   <MdOutlineFacebook />
                 </a>
@@ -193,6 +195,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   href="https://www.youtube.com/@Thejrsshow"
                   target="_blank"
                   className="social-link"
+                  aria-label="YouTube"
                 >
                   <PiYoutubeLogoFill />
                 </a>
@@ -200,6 +203,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   href="https://www.linkedin.com/in/jyotshnarani-senapati-23a180224/"
                   target="_blank"
                   className="social-link"
+                  aria-label="LinkedIn"
                 >
                   <TbBrandLinkedinFilled />
                 </a>
@@ -207,6 +211,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   href="https://x.com/thejrsshow?s=11"
                   target="_blank"
                   className="social-link"
+                  aria-label="Twitter/X"
                 >
                   <FaXTwitter  />
                 </a>

@@ -130,6 +130,7 @@ const MusicPlayer = ({
             <button
               className="musicPlayer-player-control-play"
               onClick={(e) => playAudio(e, isPlaying)}
+              aria-label="Play/Pause Audio"
             >
               {buttonLoader ? (
                 <span className="loader"></span>
