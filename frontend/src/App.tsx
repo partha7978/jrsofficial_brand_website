@@ -13,6 +13,7 @@ import dataStore from "./store/dataStore";
 import { Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
+import { Analytics } from '@vercel/analytics/react';
 
 const SingleEpisodePage = lazy(
   () => import("./containers/SingleEpisodePage/SingleEpisodePage")
@@ -112,6 +113,7 @@ function App() {
           />
         </Routes>
       </Provider>
+      <Analytics />
     </>
   );
 }
