@@ -23,7 +23,13 @@ const Production = () => {
       rootElement.style.background = "#000000";
       rootElement.style.height = "100%";
       document.body.style.background = "#000000";
+    }
 
+    document.title = "Production | The JRS Show";
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+
+    if (metaTag) {
+      metaTag.setAttribute("content", "#ffab72");
     }
 
     return () => {
@@ -31,6 +37,10 @@ const Production = () => {
         rootElement.style.background = "#FBF7EC";
         document.body.style.background = "#FBF7EC";
         rootElement.style.height = "auto";
+      }
+      document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+      if (metaTag) {
+        metaTag.setAttribute("content", "#000000");
       }
     };
   }, []);

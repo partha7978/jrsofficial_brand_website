@@ -41,6 +41,22 @@ const Episodes = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    document.title = "All Episodes | The JRS Show";
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+
+    if (metaTag) {
+      metaTag.setAttribute("content", "#e6b0a7");
+    }
+
+    return () => {
+      document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+      if (metaTag) {
+        metaTag.setAttribute("content", "#000000");
+      }
+    };
+  }, []);
+
   const handleFilterSearch = (e: any) => {
     //using event delegation in order to prevent eventlistener from being added multiple times in childs
     const target = e.target;
@@ -53,6 +69,8 @@ const Episodes = () => {
       target.classList.add("selected");
 
       const category = target.textContent;
+
+      document.title = `${category} Episodes | The JRS Show`;
 
       if (category === "All") {
         setEpisodeCards(data);

@@ -13,6 +13,7 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import Footer from "../Footer/Footer";
 import { motion } from "framer-motion";
 import { MusicPlayer } from "../../components";
+import { useEffect } from "react";
 
 const components = {
   block: {
@@ -70,6 +71,22 @@ const SingleEpisodePage = () => {
     undefined, // Explicitly skip `parameter`
     `title == "${epId?.split("_").join(" ")}"` // Use as `singleItemFetchQuery`
   );
+
+    useEffect(() => {
+      document.title =  `${data?.title} | The JRS Show` ;
+      const metaTag = document.querySelector('meta[name="theme-color"]');
+
+      if(metaTag) {
+        metaTag.setAttribute("content", "#3f0d12");
+      }
+
+      return () => {
+        document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+        if (metaTag) {
+          metaTag.setAttribute("content", "#000000");
+        }
+      };
+    }, [data]);
 
   return (
     <>

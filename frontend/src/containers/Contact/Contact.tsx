@@ -72,9 +72,19 @@ const Contact = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = "#000000";
+    document.title = "Contact Us | The JRS Show";
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+
+    if (metaTag) {
+      metaTag.setAttribute("content", "#000000");
+    }
 
     return () => {
       document.body.style.backgroundColor = "#fbf7ec";
+      document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+      if (metaTag) {
+        metaTag.setAttribute("content", "#000000");
+      }
     };
   }, []);
 

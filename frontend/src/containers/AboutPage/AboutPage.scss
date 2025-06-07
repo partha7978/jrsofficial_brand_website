@@ -96,10 +96,6 @@
     background-color: var(--bg-white-color);
 
     @media screen and (max-width: 768px) {
-      padding: 1.5rem;
-    }
-
-    @media screen and (max-width: 340px) {
       padding: 1rem;
     }
   }

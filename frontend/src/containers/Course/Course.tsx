@@ -31,10 +31,21 @@ const Course = () => {
       rootElement.style.overflow = "hidden";
     }
 
+    document.title = "Course | The JRS Show";
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+
+    if (metaTag) {
+      metaTag.setAttribute("content", "#ffeace");
+    }
+
     return () => {
       if (rootElement && rootElement.style) {
         rootElement.style.background = "#FBF7EC";
         rootElement.style.overflow = "";
+      }
+      document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+      if (metaTag) {
+        metaTag.setAttribute("content", "#000000");
       }
     };
   }, []);

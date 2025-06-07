@@ -11,6 +11,7 @@ import { Link } from "react-router";
 import { client } from "../../../client/client";
 import { useEffect, useState } from "react";
 import { getCurrentDate } from "../../service/getCurrentDate";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -174,10 +175,18 @@ const Footer = (Component?: React.FC, className?: string) => {
                 alive taking you.
               </div>
               <div className="social-links">
-                <a href="#" className="social-link">
+                <a
+                  href="https://www.instagram.com/jrsofficial_/?igsh=MXBhbzBqOHI1cGFwYg%3D%3D&utm_source=qr#"
+                  className="social-link"
+                  target="_blank"
+                >
                   <FaInstagram />
                 </a>
-                <a href="#" className="social-link">
+                <a
+                  href="https://www.facebook.com/share/19r6NXNV9w/?mibextid=wwXIfr"
+                  className="social-link"
+                  target="_blank"
+                >
                   <MdOutlineFacebook />
                 </a>
                 <a
@@ -193,6 +202,13 @@ const Footer = (Component?: React.FC, className?: string) => {
                   className="social-link"
                 >
                   <TbBrandLinkedinFilled />
+                </a>
+                 <a
+                  href="https://x.com/thejrsshow?s=11"
+                  target="_blank"
+                  className="social-link"
+                >
+                  <FaXTwitter  />
                 </a>
               </div>
             </div>

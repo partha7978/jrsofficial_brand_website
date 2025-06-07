@@ -9,7 +9,6 @@ import { urlFor } from "../../../client/client";
 import { MainAboutPageSchema } from "../../interfaces/interface";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 const AboutPage = () => {
   const [about, setAbout] = useState<MainAboutPageSchema | null>(null);
 
@@ -28,6 +27,22 @@ const AboutPage = () => {
       setAbout(data);
     }
   }, [data]);
+
+  useEffect(() => {
+    document.title = "About Us | The JRS Show";
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+
+    if (metaTag) {
+      metaTag.setAttribute("content", "#693855");
+    }
+
+    return () => {
+      document.title = "The JRS Show | Your Voice, Your Story, Your Show";
+      if (metaTag) {
+        metaTag.setAttribute("content", "#000000");
+      }
+    };
+  }, []);
 
   if (error) {
     console.log(error);
