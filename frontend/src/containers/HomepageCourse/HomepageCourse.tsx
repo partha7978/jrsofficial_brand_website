@@ -97,11 +97,7 @@ const HomepageCourse = () => {
             <div className="homepageCourse-mobile-separator-line"></div>
           </div>
           <div className="homepageCourse-bottom-section">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
+            <div
               className="homepageCourse-bottom-section-action"
             >
               <div className="prod-section-content">
@@ -140,12 +136,8 @@ const HomepageCourse = () => {
                   />
                 </motion.div>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: [30, 0] }}
-              transition={{ duration: 0.5, ease: "backInOut", delay: 0.2 }}
-              viewport={{ once: true }}
+            </div>
+            <div
               className="homepageCourse-bottom-section-img"
             >
               <img
@@ -156,7 +148,7 @@ const HomepageCourse = () => {
                 width={200}
               />
               <div className="img-overlay"></div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       )}

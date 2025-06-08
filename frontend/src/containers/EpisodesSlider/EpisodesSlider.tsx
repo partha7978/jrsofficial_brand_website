@@ -78,7 +78,7 @@ const EpisodesSlider = () => {
                       transition={{
                         duration: 0.5,
                         ease: "backInOut",
-                        delay: 0.1,
+                        delay: 0.1 * index,
                       }}
                       viewport={{ once: true }}
                       className="slider-item"
