@@ -181,6 +181,8 @@ const SingleEpisodePage = () => {
                 redirectionColor="#000000"
                 size="large"
                 audioUrl={data?.title}
+                spotifyUrl={data?.spotifyLink}
+                youtubeUrl={data?.youtubeLink}
               />
             </section>
             <section className="singleEpisode-desc">

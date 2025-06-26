@@ -45,7 +45,8 @@ const Navbar = () => {
   } = useFetchData("episodes", " category", undefined, "episodeDate desc");
 
   function removeDuplicate(arr: string[]) {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
+    const unique = arr.filter((item, index) => arr.indexOf(item) === index);
+    return unique.length > 3 ? unique.slice(0, 3) : unique;
   }
 
   useEffect(() => {
@@ -117,7 +118,7 @@ const Navbar = () => {
                     >
                       {item.extraLinks?.map((extraLink) => (
                         <NavLink
-                          to={`/${item.link}/${extraLink.toLowerCase()}`}
+                          to={`/${item.link}/${extraLink?.toLowerCase()}`}
                           key={extraLink}
                           className="app__navbar-links-item-extra-link"
                         >

@@ -17,6 +17,8 @@ const MusicPlayer = ({
   color,
   size,
   audioUrl,
+  spotifyUrl,
+  youtubeUrl,
 }: {
   showRedirectBtn: boolean;
   backgroundColor?: string;
@@ -25,6 +27,8 @@ const MusicPlayer = ({
   redirectionColor?: string;
   size?: "small" | "large";
   audioUrl: any;
+  spotifyUrl?: string;
+  youtubeUrl?: string;
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [audioSrc, setAudioSrc] = useState<any | null>(null);
@@ -96,7 +100,6 @@ const MusicPlayer = ({
         setAudioSrc(audio.episodeAudio); // 👈 Set source
         setToast({ type: "success", message: `Playing ${audio.title}` });
         setIsPlaying(true);
-        
       } catch (error) {
         console.error("Error fetching audio:", error);
         setToast({
@@ -123,7 +126,7 @@ const MusicPlayer = ({
       <div
         className={`musicPlayer ${size === "large" ? "musicPlayer-large" : ""}`}
         style={style}
-        onClick={(e) => e.preventDefault()}
+        // onClick={(e) => e.preventDefault()}
       >
         <div className="musicPlayer-player">
           <div className="musicPlayer-player-control">
@@ -182,26 +185,30 @@ const MusicPlayer = ({
 
         {showRedirectBtn && (
           <div className="musicPlayer-player-action">
-            <button
-              className="musicPlayer-player-action-link"
-              style={redirectionStyle}
-            >
-              <FaSpotify />
-              Spotify
-              <div className="redirect-icon">
-                <IoMdArrowForward />
-              </div>
-            </button>
-            <button
-              className="musicPlayer-player-action-link"
-              style={redirectionStyle}
-            >
-              <FaYoutube />
-              Youtube
-              <div className="redirect-icon">
-                <IoMdArrowForward />
-              </div>
-            </button>
+            <a href={spotifyUrl || "#"} target="_blank" className="musicPlayer-player-action-link">
+              <button
+                className=""
+                style={redirectionStyle}
+              >
+                <FaSpotify />
+                Spotify
+                <div className="redirect-icon">
+                  <IoMdArrowForward />
+                </div>
+              </button>
+            </a>
+            <a href={youtubeUrl || "#"} target="_blank" className="musicPlayer-player-action-link">
+              <button
+                className=""
+                style={redirectionStyle}
+              >
+                <FaYoutube />
+                Youtube
+                <div className="redirect-icon">
+                  <IoMdArrowForward />
+                </div>
+              </button>
+            </a>
           </div>
         )}
       </div>

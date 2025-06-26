@@ -77,6 +77,24 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'spotifyLink',
+      title: 'Spotify Link',
+      type: 'url',
+      validation: (Rule) => Rule.required().uri({
+        scheme: ['https', 'http'],
+        allowRelative: false,
+      }),
+    },
+    {
+      name: 'youtubeLink',
+      title: 'Youtube Link',
+      type: 'url',
+      validation: (Rule) => Rule.required().uri({
+        scheme: ['https', 'http'],
+        allowRelative: false,
+      }),
+    },
+    {
       name: 'shortDescription',
       title: 'Short Description For Showing On Card',
       type: 'string',

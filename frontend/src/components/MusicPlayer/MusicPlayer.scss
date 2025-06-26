@@ -103,12 +103,16 @@
         background-color: var(--bg-white-color);
         border-radius: 10px;
         @include flex-row-center;
-        gap: 0.5rem;
         padding: 0.5rem 1rem;
 
         font-size: 1rem;
         font-weight: 500;
         transition: background-color 0.3s ease-in-out;
+
+        button {
+          @include flex-row-center;
+          gap: 0.5rem;
+        }
 
         svg {
           height: 18px;
