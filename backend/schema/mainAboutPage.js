@@ -54,7 +54,7 @@ export default {
     },
     {
       name: 'views',
-      title: 'Views Count',
+      title: 'Total Reach',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
@@ -66,13 +66,13 @@ export default {
     },
     {
       name: 'clients',
-      title: 'Number of Clients',
+      title: 'Views',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'hosts',
-      title: 'Number of Hosts',
+      title: 'Number of Episodes',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },

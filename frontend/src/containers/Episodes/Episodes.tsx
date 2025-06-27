@@ -93,9 +93,9 @@ const Episodes = () => {
   const EpisodeCardComponent = ({ card }: any) => {
     return (
       <Link
-        to={`/episodes/${card.category.toLowerCase()}/${card.title
-          .split(" ")
-          .join("_")}`}
+        to={`/episodes/${card.category.toLowerCase()}/${encodeURIComponent(
+          card.title.split(" ").join("_")
+        )}`}
       >
         <motion.div
           className="episodePage-card"

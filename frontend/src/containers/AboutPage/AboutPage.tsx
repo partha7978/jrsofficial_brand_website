@@ -127,7 +127,7 @@ const AboutPage = () => {
                 className="aboutPage-main-stats-item"
               >
                 <h2>{about.views || "N/A"}+</h2>
-                <span>Views</span>
+                <span>Total Reach</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -147,7 +147,7 @@ const AboutPage = () => {
                 className="aboutPage-main-stats-item"
               >
                 <h2>{about.clients || "N/A"}+</h2>
-                <span>Clients</span>
+                <span>Views</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -157,7 +157,7 @@ const AboutPage = () => {
                 className="aboutPage-main-stats-item"
               >
                 <h2>{about.hosts || "N/A"}+</h2>
-                <span>Hosts</span>
+                <span>Episodes</span>
               </motion.div>
             </motion.div>
           </motion.section>
