@@ -39,6 +39,7 @@ export interface MainButton {
     | "formSubmit";
   disabled?: boolean;
   actionData?: string | object | Array<any> | ((arg?: any) => void);
+  gtmKey?: string;
 }
 
 export interface InputProps {

@@ -3,6 +3,7 @@ import { MainButton } from "../../interfaces/interface";
 import "./Button.scss";
 import { HiArrowSmRight } from "react-icons/hi";
 import { useNavigate } from "react-router";
+import { setHomepageMainButtonClick } from "../../service/gtmService";
 
 function Button({
   name,
@@ -19,7 +20,8 @@ function Button({
   width,
   action,
   actionData,
-  disabled
+  disabled,
+  gtmKey
 }: MainButton) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -73,6 +75,8 @@ function Button({
       setButtonFixedWidth(`${width}px`);
     }
 
+    setGtmKey();
+
     setLoading(true);
 
     setTimeout(() => {
@@ -92,6 +96,17 @@ function Button({
       setButtonFixedWidth(null);
     }, 1000);
   };
+
+  // Function to set GTM key for the button click event
+  const setGtmKey = () => {
+    if(gtmKey === 'Homepage_Main_Button_Click') {
+      setHomepageMainButtonClick({
+        event: gtmKey,
+        buttonName: name,
+        buttonLink: link,
+      });
+    }
+  }
 
   return (
     <button

@@ -72,6 +72,7 @@ const Home = () => {
                   hoverColor="#000000"
                   action="redirectExternal"
                   actionData={mainData.mainButton[0]?.buttonLink}
+                  gtmKey="Homepage_Main_Button_Click"
                 />
               )}
             </motion.div>
