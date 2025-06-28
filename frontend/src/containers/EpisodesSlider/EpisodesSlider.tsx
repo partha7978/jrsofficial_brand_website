@@ -20,7 +20,9 @@ const EpisodesSlider = () => {
       undefined,
       "episodeDate desc"
     );
-  const [showLatestResult, setShowLatestResult] = useState<any[]>([]);
+  const [showLatestResult, setShowLatestResult] = useState<
+    EpisodesArraySchemaForSlider[]
+  >([]);
   const sliderRef = useRef(null);
 
   const handleScroll = (direction: "next" | "prev") => {
@@ -39,7 +41,11 @@ const EpisodesSlider = () => {
 
   useEffect(() => {
     if (data && data.length > 0) {
-      setShowLatestResult(data);
+      const sorted = [...data].sort(
+        (a, b) =>
+          new Date(b.episodeDate).getTime() - new Date(a.episodeDate).getTime()
+      );
+      setShowLatestResult(sorted.slice(0, 8));
     }
   }, [data]);
 
@@ -85,9 +91,9 @@ const EpisodesSlider = () => {
                       key={episode.title + index}
                     >
                       <Link
-                        to={`/episodes/${episode.category.toLowerCase()}/${episode.title
-                          .split(" ")
-                          .join("_")}`}
+                        to={`/episodes/${episode.category.toLowerCase()}/${encodeURIComponent(
+                          episode.title.split(" ").join("_")
+                        )}`}
                       >
                         <SliderEpisodeCard {...episode} />
                       </Link>

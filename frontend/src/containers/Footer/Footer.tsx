@@ -12,6 +12,7 @@ import { client } from "../../../client/client";
 import { useEffect, useState } from "react";
 import { getCurrentDate } from "../../service/getCurrentDate";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaSpotify } from "react-icons/fa";
 
 const Footer = (Component?: React.FC, className?: string) => {
   function HOC(props: any) {
@@ -176,7 +177,7 @@ const Footer = (Component?: React.FC, className?: string) => {
               </div>
               <div className="social-links">
                 <a
-                  href="https://www.instagram.com/jrsofficial_/?igsh=MXBhbzBqOHI1cGFwYg%3D%3D&utm_source=qr#"
+                  href="https://www.instagram.com/jrsofficial_"
                   className="social-link"
                   target="_blank"
                   aria-label="Instagram"
@@ -184,7 +185,7 @@ const Footer = (Component?: React.FC, className?: string) => {
                   <FaInstagram />
                 </a>
                 <a
-                  href="https://www.facebook.com/share/19r6NXNV9w/?mibextid=wwXIfr"
+                  href="https://www.facebook.com/itsyourjrs"
                   className="social-link"
                   target="_blank"
                   aria-label="Facebook"
@@ -208,12 +209,20 @@ const Footer = (Component?: React.FC, className?: string) => {
                   <TbBrandLinkedinFilled />
                 </a>
                  <a
-                  href="https://x.com/thejrsshow?s=11"
+                  href="https://x.com/thejrsshow"
                   target="_blank"
                   className="social-link"
                   aria-label="Twitter/X"
                 >
                   <FaXTwitter  />
+                </a>
+                <a
+                  href="https://open.spotify.com/show/4qBCmtPsd77nPadhNlFHxv?si=5efdf663b7954ea1"
+                  target="_blank"
+                  className="social-link"
+                  aria-label="Spotify"
+                >
+                  <FaSpotify />
                 </a>
               </div>
             </div>
