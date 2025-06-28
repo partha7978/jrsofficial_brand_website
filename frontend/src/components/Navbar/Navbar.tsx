@@ -72,6 +72,17 @@ const Navbar = () => {
     console.log(error);
   }
 
+  const sendGtmData = (gtmKey: string) => {
+    if (gtmKey === 'Navbar_Redirect_Button_Click') {
+      (window as any).dataLayer.push({
+        event: gtmKey,
+        buttonName: data.redirectButtonName,
+        buttonLink: data.redirectLink,
+        additionalData: "Navbar Redirect Button Clicked",
+      });
+    }
+  };
+
   const handleMenuOpen = () => {
     setMenuOpen(true);
   };
@@ -144,7 +155,7 @@ const Navbar = () => {
             ))}
           </div>
           <div className="app__navbar-redirect">
-            <a href={data.redirectLink} target="_blank" rel="noreferrer">
+            <a href={data.redirectLink} target="_blank" rel="noreferrer" onClick={() => sendGtmData('Navbar_Redirect_Button_Click')}>
               <ShimmerButton
                 className="shadow-2xl"
                 shimmerSize="0.09rem"
@@ -251,7 +262,7 @@ const Navbar = () => {
                 </div>
                 <div className="menu-item__container-redirect">
                   <a href={data.redirectLink} target="_blank" rel="noreferrer">
-                    <button>
+                    <button onClick={() => sendGtmData('Navbar_Redirect_Button_Click')}>
                       {data.redirectButtonName}
                       <FaExternalLinkAlt />
                     </button>
