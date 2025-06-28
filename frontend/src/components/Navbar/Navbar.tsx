@@ -79,6 +79,7 @@ const Navbar = () => {
         buttonName: data.redirectButtonName,
         buttonLink: data.redirectLink,
         additionalData: "Navbar Redirect Button Clicked",
+        value: 4999,//sending a estimated value for the leads which is 4999
       });
     }
   };
