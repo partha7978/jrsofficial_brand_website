@@ -69,6 +69,7 @@ const EpisodesSlider = () => {
                 hoverColor="#000000"
                 action="redirectInternal"
                 actionData="/episodes/all"
+                gtmKey="Episodes_Slider_View_All_Button_Click"
               />
             </div>
           </div>

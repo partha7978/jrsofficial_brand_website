@@ -3,7 +3,7 @@ import { MainButton } from "../../interfaces/interface";
 import "./Button.scss";
 import { HiArrowSmRight } from "react-icons/hi";
 import { useNavigate } from "react-router";
-import { setHomepageMainButtonClick } from "../../service/gtmService";
+import { setEpisodesSliderViewAllButtonClick, setHomepageMainButtonClick } from "../../service/gtmService";
 
 function Button({
   name,
@@ -102,6 +102,11 @@ function Button({
     if(gtmKey === 'Homepage_Main_Button_Click') {
       setHomepageMainButtonClick({
         event: gtmKey,
+        buttonName: name,
+        buttonLink: link,
+      });
+    } else if(gtmKey === 'Episodes_Slider_View_All_Button_Click') {
+      setEpisodesSliderViewAllButtonClick({
         buttonName: name,
         buttonLink: link,
       });
