@@ -112,6 +112,8 @@
         button {
           @include flex-row-center;
           gap: 0.5rem;
+          background-color: transparent;
+          transition: all 0.3s ease-in-out;
         }
 
         svg {
@@ -128,6 +130,10 @@
 
           .redirect-icon {
             transform: rotate(-45deg);
+          }
+
+          button  {
+            background-color: var(--primary-color-text-contrast-2) !important;
           }
         }
       }
